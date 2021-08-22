@@ -20,27 +20,34 @@ public class Duke {
         System.out.println(logo + separator + helloGreeting + separator);
     }
 
-    public static void echoCommand(){
+    public static void startProgram(){
         String inputLine;
         Scanner in = new Scanner(System.in);
-        boolean isBye = false;
-        do{
-            System.out.print("Type your command: \n");
-            inputLine = in.nextLine();
-            isBye = checkBye(inputLine);
-            if(!isBye){
-                System.out.println(separator + "echo " + inputLine + separator);
-            }
-        }while (!isBye);
-        exitProgram();
-    }
+        TaskManager tm = new TaskManager();
+        CmdManager cm = new CmdManager();
 
-    public static boolean checkBye(String command){
-        String byeString = "bye";
-        if(command.equals(byeString)){
-            return true;
-        }
-        return false;
+        boolean isBye = false;
+        boolean isList;
+
+        do{
+            System.out.print("\nType your command: \n");
+            inputLine = in.nextLine();
+            cm.addCmd(inputLine);
+
+            isBye = cm.checkCmd(inputLine, "bye");
+
+            if(cm.checkCmd(inputLine, "list")){
+                tm.listTask();
+            }else if(cm.checkCmd(inputLine, "hist")){
+                cm.showHistory();
+            }else if(!isBye){
+                System.out.println(separator + "adding: " + inputLine + separator);
+                tm.addTask(inputLine);
+            }else {
+                continue;
+            }
+
+        }while (!isBye);
     }
 
     public static void exitProgram(){
@@ -50,6 +57,7 @@ public class Duke {
 
     public static void main(String[] args) {
         greetUser();
-        echoCommand();
+        startProgram();
+        exitProgram();
     }
 }
