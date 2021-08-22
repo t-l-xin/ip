@@ -27,4 +27,15 @@ public class CmdManager {
         }
         return false;
     }
+
+    public void showHelp(){
+        String cmdFormat = "cmd [args]";
+        String cmdAvailable = "help, list, hist, \n" +
+                "done [task no], \n" +
+                "add [task description]\n";
+
+        System.out.println("How to use this bot: \n");
+        System.out.println("Type ur command in the following format \n" + cmdFormat);
+        System.out.println("\nCommands Available: \n" + cmdAvailable);
+    }
 }

@@ -25,28 +25,31 @@ public class Duke {
         Scanner in = new Scanner(System.in);
         TaskManager tm = new TaskManager();
         CmdManager cm = new CmdManager();
+        cm.showHelp();
 
         boolean isBye = false;
-        boolean isList;
 
         do{
             System.out.print("\nType your command: \n");
             inputLine = in.nextLine();
+            String[] cmdArray = inputLine.split(" ",2);
+
             cm.addCmd(inputLine);
 
             isBye = cm.checkCmd(inputLine, "bye");
 
-            if(cm.checkCmd(inputLine, "list")){
+            if(cm.checkCmd(cmdArray[0], "help")){
+                cm.showHelp();
+            }else if(cm.checkCmd(cmdArray[0], "list")){
                 tm.listTask();
-            }else if(cm.checkCmd(inputLine, "hist")){
+            }else if(cm.checkCmd(cmdArray[0], "hist")){
                 cm.showHistory();
-            }else if(!isBye){
-                System.out.println(separator + "adding: " + inputLine + separator);
-                tm.addTask(inputLine);
-            }else {
-                continue;
+            }else if(cm.checkCmd(cmdArray[0], "done")){
+                tm.markAsDone(cmdArray[1]);
+            }else if(cm.checkCmd(cmdArray[0], "add")){
+                System.out.println(separator + "adding: " + cmdArray[1] + separator);
+                tm.addTask(cmdArray[1]);
             }
-
         }while (!isBye);
     }
 
