@@ -2,20 +2,20 @@ import java.util.Scanner;
 
 public class Duke {
     public static String logo =
-            " ______________                                   \n" +
-                    "|            @ | #####  ####        #####   ####  \n" +
-                    "|         @@   |   #   #    #       #    # #    # \n" +
-                    "|       @@     |   #   #    # ##### #    # #    # \n" +
-                    "|  @@  @@      |   #   #    #       #    # #    # \n" +
-                    "|   @@@        |   #   #    #       #    # #    # \n" +
-                    "|    @         |   #    ####        #####   ####  \n" +
-                    " --------------";
+            " ______________\n" +
+            "|            @ | #####  ####        #####   ####\n" +
+            "|         @@   |   #   #    #       #    # #    #\n" +
+            "|       @@     |   #   #    # ##### #    # #    #\n" +
+            "|  @@  @@      |   #   #    #       #    # #    #\n" +
+            "|   @@@        |   #   #    #       #    # #    #\n" +
+            "|    @         |   #    ####        #####   ####\n" +
+            " --------------";
 
     public static String separator = "\n" + "_".repeat(60) + "\n";
 
     public static void greetUser() {
-        String helloGreeting = "Hi! I'm LingLing! " +
-                "\nYour personal nanny to make sure you do work. \n"
+        String helloGreeting = "Hi! I'm LingLing!\n" +
+                "Your personal nanny to make sure you do work.\n"
                 + "Have you started ur tasks? Start by typing \"help\"";
         System.out.println(logo + separator + helloGreeting + separator);
     }
@@ -30,7 +30,7 @@ public class Duke {
         boolean isBye = false;
 
         do {
-            System.out.print("\nType your command: \n");
+            System.out.print("\nType your command:\n");
             inputLine = in.nextLine().trim();
             String[] cmdArray = inputLine.split(" ", 2);
 
@@ -47,17 +47,19 @@ public class Duke {
             } else if (cm.checkCmd(cmdArray[0], "done")) {
                 tm.markAsDone(cmdArray[1]);
             } else if (cm.checkCmd(cmdArray[0], "add")) {
-                System.out.println(separator + "adding: " + cmdArray[1] + separator);
-                tm.addTask(cmdArray[1], "add");
+                cm.printAddStatus(cmdArray[1]);
+                tm.addTask(cmdArray[1], TaskType.ADD);
             } else if (cm.checkCmd(cmdArray[0], "todo")) {
-                System.out.println(separator + "adding: " + cmdArray[1] + separator);
-                tm.addTask(cmdArray[1], "todo");
+                cm.printAddStatus(cmdArray[1]);
+                tm.addTask(cmdArray[1], TaskType.TODO);
             } else if (cm.checkCmd(cmdArray[0], "deadline")) {
-                System.out.println(separator + "adding: " + cmdArray[1] + separator);
-                tm.addTask(cmdArray[1], "deadline");
+                cm.printAddStatus(cmdArray[1]);
+                tm.addTask(cmdArray[1], TaskType.DEADLINE);
             }else if (cm.checkCmd(cmdArray[0], "event")) {
-                System.out.println(separator + "adding: " + cmdArray[1] + separator);
-                tm.addTask(cmdArray[1], "event");
+                cm.printAddStatus(cmdArray[1]);
+                tm.addTask(cmdArray[1], TaskType.EVENT);
+            }else if (cm.checkCmd(cmdArray[0], "bye")) {
+                continue;
             }else {
                 System.out.println("invalid command, please try again");
             }

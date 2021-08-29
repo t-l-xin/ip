@@ -3,10 +3,15 @@ import java.util.ArrayList;
 public class CmdManager {
     private ArrayList<String> cmdList = new ArrayList<String>();
     private int cmdCount = 0;
+    public static String separator = "\n" + "_".repeat(60) + "\n";
 
     public void addCmd(String cmd) {
         cmdList.add(cmd);
         cmdCount++;
+    }
+
+    public void printAddStatus(String details){
+        System.out.println(separator + "adding: " + details + separator);
     }
 
     public void showHistory() {
@@ -29,13 +34,16 @@ public class CmdManager {
     }
 
     public void showHelp() {
-        String cmdFormat = "cmd [args]";
-        String cmdAvailable = "help, list, hist, \n" +
-                "done [task no], \n" +
-                "add [task description]\n";
+        String cmdFormat = "cmd [args] /[options] [additional args]";
+        String cmdAvailable = "help, list, hist - no additional args required\n" +
+                "done [task no]\n" +
+                "add [task description]\n" +
+                "todo [task description]\n" +
+                "deadline [task description] /by [time/data]\n" +
+                "event [task description] /at [time/date]";
 
-        System.out.println("How to use this bot: \n");
-        System.out.println("Type ur command in the following format \n" + cmdFormat);
-        System.out.println("\nCommands Available: \n" + cmdAvailable);
+        System.out.println("How to use this bot:\n");
+        System.out.println("Type ur command in the following format\n" + cmdFormat);
+        System.out.println("\nCommands Available:\n" + cmdAvailable);
     }
 }

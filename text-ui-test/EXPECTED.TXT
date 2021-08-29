@@ -1,7 +1,102 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+ ______________
+|            @ | #####  ####        #####   ####
+|         @@   |   #   #    #       #    # #    #
+|       @@     |   #   #    # ##### #    # #    #
+|  @@  @@      |   #   #    #       #    # #    #
+|   @@@        |   #   #    #       #    # #    #
+|    @         |   #    ####        #####   ####
+ --------------
+____________________________________________________________
+Hi! I'm LingLing!
+Your personal nanny to make sure you do work.
+Have you started ur tasks? Start by typing "help"
+____________________________________________________________
+
+How to use this bot:
+
+Type ur command in the following format
+cmd [args] /[options] [additional args]
+
+Commands Available:
+help, list, hist - no additional args required
+done [task no]
+add [task description]
+todo [task description]
+deadline [task description] /by [time/data]
+event [task description] /at [time/date]
+
+Type your command:
+How to use this bot:
+
+Type ur command in the following format
+cmd [args] /[options] [additional args]
+
+Commands Available:
+help, list, hist - no additional args required
+done [task no]
+add [task description]
+todo [task description]
+deadline [task description] /by [time/data]
+event [task description] /at [time/date]
+
+Type your command:
+No tasks, start by adding a task!
+
+Total Tasks: 0
+
+Type your command:
+
+____________________________________________________________
+adding: CS2106 tut
+____________________________________________________________
+
+
+Type your command:
+
+1. [T][ ] CS2106 tut
+Total Tasks: 1
+
+Type your command:
+
+____________________________________________________________
+adding: CS2106 lab /by 4Sep
+____________________________________________________________
+
+
+Type your command:
+
+1. [T][ ] CS2106 tut
+2. [D][ ] CS2106 lab (by: 4Sep)
+Total Tasks: 2
+
+Type your command:
+
+____________________________________________________________
+adding: CS2113 Group meet /at Mon 10am
+____________________________________________________________
+
+
+Type your command:
+
+1. [T][ ] CS2106 tut
+2. [D][ ] CS2106 lab (by: 4Sep)
+3. [E][ ] CS2113 Group meet (at: Mon 10am)
+Total Tasks: 3
+
+Type your command:
+Good Job, u have completed
+task: CS2106 lab
+
+Type your command:
+
+1. [T][ ] CS2106 tut
+2. [D][X] CS2106 lab (by: 4Sep)
+3. [E][ ] CS2113 Group meet (at: Mon 10am)
+Total Tasks: 3
+
+Type your command:
+
+____________________________________________________________
+Well done for today! Remember to have 8 hrs of sleep!
+____________________________________________________________
 
