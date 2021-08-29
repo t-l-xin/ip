@@ -55,12 +55,12 @@ public class Duke {
             } else if (cm.checkCmd(cmdArray[0], "deadline")) {
                 cm.printAddStatus(cmdArray[1]);
                 tm.addTask(cmdArray[1], TaskType.DEADLINE);
-            }else if (cm.checkCmd(cmdArray[0], "event")) {
+            } else if (cm.checkCmd(cmdArray[0], "event")) {
                 cm.printAddStatus(cmdArray[1]);
                 tm.addTask(cmdArray[1], TaskType.EVENT);
-            }else if (cm.checkCmd(cmdArray[0], "bye")) {
+            } else if (cm.checkCmd(cmdArray[0], "bye")) {
                 continue;
-            }else {
+            } else {
                 System.out.println("invalid command, please try again");
             }
         } while (!isBye);

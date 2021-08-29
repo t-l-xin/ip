@@ -10,7 +10,7 @@ public class CmdManager {
         cmdCount++;
     }
 
-    public void printAddStatus(String details){
+    public void printAddStatus(String details) {
         System.out.println(separator + "adding: " + details + separator);
     }
 
@@ -19,7 +19,7 @@ public class CmdManager {
             for (int i = 0; i < cmdCount; i++) {
                 String cmd = cmdList.get(i);
                 int j = i + 1;
-                System.out.printf("\n%d. %s ", j, cmd);
+                System.out.printf("\n%d. %s", j, cmd);
             }
         } else {
             System.out.println("No previous commands");

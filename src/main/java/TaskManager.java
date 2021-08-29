@@ -4,8 +4,8 @@ public class TaskManager {
     protected String byString = " /by ";
     protected String atString = " /at ";
 
-    public Task getTaskType(String newTask, TaskType type){
-        switch (type){
+    public Task getTaskType(String newTask, TaskType type) {
+        switch (type) {
         case ADD:
             return new Task(newTask);
         case TODO:
@@ -20,7 +20,7 @@ public class TaskManager {
         return null;
     }
 
-    public String[] getTaskNameAndTime(String taskDetail, String delimiter){
+    public String[] getTaskNameAndTime(String taskDetail, String delimiter) {
         String[] taskDetailArr = taskDetail.split(delimiter);
         return taskDetailArr;
     }
@@ -40,12 +40,16 @@ public class TaskManager {
         } else {
             System.out.println("No tasks, start by adding a task!");
         }
-        System.out.printf("\nTotal Tasks: %s\n", taskCount );
+        System.out.printf("\nTotal Tasks: %s\n", taskCount);
+    }
+
+    public boolean isValidIndex(int userInputIndex) {
+        return userInputIndex < taskCount && userInputIndex >= 0;
     }
 
     public void markAsDone(String taskNo) {
         int taskIndex = Integer.parseInt(taskNo) - 1;
-        if (taskIndex < taskCount && taskIndex >= 0) {
+        if (isValidIndex(taskIndex)) {
             taskList[taskIndex].setDone();
             System.out.printf("Good Job, u have completed\ntask: %s\n", taskList[taskIndex].getTaskName());
         } else {
