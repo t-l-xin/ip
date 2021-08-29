@@ -31,7 +31,7 @@ public class Duke {
 
         do {
             System.out.print("\nType your command: \n");
-            inputLine = in.nextLine();
+            inputLine = in.nextLine().trim();
             String[] cmdArray = inputLine.split(" ", 2);
 
             cm.addCmd(inputLine);
@@ -48,7 +48,18 @@ public class Duke {
                 tm.markAsDone(cmdArray[1]);
             } else if (cm.checkCmd(cmdArray[0], "add")) {
                 System.out.println(separator + "adding: " + cmdArray[1] + separator);
-                tm.addTask(cmdArray[1]);
+                tm.addTask(cmdArray[1], "add");
+            } else if (cm.checkCmd(cmdArray[0], "todo")) {
+                System.out.println(separator + "adding: " + cmdArray[1] + separator);
+                tm.addTask(cmdArray[1], "todo");
+            } else if (cm.checkCmd(cmdArray[0], "deadline")) {
+                System.out.println(separator + "adding: " + cmdArray[1] + separator);
+                tm.addTask(cmdArray[1], "deadline");
+            }else if (cm.checkCmd(cmdArray[0], "event")) {
+                System.out.println(separator + "adding: " + cmdArray[1] + separator);
+                tm.addTask(cmdArray[1], "event");
+            }else {
+                System.out.println("invalid command, please try again");
             }
         } while (!isBye);
     }
