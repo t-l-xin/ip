@@ -1,3 +1,7 @@
+import manager.CmdManager;
+import manager.PrintManager;
+import manager.TaskManager;
+
 import java.util.Scanner;
 
 public class Duke {

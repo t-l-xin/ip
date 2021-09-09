@@ -1,3 +1,6 @@
+package manager;
+import task.Task;
+
 public class PrintManager {
     public final static String ZERO_CONSTANT_STRING = "0";
     private final static String SEPARATOR = "\n" + "_".repeat(60) + "\n";

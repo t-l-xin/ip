@@ -1,3 +1,14 @@
+package manager;
+
+import exception.DukeException;
+import task.Task;
+import task.TaskType;
+import task.Todo;
+import task.Deadline;
+import task.Event;
+
+import static task.TaskType.*;
+
 public class TaskManager {
     public static final int MAX_TASKS_LIMIT = 100;
     public static final String BY_STRING = "/by";
@@ -11,7 +22,7 @@ public class TaskManager {
         switch (cmdArray[0]) {
         case "add":
             try {
-                addTask(cmdArray[1], TaskType.ADD);
+                addTask(cmdArray[1], ADD);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage("task needs details");
             } catch (DukeException de) {
@@ -20,7 +31,7 @@ public class TaskManager {
             break;
         case "todo":
             try {
-                addTask(cmdArray[1], TaskType.TODO);
+                addTask(cmdArray[1], TODO);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage(" todo task needs details");
             } catch (DukeException de) {
@@ -29,7 +40,7 @@ public class TaskManager {
             break;
         case "deadline":
             try {
-                addTask(cmdArray[1], TaskType.DEADLINE);
+                addTask(cmdArray[1], DEADLINE);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage("deadline task needs details");
             } catch (DukeException de) {
@@ -38,7 +49,7 @@ public class TaskManager {
             break;
         case "event":
             try {
-                addTask(cmdArray[1], TaskType.EVENT);
+                addTask(cmdArray[1], EVENT);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage("event task needs details");
             } catch (DukeException de) {
@@ -90,8 +101,8 @@ public class TaskManager {
     }
 
     public void addTask(String newTask, TaskType type) throws DukeException {
-        CmdManager.printAddStatus(newTask);
         Task typ = getTaskType(newTask, type);
+        CmdManager.printAddStatus(newTask);
         taskList[taskCount] = typ;
         taskCount++;
     }

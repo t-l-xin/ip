@@ -1,3 +1,5 @@
+package manager;
+
 public class CmdManager {
     public final int MAX_COMMANDS_LIMIT = 100;
     public final String CMD_FORMAT = "cmd [args] /[options] [additional args]";
