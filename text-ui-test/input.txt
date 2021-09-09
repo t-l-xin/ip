@@ -1,11 +1,16 @@
 help
 list
 todo CS2106 tut
-list
+deadline CS2106
+deadline /by 4Sep
 deadline CS2106 lab /by 4Sep
 list
-event CS2113 Group meet /at Mon 10am
+event
+event return
+event return book /at Mon 10am
 list
+blah
 done 2
 list
+todo
 bye
