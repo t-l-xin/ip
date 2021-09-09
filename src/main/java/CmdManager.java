@@ -1,7 +1,7 @@
 public class CmdManager {
-    public static final int MAX_COMMANDS_LIMIT = 100;
-    public static final String CMD_FORMAT = "cmd [args] /[options] [additional args]";
-    public static final String[] CMD_AVAILABLE = {
+    public final int MAX_COMMANDS_LIMIT = 100;
+    public final String CMD_FORMAT = "cmd [args] /[options] [additional args]";
+    public final String[] CMD_AVAILABLE = {
             "help, list, hist - no additional arguments required",
             "done [task no]",
             "add [task description]",
@@ -18,7 +18,7 @@ public class CmdManager {
         cmdCount++;
     }
 
-    public void printAddStatus(String details) {
+    public static void printAddStatus(String details) {
         PrintManager.printBotStatusMessage(String.format("adding: %s", details));
     }
 

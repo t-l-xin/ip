@@ -13,38 +13,50 @@ Have you started ur tasks? Start by typing "help"
 ____________________________________________________________
 
 How to use this bot:
-
 Type ur command in the following format
 cmd [args] /[options] [additional args]
 
-Commands Available:
-help, list, hist - no additional args required
-done [task no]
-add [task description]
-todo [task description]
-deadline [task description] /by [time/data]
-event [task description] /at [time/date]
+____________________________________________________________
+
+1. help, list, hist - no additional arguments required
+2. done [task no]
+3. add [task description]
+4. todo [task description]
+5. deadline [task description] /by [time/data]
+6. event [task description] /at [time/date]
+
+____________________________________________________________
+
 
 Type your command:
+
 How to use this bot:
-
 Type ur command in the following format
 cmd [args] /[options] [additional args]
 
-Commands Available:
-help, list, hist - no additional args required
-done [task no]
-add [task description]
-todo [task description]
-deadline [task description] /by [time/data]
-event [task description] /at [time/date]
+____________________________________________________________
+
+1. help, list, hist - no additional arguments required
+2. done [task no]
+3. add [task description]
+4. todo [task description]
+5. deadline [task description] /by [time/data]
+6. event [task description] /at [time/date]
+
+____________________________________________________________
+
 
 Type your command:
+
+
+____________________________________________________________
 No tasks, start by adding a task!
-
 Total Tasks: 0
+____________________________________________________________
+
 
 Type your command:
+
 
 ____________________________________________________________
 adding: CS2106 tut
@@ -53,10 +65,34 @@ ____________________________________________________________
 
 Type your command:
 
-1. [T][ ] CS2106 tut
-Total Tasks: 1
+
+____________________________________________________________
+adding: CS2106
+____________________________________________________________
+
+
+************************************************************
+Exception message:
+Duke: can't find /by
+
+************************************************************
 
 Type your command:
+
+
+____________________________________________________________
+adding: /by 4Sep
+____________________________________________________________
+
+
+************************************************************
+Exception message:
+Duke: can't find details
+
+************************************************************
+
+Type your command:
+
 
 ____________________________________________________________
 adding: CS2106 lab /by 4Sep
@@ -65,36 +101,99 @@ ____________________________________________________________
 
 Type your command:
 
+
+____________________________________________________________
+
 1. [T][ ] CS2106 tut
 2. [D][ ] CS2106 lab (by: 4Sep)
+
 Total Tasks: 2
-
-Type your command:
-
-____________________________________________________________
-adding: CS2113 Group meet /at Mon 10am
 ____________________________________________________________
 
 
 Type your command:
+
+
+************************************************************
+Exception message:event task needs details
+
+************************************************************
+
+Type your command:
+
+
+____________________________________________________________
+adding: return
+____________________________________________________________
+
+
+************************************************************
+Exception message:
+Duke: can't find /at
+
+************************************************************
+
+Type your command:
+
+
+____________________________________________________________
+adding: return book /at Mon 10am
+____________________________________________________________
+
+
+Type your command:
+
+
+____________________________________________________________
 
 1. [T][ ] CS2106 tut
 2. [D][ ] CS2106 lab (by: 4Sep)
-3. [E][ ] CS2113 Group meet (at: Mon 10am)
+3. [E][ ] return book (at: Mon 10am)
+
 Total Tasks: 3
+____________________________________________________________
+
 
 Type your command:
+
+
+____________________________________________________________
+invalid command, please try again
+____________________________________________________________
+
+
+Type your command:
+
+
+____________________________________________________________
 Good Job, u have completed
 task: CS2106 lab
+____________________________________________________________
+
 
 Type your command:
+
+
+____________________________________________________________
 
 1. [T][ ] CS2106 tut
 2. [D][X] CS2106 lab (by: 4Sep)
-3. [E][ ] CS2113 Group meet (at: Mon 10am)
+3. [E][ ] return book (at: Mon 10am)
+
 Total Tasks: 3
+____________________________________________________________
+
 
 Type your command:
+
+
+************************************************************
+Exception message: todo task needs details
+
+************************************************************
+
+Type your command:
+
 
 ____________________________________________________________
 Well done for today! Remember to have 8 hrs of sleep!
