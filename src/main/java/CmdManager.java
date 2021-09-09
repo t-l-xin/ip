@@ -11,7 +11,9 @@ public class CmdManager {
     }
 
     public void printAddStatus(String details) {
+
         System.out.println(separator + "adding: " + details + separator);
+
     }
 
     public void showHistory() {
@@ -26,8 +28,8 @@ public class CmdManager {
         }
     }
 
-    public boolean checkCmd(String inputCommand, String standardCommand) {
-        if (inputCommand.equals(standardCommand)) {
+    public boolean checkCmd(String inputCmd, String standardCmd) {
+        if (inputCmd.equals(standardCmd)) {
             return true;
         }
         return false;

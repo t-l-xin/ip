@@ -41,7 +41,7 @@ public class Duke {
             if (cm.checkCmd(cmdArray[0], "help")) {
                 cm.showHelp();
             } else if (cm.checkCmd(cmdArray[0], "list")) {
-                tm.listTask();
+                tm.listTasks();
             } else if (cm.checkCmd(cmdArray[0], "hist")) {
                 cm.showHistory();
             } else if (cm.checkCmd(cmdArray[0], "done")) {
@@ -50,14 +50,27 @@ public class Duke {
                 cm.printAddStatus(cmdArray[1]);
                 tm.addTask(cmdArray[1], TaskType.ADD);
             } else if (cm.checkCmd(cmdArray[0], "todo")) {
-                cm.printAddStatus(cmdArray[1]);
-                tm.addTask(cmdArray[1], TaskType.TODO);
+                try{
+                    cm.printAddStatus(cmdArray[1]);
+                    tm.addTask(cmdArray[1], TaskType.TODO);
+                }catch (ArrayIndexOutOfBoundsException a){
+                    System.out.printf("details of todo cannot be empty");
+                }
             } else if (cm.checkCmd(cmdArray[0], "deadline")) {
-                cm.printAddStatus(cmdArray[1]);
-                tm.addTask(cmdArray[1], TaskType.DEADLINE);
+                try{
+                    cm.printAddStatus(cmdArray[1]);
+                    tm.addTask(cmdArray[1], TaskType.DEADLINE);
+                }catch (ArrayIndexOutOfBoundsException a){
+                    System.out.printf("details of deadline cannot be empty");
+                }
             } else if (cm.checkCmd(cmdArray[0], "event")) {
-                cm.printAddStatus(cmdArray[1]);
-                tm.addTask(cmdArray[1], TaskType.EVENT);
+                try{
+                    cm.printAddStatus(cmdArray[1]);
+                    tm.addTask(cmdArray[1], TaskType.EVENT);
+                }catch (ArrayIndexOutOfBoundsException a){
+                    System.out.printf("details of event cannot be empty");
+                }
+
             } else if (cm.checkCmd(cmdArray[0], "bye")) {
                 continue;
             } else {

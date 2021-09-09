@@ -1,5 +1,6 @@
 public class TaskManager {
-    private Task[] taskList = new Task[100];
+    public static final int MAX_TASKS_LIMIT = 100;
+    private Task[] taskList = new Task[MAX_TASKS_LIMIT];
     private int taskCount = 0;
     protected String byString = " /by ";
     protected String atString = " /at ";
@@ -31,11 +32,11 @@ public class TaskManager {
         taskCount++;
     }
 
-    public void listTask() {
+    public void listTasks() {
         if (taskCount > 0) {
             for (int i = 0; i < taskCount; i++) {
-                int j = i + 1;
-                System.out.printf("\n%d. %s", j, taskList[i].toString());
+                int taskNum = i + 1;
+                System.out.printf("\n%d. %s", taskNum, taskList[i].toString());
             }
         } else {
             System.out.println("No tasks, start by adding a task!");
@@ -53,7 +54,7 @@ public class TaskManager {
             taskList[taskIndex].setDone();
             System.out.printf("Good Job, u have completed\ntask: %s\n", taskList[taskIndex].getTaskName());
         } else {
-            System.out.printf("invalid task no, please key in a valid task no from 1 - %d", taskCount);
+            System.out.printf("invalid task num, please key in a valid task num from 1 - %d", taskCount);
         }
     }
 }
