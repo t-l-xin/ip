@@ -1,30 +1,32 @@
-import java.util.ArrayList;
-
 public class CmdManager {
-    private ArrayList<String> cmdList = new ArrayList<String>();
+    public static final int MAX_COMMANDS_LIMIT = 100;
+    public static final String CMD_FORMAT = "cmd [args] /[options] [additional args]";
+    public static final String[] CMD_AVAILABLE = {
+            "help, list, hist - no additional arguments required",
+            "done [task no]",
+            "add [task description]",
+            "todo [task description]",
+            "deadline [task description] /by [time/data]",
+            "event [task description] /at [time/date]"
+    };
+
+    private String[] cmdList = new String[MAX_COMMANDS_LIMIT];
     private int cmdCount = 0;
-    public static String separator = "\n" + "_".repeat(60) + "\n";
 
     public void addCmd(String cmd) {
-        cmdList.add(cmd);
+        cmdList[cmdCount] = cmd;
         cmdCount++;
     }
 
     public void printAddStatus(String details) {
-
-        System.out.println(separator + "adding: " + details + separator);
-
+        PrintManager.printBotStatusMessage(String.format("adding: %s", details));
     }
 
     public void showHistory() {
         if (cmdCount > 0) {
-            for (int i = 0; i < cmdCount; i++) {
-                String cmd = cmdList.get(i);
-                int j = i + 1;
-                System.out.printf("\n%d. %s", j, cmd);
-            }
+            PrintManager.printStringListMessage(cmdList, cmdCount);
         } else {
-            System.out.println("No previous commands");
+            PrintManager.printBotStatusMessage("No previous commands");
         }
     }
 
@@ -36,16 +38,8 @@ public class CmdManager {
     }
 
     public void showHelp() {
-        String cmdFormat = "cmd [args] /[options] [additional args]";
-        String cmdAvailable = "help, list, hist - no additional args required\n" +
-                "done [task no]\n" +
-                "add [task description]\n" +
-                "todo [task description]\n" +
-                "deadline [task description] /by [time/data]\n" +
-                "event [task description] /at [time/date]";
-
-        System.out.println("How to use this bot:\n");
-        System.out.println("Type ur command in the following format\n" + cmdFormat);
-        System.out.println("\nCommands Available:\n" + cmdAvailable);
+        PrintManager.printNormalMessage(
+                String.format("How to use this bot:\nType ur command in the following format\n%s", CMD_FORMAT));
+        PrintManager.printStringListMessage(CMD_AVAILABLE, CMD_AVAILABLE.length);
     }
 }

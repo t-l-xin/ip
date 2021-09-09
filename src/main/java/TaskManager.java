@@ -1,9 +1,10 @@
 public class TaskManager {
     public static final int MAX_TASKS_LIMIT = 100;
+    public static final String BY_STRING = " /by ";
+    public static final String AT_STRING = " /at ";
+
     private Task[] taskList = new Task[MAX_TASKS_LIMIT];
     private int taskCount = 0;
-    protected String byString = " /by ";
-    protected String atString = " /at ";
 
     public Task getTaskType(String newTask, TaskType type) {
         switch (type) {
@@ -12,11 +13,11 @@ public class TaskManager {
         case TODO:
             return new Todo(newTask);
         case DEADLINE:
-            String[] taskDetailsArr = getTaskNameAndTime(newTask, byString);
-            return new Deadline(taskDetailsArr[0], taskDetailsArr[1]);
+            String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
+            return new Deadline(taskDetailsArray[0], taskDetailsArray[1]);
         case EVENT:
-            String[] taskDetailsArr2 = getTaskNameAndTime(newTask, atString);
-            return new Event(taskDetailsArr2[0], taskDetailsArr2[1]);
+            String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
+            return new Event(taskDetailsArray2[0], taskDetailsArray2[1]);
         }
         return null;
     }
@@ -34,14 +35,10 @@ public class TaskManager {
 
     public void listTasks() {
         if (taskCount > 0) {
-            for (int i = 0; i < taskCount; i++) {
-                int taskNum = i + 1;
-                System.out.printf("\n%d. %s", taskNum, taskList[i].toString());
-            }
+            PrintManager.printTaskListMessage(taskList, taskCount);
         } else {
-            System.out.println("No tasks, start by adding a task!");
+            PrintManager.printEmptyTaskListMessage();
         }
-        System.out.printf("\nTotal Tasks: %s\n", taskCount);
     }
 
     public boolean isValidIndex(int userInputIndex) {
@@ -52,9 +49,11 @@ public class TaskManager {
         int taskIndex = Integer.parseInt(taskNo) - 1;
         if (isValidIndex(taskIndex)) {
             taskList[taskIndex].setDone();
-            System.out.printf("Good Job, u have completed\ntask: %s\n", taskList[taskIndex].getTaskName());
+            PrintManager.printBotStatusMessage(
+                    String.format("Good Job, u have completed\ntask: %s", taskList[taskIndex].getTaskName()));
         } else {
-            System.out.printf("invalid task num, please key in a valid task num from 1 - %d", taskCount);
+            PrintManager.printBotStatusMessage(
+                    String.format("invalid task num, please key in a valid task num from 1 - %d", taskCount));
         }
     }
 }
