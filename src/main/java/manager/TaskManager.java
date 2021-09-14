@@ -7,6 +7,8 @@ import task.Todo;
 import task.Deadline;
 import task.Event;
 
+import java.util.ArrayList;
+
 import static task.TaskType.*;
 
 public class TaskManager {
@@ -14,7 +16,8 @@ public class TaskManager {
     public static final String BY_STRING = "/by";
     public static final String AT_STRING = "/at";
 
-    private Task[] taskList = new Task[MAX_TASKS_LIMIT];
+    ArrayList<Task> taskList = new ArrayList<Task>();
+    //private Task[] taskList = new Task[MAX_TASKS_LIMIT];
     private int taskCount = 0;
 
     public void filterTasks(String[] cmdArray) {
@@ -67,16 +70,16 @@ public class TaskManager {
 
     public Task getTaskType(String newTask, TaskType type) throws DukeException {
         switch (type) {
-            case ADD:
-                return new Task(newTask);
-            case TODO:
-                return new Todo(newTask);
-            case DEADLINE:
-                String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
-                return new Deadline(taskDetailsArray[0], taskDetailsArray[1]);
-            case EVENT:
-                String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
-                return new Event(taskDetailsArray2[0], taskDetailsArray2[1]);
+        case ADD:
+            return new Task(newTask);
+        case TODO:
+            return new Todo(newTask);
+        case DEADLINE:
+            String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
+            return new Deadline(taskDetailsArray[0], taskDetailsArray[1]);
+        case EVENT:
+            String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
+            return new Event(taskDetailsArray2[0], taskDetailsArray2[1]);
         }
         return null;
     }
@@ -103,7 +106,7 @@ public class TaskManager {
     public void addTask(String newTask, TaskType type) throws DukeException {
         Task typ = getTaskType(newTask, type);
         CmdManager.printAddStatus(newTask);
-        taskList[taskCount] = typ;
+        taskList.add(typ);
         taskCount++;
     }
 
@@ -121,18 +124,16 @@ public class TaskManager {
 
     public void markAsDone(String taskNo) {
         int taskIndex = Integer.parseInt(taskNo) - 1;
-        taskList[taskIndex].setDone();
+        taskList.get(taskIndex).setDone();
         PrintManager.printBotStatusMessage(
-                String.format("Good Job, u have completed\ntask: %s", taskList[taskIndex].getTaskName()));
-        /**
-         if (isValidIndex(taskIndex)) {
-         taskList[taskIndex].setDone();
-         PrintManager.printBotStatusMessage(
-         String.format("Good Job, u have completed\ntask: %s", taskList[taskIndex].getTaskName()));
-         } else {
-         PrintManager.printBotStatusMessage(
-         String.format("\nDuke: invalid task num, please key in a valid task num from 1 - %d", taskCount));
-         }
-         */
+                String.format("Good Job, u have completed\ntask: %s", taskList.get(taskIndex).getTaskName()));
+    }
+
+    public void deleteTask(String taskNo) {
+        int taskIndex = Integer.parseInt(taskNo) - 1;
+        PrintManager.printBotStatusMessage(
+                String.format("Removed task:\n%s", taskList.get(taskIndex)));
+        taskList.remove(taskIndex);
+        taskCount--;
     }
 }

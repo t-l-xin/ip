@@ -6,6 +6,7 @@ public class CmdManager {
     public final String[] CMD_AVAILABLE = {
             "help, list, hist - no additional arguments required",
             "done [task no]",
+            "delete [task no]",
             "add [task description]",
             "todo [task description]",
             "deadline [task description] /by [time/data]",
