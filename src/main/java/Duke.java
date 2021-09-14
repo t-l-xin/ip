@@ -2,6 +2,7 @@ import manager.CmdManager;
 import manager.PrintManager;
 import manager.TaskManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
@@ -15,6 +16,12 @@ public class Duke {
         cm.showHelp();
 
         boolean isBye = false;
+
+        try {
+            tm.loadTasksFromSavedFile();
+        } catch (IOException e) {
+            PrintManager.printBotStatusMessage("no pre-existing files yet\n");
+        }
 
         do {
             pm.promptUserForCommand();
@@ -47,6 +54,7 @@ public class Duke {
                 }
                 break;
             case "bye":
+                tm.saveTasksToFile();
                 break;
             default:
                 tm.filterTasks(cmdArray);

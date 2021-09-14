@@ -1,0 +1,8 @@
+T|0|read book
+D|0|lab|wed
+D|1|level 6|tmr
+E|0|meeting|friday
+T|0|return book
+T|0|make list
+D|0|os lab|next wed
+D|1|3103 assignment|friday night
