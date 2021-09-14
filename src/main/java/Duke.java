@@ -41,7 +41,18 @@ public class Duke {
                 }catch (NullPointerException ne ){
                     PrintManager.printBotExceptionMessage(
                             "NullPointerException: please key in a valid index");
-                }catch (ArrayIndexOutOfBoundsException ae){
+                }catch (IndexOutOfBoundsException ie ){
+                    PrintManager.printBotExceptionMessage(
+                            "IndexOutOfBoundsException: please key in a valid index");
+                }
+                break;
+            case "delete":
+                try {
+                    tm.deleteTask(cmdArray[1]);
+                }catch (NullPointerException ne ){
+                    PrintManager.printBotExceptionMessage(
+                            "NullPointerException: please key in a valid index");
+                }catch (IndexOutOfBoundsException ae){
                     PrintManager.printBotExceptionMessage(
                             "ArrayIndexOutOfBoundsException: index start from 1");
                 }
@@ -53,45 +64,6 @@ public class Duke {
                 break;
             }
 
-            /**
-            if (cm.checkCmd(cmdArray[0], "help")) {
-                cm.showHelp();
-            } else if (cm.checkCmd(cmdArray[0], "list")) {
-                tm.listTasks();
-            } else if (cm.checkCmd(cmdArray[0], "hist")) {
-                cm.showHistory();
-            } else if (cm.checkCmd(cmdArray[0], "done")) {
-                tm.markAsDone(cmdArray[1]);
-            } else if (cm.checkCmd(cmdArray[0], "add")) {
-                try {
-                    tm.addTask(cmdArray[1], TaskType.ADD);
-                }catch (){
-
-                }
-            } else if (cm.checkCmd(cmdArray[0], "todo")) {
-                try{
-                    tm.addTask(cmdArray[1], TaskType.TODO);
-                }catch (ArrayIndexOutOfBoundsException a){
-                    pm.printBotStatusMessage("!!!details of todo cannot be empty");
-                }
-            } else if (cm.checkCmd(cmdArray[0], "deadline")) {
-                try{
-                    tm.addTask(cmdArray[1], TaskType.DEADLINE);
-                }catch (ArrayIndexOutOfBoundsException a){
-                    pm.printBotStatusMessage("!!!details of deadline cannot be empty");
-                }
-            } else if (cm.checkCmd(cmdArray[0], "event")) {
-                try{
-                    tm.addTask(cmdArray[1], TaskType.EVENT);
-                }catch (ArrayIndexOutOfBoundsException a){
-                    pm.printBotStatusMessage("!!!details of event cannot be empty");
-                }
-            } else if (cm.checkCmd(cmdArray[0], "bye")) {
-                continue;
-            } else {
-                pm.printBotStatusMessage("invalid command, please try again");
-            }
-             */
         } while (!isBye);
     }
 

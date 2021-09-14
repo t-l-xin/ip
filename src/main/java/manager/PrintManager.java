@@ -1,6 +1,9 @@
 package manager;
 import task.Task;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class PrintManager {
     public final static String ZERO_CONSTANT_STRING = "0";
     private final static String SEPARATOR = "\n" + "_".repeat(60) + "\n";
@@ -39,14 +42,17 @@ public class PrintManager {
         System.out.println(SEPARATOR);
     }
 
-    public static void printTaskListMessage(Task[] taskList, int taskCount) {
+    public static void printTaskListMessage(ArrayList<Task> taskList, int taskCount) {
         printSeparator();
-        for (int i = 0; i < taskCount; i++) {
-            int taskNum = i + 1;
-            System.out.printf("%d. %s\n", taskNum, taskList[i].toString());
+        for(Task task : taskList) {
+            System.out.printf("%d. %s\n", taskList.indexOf(task) + 1, task);
         }
-        System.out.printf(TOTAL_TASKS_STRING_FORMAT, taskCount);
+        printTaskCountLeft(taskCount);
         printSeparator();
+    }
+
+    public static void printTaskCountLeft(int taskCount){
+        System.out.printf(TOTAL_TASKS_STRING_FORMAT, taskCount);
     }
 
     public static void printEmptyTaskListMessage() {
