@@ -8,6 +8,7 @@ import task.Deadline;
 import task.Event;
 
 import java.util.ArrayList;
+import java.io.*;
 
 import static task.TaskType.*;
 
@@ -15,10 +16,14 @@ public class TaskManager {
     public static final int MAX_TASKS_LIMIT = 100;
     public static final String BY_STRING = "/by";
     public static final String AT_STRING = "/at";
+    public static final String PIPE_CHARACTER = "\\|";
 
     ArrayList<Task> taskList = new ArrayList<Task>();
     //private Task[] taskList = new Task[MAX_TASKS_LIMIT];
     private int taskCount = 0;
+
+    File dir = new File("data");
+    File savedFile = new File(dir, "duke.txt");
 
     public void filterTasks(String[] cmdArray) {
         PrintManager pm = new PrintManager();
@@ -135,5 +140,129 @@ public class TaskManager {
                 String.format("Removed task:\n%s", taskList.get(taskIndex)));
         taskList.remove(taskIndex);
         taskCount--;
+    }
+
+    public String[] separateByPipeCharacter(String line){
+        String[] detailsArr = line.split(PIPE_CHARACTER);
+        int startIndex = 0;
+        System.out.printf("line: %s\n", line);
+        for(String detail: detailsArr){
+            System.out.printf("[%d] %s ", startIndex, detail);
+            startIndex++;
+        }
+
+        return detailsArr;
+    }
+
+    public void addTaskFromFile(String[] detailsArr, TaskType taskType){
+        Task newTask = null;
+        switch (taskType){
+            case ADD:
+                newTask = new Task(detailsArr[1]);
+                break;
+            case TODO:
+                newTask = new Todo(detailsArr[1]);
+                break;
+            case DEADLINE:
+                newTask = new Deadline(detailsArr[1], detailsArr[2]);
+                break;
+            case EVENT:
+                newTask = new Event(detailsArr[1], detailsArr[2]);
+                break;
+        }
+        //CmdManager.printAddStatus(newTask.toString());
+        taskList.add(newTask);
+        if(detailsArr[0].equals("1")){
+            taskList.get(taskCount).setDone();
+        }
+        taskCount++;
+    }
+
+    public void initialiseTaskFromFile(String line){
+        char firstCharacterOfLine = line.charAt(0);
+        System.out.println("first char: " + firstCharacterOfLine);
+        String[] detailsArr;
+        switch (firstCharacterOfLine){
+            case 'A':
+                detailsArr = separateByPipeCharacter(line.substring(2));
+                addTaskFromFile(detailsArr, ADD);
+                break;
+            case 'D':
+                detailsArr = separateByPipeCharacter(line.substring(2));
+                addTaskFromFile(detailsArr, DEADLINE);
+                break;
+            case 'E':
+                detailsArr = separateByPipeCharacter(line.substring(2));
+                addTaskFromFile(detailsArr, EVENT);
+                break;
+            case 'T':
+                detailsArr = separateByPipeCharacter(line.substring(2));
+                addTaskFromFile(detailsArr, TODO);
+                break;
+            default:
+                System.out.println(firstCharacterOfLine + " does not match any tasks initials");
+                break;
+        }
+    }
+
+    public void loadTasksFromSavedFile() throws IOException {
+        try {
+            FileReader fr=new FileReader(savedFile);
+            BufferedReader br=new BufferedReader(fr);
+            String line;
+            while((line=br.readLine())!=null)
+            {
+                initialiseTaskFromFile(line);
+            }
+            fr.close();
+            listTasks();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void checkDirectoryExist() throws IOException {
+        if (dir.mkdirs()) {
+            System.out.println("Directory created: " + dir.getName());
+        } else {
+            System.out.println("Directory already exists.");
+        }
+    }
+
+    public void checkSavedFileExist() throws IOException {
+        if (savedFile.createNewFile()) {
+            System.out.println("File created: " + savedFile.getName());
+        } else {
+            System.out.println("File already exists.");
+        }
+    }
+
+    public void checkSavedFileCreated(){
+
+        try {
+            checkDirectoryExist();
+            checkSavedFileExist();
+        } catch (Exception e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public void saveTasksToFile(){
+        checkSavedFileCreated();
+
+        try {
+            FileWriter myWriter = new FileWriter(savedFile);
+            for (int i = 0; i < taskCount; i++) {
+                myWriter.write(String.format("%s\n", taskList.get(i).saveToFileStringFormat()));
+            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 }

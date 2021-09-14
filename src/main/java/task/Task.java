@@ -27,6 +27,10 @@ public class Task {
         isDone = true;
     }
 
+    public String saveToFileStringFormat(){
+        return String.format("A|%s|%s", isDone ? "1" : "0", this.getTaskName());
+    }
+
     @Override
     public String toString() {
         return String.format("[%s] %s ", this.getStatusIcon(), this.getTaskName());

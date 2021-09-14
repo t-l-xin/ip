@@ -13,6 +13,11 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String saveToFileStringFormat(){
+        return String.format("D|%s|%s|%s", isDone ? "1" : "0", this.getTaskName(), this.getBy());
+    }
+
+    @Override
     public String toString() {
         return String.format("[D][%s] %s (by: %s)", super.getStatusIcon(), super.getTaskName(), this.getBy());
     }
