@@ -1,0 +1,2 @@
+T|0|CS2106 tut
+E|0|return book|Mon 10am

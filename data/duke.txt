@@ -1,3 +1,0 @@
-T|0|read book
-D|0|CS2106 written assignment|fri
-E|0|meeting|tmr

@@ -20,11 +20,18 @@ ____________________________________________________________
 
 1. help, list, hist - no additional arguments required
 2. done [task no]
-3. add [task description]
-4. todo [task description]
-5. deadline [task description] /by [time/data]
-6. event [task description] /at [time/date]
+3. delete [task no]
+4. add [task description]
+5. todo [task description]
+6. deadline [task description] /by [time/data]
+7. event [task description] /at [time/date]
 
+____________________________________________________________
+
+loading saved files...
+
+____________________________________________________________
+no pre-existing data files yet
 ____________________________________________________________
 
 
@@ -38,10 +45,11 @@ ____________________________________________________________
 
 1. help, list, hist - no additional arguments required
 2. done [task no]
-3. add [task description]
-4. todo [task description]
-5. deadline [task description] /by [time/data]
-6. event [task description] /at [time/date]
+3. delete [task no]
+4. add [task description]
+5. todo [task description]
+6. deadline [task description] /by [time/data]
+7. event [task description] /at [time/date]
 
 ____________________________________________________________
 
@@ -62,6 +70,9 @@ ____________________________________________________________
 adding: CS2106 tut
 ____________________________________________________________
 
+created data folder
+File created: duke.txt
+Successfully wrote to the file.
 
 Type your command:
 
@@ -71,6 +82,9 @@ Exception message:
 Duke: can't find /by
 
 ************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -80,6 +94,9 @@ Exception message:
 Duke: can't find details
 
 ************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -88,6 +105,9 @@ ____________________________________________________________
 adding: CS2106 lab /by 4Sep
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -108,6 +128,9 @@ Type your command:
 Exception message:event task needs details
 
 ************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -117,6 +140,9 @@ Exception message:
 Duke: can't find /at
 
 ************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -125,6 +151,9 @@ ____________________________________________________________
 adding: return book /at Mon 10am
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -155,6 +184,9 @@ Good Job, u have completed
 task: CS2106 lab
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -172,10 +204,37 @@ ____________________________________________________________
 Type your command:
 
 
+____________________________________________________________
+Removed task:
+[D][X] CS2106 lab (by: 4Sep)
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] CS2106 tut
+2. [E][ ] return book (at: Mon 10am)
+
+Total Tasks: 2
+____________________________________________________________
+
+
+Type your command:
+
+
 ************************************************************
 Exception message: todo task needs details
 
 ************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 

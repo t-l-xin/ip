@@ -1,4 +1,5 @@
 package manager;
+
 import task.Task;
 
 import java.util.ArrayList;
@@ -10,13 +11,13 @@ public class PrintManager {
 
     private final static String LOGO =
             " ______________\n" +
-            "|            @ | #####  ####        #####   ####\n" +
-            "|         @@   |   #   #    #       #    # #    #\n" +
-            "|       @@     |   #   #    # ##### #    # #    #\n" +
-            "|  @@  @@      |   #   #    #       #    # #    #\n" +
-            "|   @@@        |   #   #    #       #    # #    #\n" +
-            "|    @         |   #    ####        #####   ####\n" +
-            " --------------";
+                    "|            @ | #####  ####        #####   ####\n" +
+                    "|         @@   |   #   #    #       #    # #    #\n" +
+                    "|       @@     |   #   #    # ##### #    # #    #\n" +
+                    "|  @@  @@      |   #   #    #       #    # #    #\n" +
+                    "|   @@@        |   #   #    #       #    # #    #\n" +
+                    "|    @         |   #    ####        #####   ####\n" +
+                    " --------------";
     private final static String HELLO_GREETING = "Hi! I'm LingLing!\n" +
             "Your personal nanny to make sure you do work.\n"
             + "Have you started ur tasks? Start by typing \"help\"";
@@ -43,14 +44,14 @@ public class PrintManager {
 
     public static void printTaskListMessage(ArrayList<Task> taskList, int taskCount) {
         printSeparator();
-        for(Task task : taskList) {
+        for (Task task : taskList) {
             System.out.printf("%d. %s\n", taskList.indexOf(task) + 1, task);
         }
         printTaskCountLeft(taskCount);
         printSeparator();
     }
 
-    public static void printTaskCountLeft(int taskCount){
+    public static void printTaskCountLeft(int taskCount) {
         System.out.printf(TOTAL_TASKS_STRING_FORMAT, taskCount);
     }
 

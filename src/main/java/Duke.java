@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Duke {
 
-    public static void startProgram() {
+    private static void startProgram() {
         String inputLine;
         Scanner in = new Scanner(System.in);
         TaskManager tm = new TaskManager();
@@ -18,14 +18,7 @@ public class Duke {
 
         boolean isBye = false;
 
-        try {
-            PrintManager.printNormalMessage("loading saved files...");
-            tm.loadTasksFromSavedFile();
-        } catch (FileNotFoundException e) {
-            PrintManager.printBotStatusMessage("no pre-existing data files yet");
-        } catch(IOException ie){
-            PrintManager.printBotStatusMessage("error reading file");
-        }
+        tryLoadSavedFile(tm);
 
         do {
             pm.promptUserForCommand();
@@ -36,7 +29,7 @@ public class Duke {
 
             isBye = cm.checkCmd(inputLine, "bye");
 
-            switch (cmdArray[0]){
+            switch (cmdArray[0]) {
             case "help":
                 cm.showHelp();
                 break;
@@ -47,37 +40,30 @@ public class Duke {
                 cm.showHistory();
                 break;
             case "done":
-                try {
-                    tm.markAsDone(cmdArray[1]);
-                }catch (NullPointerException ne ){
-                    PrintManager.printBotExceptionMessage(
-                            "NullPointerException: please key in a valid index");
-                }catch (IndexOutOfBoundsException ie ){
-                    PrintManager.printBotExceptionMessage(
-                            "IndexOutOfBoundsException: please key in a valid index");
-                }
-                tm.saveTasksToFile();
+                tm.doneOrDeleteTask(cmdArray[1], "done");
                 break;
             case "delete":
-                try {
-                    tm.deleteTask(cmdArray[1]);
-                }catch (NullPointerException ne ){
-                    PrintManager.printBotExceptionMessage(
-                            "NullPointerException: please key in a valid index");
-                }catch (IndexOutOfBoundsException ae){
-                    PrintManager.printBotExceptionMessage(
-                            "ArrayIndexOutOfBoundsException: index start from 1");
-                }
-                tm.saveTasksToFile();
+                tm.doneOrDeleteTask(cmdArray[1], "delete");
                 break;
             case "bye":
-                break;
+                continue;
             default:
                 tm.filterTasks(cmdArray);
                 break;
             }
 
         } while (!isBye);
+    }
+
+    private static void tryLoadSavedFile(TaskManager tm) {
+        try {
+            PrintManager.printNormalMessage("loading saved files...");
+            tm.loadTasksFromSavedFile();
+        } catch (FileNotFoundException e) {
+            PrintManager.printBotStatusMessage("no pre-existing data files yet");
+        } catch (IOException ie) {
+            PrintManager.printBotStatusMessage("error reading file");
+        }
     }
 
     public static void main(String[] args) {
