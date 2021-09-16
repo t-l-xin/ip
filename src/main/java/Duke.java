@@ -2,6 +2,7 @@ import manager.CmdManager;
 import manager.PrintManager;
 import manager.TaskManager;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -18,9 +19,12 @@ public class Duke {
         boolean isBye = false;
 
         try {
+            PrintManager.printNormalMessage("loading saved files...");
             tm.loadTasksFromSavedFile();
-        } catch (IOException e) {
-            PrintManager.printBotStatusMessage("no pre-existing files yet\n");
+        } catch (FileNotFoundException e) {
+            PrintManager.printBotStatusMessage("no pre-existing data files yet");
+        } catch(IOException ie){
+            PrintManager.printBotStatusMessage("error reading file");
         }
 
         do {
@@ -52,6 +56,7 @@ public class Duke {
                     PrintManager.printBotExceptionMessage(
                             "IndexOutOfBoundsException: please key in a valid index");
                 }
+                tm.saveTasksToFile();
                 break;
             case "delete":
                 try {
@@ -63,9 +68,9 @@ public class Duke {
                     PrintManager.printBotExceptionMessage(
                             "ArrayIndexOutOfBoundsException: index start from 1");
                 }
+                tm.saveTasksToFile();
                 break;
             case "bye":
-                tm.saveTasksToFile();
                 break;
             default:
                 tm.filterTasks(cmdArray);

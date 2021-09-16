@@ -1,6 +1,3 @@
 T|0|read book
-D|0|lab|wed
-D|1|level 6|tmr
-E|1|meeting|friday
-D|0|os lab|next wed
-D|1|3103 assignment|friday night
+D|0|CS2106 written assignment|fri
+E|0|meeting|tmr

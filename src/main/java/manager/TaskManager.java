@@ -36,6 +36,7 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
+            saveTasksToFile();
             break;
         case "todo":
             try {
@@ -45,6 +46,7 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
+            saveTasksToFile();
             break;
         case "deadline":
             try {
@@ -54,6 +56,7 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
+            saveTasksToFile();
             break;
         case "event":
             try {
@@ -63,6 +66,7 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
+            saveTasksToFile();
             break;
         case "":
             pm.printBotStatusMessage("no command detected, please try again");
@@ -98,7 +102,6 @@ public class TaskManager {
         if (indexOfDelimiter == 0) {
             throw new DukeException("\nDuke: can't find details");
         }
-        //PrintManager.printNormalMessage("index of delimiter: " + indexOfDelimiter);
         String detail = taskDetail.substring(0, indexOfDelimiter - 1).trim();
         String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
         if (datetime.length() == 0) {
@@ -123,10 +126,6 @@ public class TaskManager {
         }
     }
 
-    public boolean isValidIndex(int userInputIndex) {
-        return userInputIndex < taskCount && userInputIndex >= 0;
-    }
-
     public void markAsDone(String taskNo) {
         int taskIndex = Integer.parseInt(taskNo) - 1;
         taskList.get(taskIndex).setDone();
@@ -144,13 +143,6 @@ public class TaskManager {
 
     public String[] separateByPipeCharacter(String line){
         String[] detailsArr = line.split(PIPE_CHARACTER);
-        int startIndex = 0;
-        System.out.printf("line: %s\n", line);
-        for(String detail: detailsArr){
-            System.out.printf("[%d] %s ", startIndex, detail);
-            startIndex++;
-        }
-
         return detailsArr;
     }
 
@@ -170,7 +162,6 @@ public class TaskManager {
                 newTask = new Event(detailsArr[1], detailsArr[2]);
                 break;
         }
-        //CmdManager.printAddStatus(newTask.toString());
         taskList.add(newTask);
         if(detailsArr[0].equals("1")){
             taskList.get(taskCount).setDone();
@@ -180,7 +171,6 @@ public class TaskManager {
 
     public void initialiseTaskFromFile(String line){
         char firstCharacterOfLine = line.charAt(0);
-        System.out.println("first char: " + firstCharacterOfLine);
         String[] detailsArr;
         switch (firstCharacterOfLine){
             case 'A':
@@ -200,42 +190,32 @@ public class TaskManager {
                 addTaskFromFile(detailsArr, TODO);
                 break;
             default:
-                System.out.println(firstCharacterOfLine + " does not match any tasks initials");
+                PrintManager.printNormalMessage(firstCharacterOfLine + " does not match any tasks initials");
                 break;
         }
     }
 
-    public void loadTasksFromSavedFile() throws IOException {
-        try {
-            FileReader fr=new FileReader(savedFile);
-            BufferedReader br=new BufferedReader(fr);
-            String line;
-            while((line=br.readLine())!=null)
-            {
-                initialiseTaskFromFile(line);
-            }
-            fr.close();
-            listTasks();
-        }
-        catch(IOException e)
+    public void loadTasksFromSavedFile() throws IOException, FileNotFoundException {
+        FileReader fr=new FileReader(savedFile);
+        BufferedReader br=new BufferedReader(fr);
+        String line;
+        while((line=br.readLine())!=null)
         {
-            e.printStackTrace();
+            initialiseTaskFromFile(line);
         }
+        fr.close();
+        listTasks();
     }
 
     public void checkDirectoryExist() throws IOException {
         if (dir.mkdirs()) {
-            System.out.println("Directory created: " + dir.getName());
-        } else {
-            System.out.println("Directory already exists.");
+            PrintManager.printNormalMessage("Directory created: " + dir.getName());
         }
     }
 
     public void checkSavedFileExist() throws IOException {
         if (savedFile.createNewFile()) {
-            System.out.println("File created: " + savedFile.getName());
-        } else {
-            System.out.println("File already exists.");
+            PrintManager.printNormalMessage("File created: " + savedFile.getName());
         }
     }
 
