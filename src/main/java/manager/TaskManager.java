@@ -8,87 +8,92 @@ import task.Deadline;
 import task.Event;
 
 import java.util.ArrayList;
-import java.io.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.File;
 
-import static task.TaskType.*;
+import static task.TaskType.ADD;
+import static task.TaskType.TODO;
+import static task.TaskType.DEADLINE;
+import static task.TaskType.EVENT;
 
 public class TaskManager {
-    public static final int MAX_TASKS_LIMIT = 100;
     public static final String BY_STRING = "/by";
     public static final String AT_STRING = "/at";
     public static final String PIPE_CHARACTER = "\\|";
 
     ArrayList<Task> taskList = new ArrayList<Task>();
-    //private Task[] taskList = new Task[MAX_TASKS_LIMIT];
-    private int taskCount = 0;
-
     File dir = new File("data");
     File savedFile = new File(dir, "duke.txt");
+    private int taskCount = 0;
 
     public void filterTasks(String[] cmdArray) {
         PrintManager pm = new PrintManager();
         switch (cmdArray[0]) {
-        case "add":
-            try {
-                addTask(cmdArray[1], ADD);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage("task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            saveTasksToFile();
-            break;
-        case "todo":
-            try {
-                addTask(cmdArray[1], TODO);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage(" todo task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            saveTasksToFile();
-            break;
-        case "deadline":
-            try {
-                addTask(cmdArray[1], DEADLINE);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage("deadline task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            saveTasksToFile();
-            break;
-        case "event":
-            try {
-                addTask(cmdArray[1], EVENT);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage("event task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            saveTasksToFile();
-            break;
-        case "":
-            pm.printBotStatusMessage("no command detected, please try again");
-            break;
-        default:
-            pm.printBotStatusMessage("invalid command, please try again");
-            break;
+            case "add":
+                try {
+                    addTask(cmdArray[1], ADD);
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    PrintManager.printBotExceptionMessage("task needs details");
+                } catch (DukeException de) {
+                    PrintManager.printBotExceptionMessage(de.getMessage());
+                }
+                saveTasksToFile();
+                break;
+            case "todo":
+                try {
+                    addTask(cmdArray[1], TODO);
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    PrintManager.printBotExceptionMessage(" todo task needs details");
+                } catch (DukeException de) {
+                    PrintManager.printBotExceptionMessage(de.getMessage());
+                }
+                saveTasksToFile();
+                break;
+            case "deadline":
+                try {
+                    addTask(cmdArray[1], DEADLINE);
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    PrintManager.printBotExceptionMessage("deadline task needs details");
+                } catch (DukeException de) {
+                    PrintManager.printBotExceptionMessage(de.getMessage());
+                }
+                saveTasksToFile();
+                break;
+            case "event":
+                try {
+                    addTask(cmdArray[1], EVENT);
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    PrintManager.printBotExceptionMessage("event task needs details");
+                } catch (DukeException de) {
+                    PrintManager.printBotExceptionMessage(de.getMessage());
+                }
+                saveTasksToFile();
+                break;
+            case "":
+                pm.printBotStatusMessage("no command detected, please try again");
+                break;
+            default:
+                pm.printBotStatusMessage("invalid command, please try again");
+                break;
         }
     }
 
     public Task getTaskType(String newTask, TaskType type) throws DukeException {
         switch (type) {
-        case ADD:
-            return new Task(newTask);
-        case TODO:
-            return new Todo(newTask);
-        case DEADLINE:
-            String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
-            return new Deadline(taskDetailsArray[0], taskDetailsArray[1]);
-        case EVENT:
-            String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
-            return new Event(taskDetailsArray2[0], taskDetailsArray2[1]);
+            case ADD:
+                return new Task(newTask);
+            case TODO:
+                return new Todo(newTask);
+            case DEADLINE:
+                String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
+                return new Deadline(taskDetailsArray[0], taskDetailsArray[1]);
+            case EVENT:
+                String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
+                return new Event(taskDetailsArray2[0], taskDetailsArray2[1]);
         }
         return null;
     }
@@ -141,14 +146,14 @@ public class TaskManager {
         taskCount--;
     }
 
-    public String[] separateByPipeCharacter(String line){
+    public String[] separateByPipeCharacter(String line) {
         String[] detailsArr = line.split(PIPE_CHARACTER);
         return detailsArr;
     }
 
-    public void addTaskFromFile(String[] detailsArr, TaskType taskType){
+    public void addTaskFromFile(String[] detailsArr, TaskType taskType) {
         Task newTask = null;
-        switch (taskType){
+        switch (taskType) {
             case ADD:
                 newTask = new Task(detailsArr[1]);
                 break;
@@ -163,16 +168,16 @@ public class TaskManager {
                 break;
         }
         taskList.add(newTask);
-        if(detailsArr[0].equals("1")){
+        if (detailsArr[0].equals("1")) {
             taskList.get(taskCount).setDone();
         }
         taskCount++;
     }
 
-    public void initialiseTaskFromFile(String line){
+    public void initialiseTaskFromFile(String line) {
         char firstCharacterOfLine = line.charAt(0);
         String[] detailsArr;
-        switch (firstCharacterOfLine){
+        switch (firstCharacterOfLine) {
             case 'A':
                 detailsArr = separateByPipeCharacter(line.substring(2));
                 addTaskFromFile(detailsArr, ADD);
@@ -196,11 +201,10 @@ public class TaskManager {
     }
 
     public void loadTasksFromSavedFile() throws IOException, FileNotFoundException {
-        FileReader fr=new FileReader(savedFile);
-        BufferedReader br=new BufferedReader(fr);
+        FileReader fr = new FileReader(savedFile);
+        BufferedReader br = new BufferedReader(fr);
         String line;
-        while((line=br.readLine())!=null)
-        {
+        while ((line = br.readLine()) != null) {
             initialiseTaskFromFile(line);
         }
         fr.close();
@@ -219,7 +223,7 @@ public class TaskManager {
         }
     }
 
-    public void checkSavedFileCreated(){
+    public void checkSavedFileCreated() {
 
         try {
             checkDirectoryExist();
@@ -230,7 +234,7 @@ public class TaskManager {
         }
     }
 
-    public void saveTasksToFile(){
+    public void saveTasksToFile() {
         checkSavedFileCreated();
 
         try {

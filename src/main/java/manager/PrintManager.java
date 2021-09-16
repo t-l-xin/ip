@@ -2,7 +2,6 @@ package manager;
 import task.Task;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PrintManager {
     public final static String ZERO_CONSTANT_STRING = "0";
