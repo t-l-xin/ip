@@ -7,15 +7,7 @@ import task.Todo;
 import task.Deadline;
 import task.Event;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.io.BufferedReader;
-import java.io.File;
 
 import static task.TaskType.ADD;
 import static task.TaskType.TODO;
@@ -25,64 +17,78 @@ import static task.TaskType.EVENT;
 public class TaskManager {
     public static final String BY_STRING = "/by";
     public static final String AT_STRING = "/at";
-    public static final String PIPE_CHARACTER = "\\|";
-    public static final String DATA_FOLDER_STRING = "data";
-    public static final String DUKE_TXT_FILE_STRING = "duke.txt";
-    public static final String TASK_COMPLETED_STATUS_NO_1 = "1";
-
-    String currentUsersWorkingDir = System.getProperty("user.dir");
-    Path dataFolderPath = Paths.get(currentUsersWorkingDir, DATA_FOLDER_STRING);
-    Path savedFilePath = Paths.get(currentUsersWorkingDir, DATA_FOLDER_STRING, DUKE_TXT_FILE_STRING);
+    public static final String ADD_STRING = "add";
+    public static final String TODO_STRING = "todo";
+    public static final String DEADLINE_STRING = "deadline";
+    public static final String EVENT_STRING = "event";
+    public static final String EMPTY_STRING = "";
+    public static final int INTEGER_ZERO = 0;
+    public static final int INTEGER_ONE = 1;
 
     ArrayList<Task> taskList = new ArrayList<Task>();
-    File dataDirName = new File(DATA_FOLDER_STRING);
-    File savedFileName = new File(currentUsersWorkingDir, DATA_FOLDER_STRING + File.separator + DUKE_TXT_FILE_STRING);
-    private int taskCount = 0;
+    private int taskCount = INTEGER_ZERO;
 
-    public void filterTasks(String[] cmdArray) {
+    public void getTaskListFromFile(ArrayList<Task> taskListFromFile) {
+        taskList.addAll(taskListFromFile);
+    }
+
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
+
+    public int getTaskCount() {
+        return taskCount;
+    }
+
+    public void getTaskCountFromFile(int taskCountFromFile) {
+        taskCount = taskCountFromFile;
+        PrintManager.printTaskListMessage(taskList, taskCount);
+    }
+
+    public void filterTasks(String[] cmdArray, FileManager fm) {
         PrintManager pm = new PrintManager();
-        switch (cmdArray[0]) {
-        case "add":
+        switch (cmdArray[INTEGER_ZERO]) {
+        case ADD_STRING:
             try {
-                addTask(cmdArray[1], ADD);
+                addTask(cmdArray[INTEGER_ONE], ADD);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage("task needs details");
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            saveTasksToFile();
+            fm.saveTasksToFile(taskList, taskCount);
             break;
-        case "todo":
+        case TODO_STRING:
             try {
-                addTask(cmdArray[1], TODO);
+                addTask(cmdArray[INTEGER_ONE], TODO);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage(" todo task needs details");
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            saveTasksToFile();
+            fm.saveTasksToFile(taskList, taskCount);
             break;
-        case "deadline":
+        case DEADLINE_STRING:
             try {
-                addTask(cmdArray[1], DEADLINE);
+                addTask(cmdArray[INTEGER_ONE], DEADLINE);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage("deadline task needs details");
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            saveTasksToFile();
+            fm.saveTasksToFile(taskList, taskCount);
             break;
-        case "event":
+        case EVENT_STRING:
             try {
-                addTask(cmdArray[1], EVENT);
+                addTask(cmdArray[INTEGER_ONE], EVENT);
             } catch (ArrayIndexOutOfBoundsException ae) {
                 PrintManager.printBotExceptionMessage("event task needs details");
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            saveTasksToFile();
+            fm.saveTasksToFile(taskList, taskCount);
             break;
-        case "":
+        case EMPTY_STRING:
             pm.printBotStatusMessage("no command detected, please try again");
             break;
         default:
@@ -99,10 +105,10 @@ public class TaskManager {
             return new Todo(newTask);
         case DEADLINE:
             String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
-            return new Deadline(taskDetailsArray[0], taskDetailsArray[1]);
+            return new Deadline(taskDetailsArray[INTEGER_ZERO], taskDetailsArray[INTEGER_ONE]);
         case EVENT:
             String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
-            return new Event(taskDetailsArray2[0], taskDetailsArray2[1]);
+            return new Event(taskDetailsArray2[INTEGER_ZERO], taskDetailsArray2[INTEGER_ONE]);
         }
         return null;
     }
@@ -111,22 +117,24 @@ public class TaskManager {
             throws DukeException, StringIndexOutOfBoundsException {
         checkForDelimiter(taskDetail, delimiter);
         int indexOfDelimiter = taskDetail.indexOf(delimiter);
+
         checkEmptyDetails(indexOfDelimiter);
-        String detail = taskDetail.substring(0, indexOfDelimiter - 1).trim();
+        String detail = taskDetail.substring(INTEGER_ZERO, indexOfDelimiter - INTEGER_ONE).trim();
         String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
+
         checkEmptyDateTime(datetime);
         String[] taskDetailsArray = {detail, datetime};
         return taskDetailsArray;
     }
 
     private void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
-        if (indexOfDelimiter == 0) {
+        if (indexOfDelimiter == INTEGER_ZERO) {
             throw new DukeException("\nDuke: can't find details");
         }
     }
 
     private void checkEmptyDateTime(String datetime) throws DukeException {
-        if (datetime.length() == 0) {
+        if (datetime.length() == INTEGER_ZERO) {
             throw new DukeException("\nDuke: can't find datetime");
         }
     }
@@ -144,31 +152,8 @@ public class TaskManager {
         taskCount++;
     }
 
-    public void doneOrDeleteTask(String taskNo, String operation) {
-        try {
-            executeDoneOrDeleteOperation(taskNo, operation);
-        } catch (NullPointerException ne) {
-            PrintManager.printBotExceptionMessage(
-                    "NullPointerException: please key in a valid index");
-        } catch (IndexOutOfBoundsException ae) {
-            PrintManager.printBotExceptionMessage(
-                    "ArrayIndexOutOfBoundsException: index start from 1");
-        }
-        saveTasksToFile();
-    }
-
-    private void executeDoneOrDeleteOperation(String taskNo, String operation)
-            throws NullPointerException, IndexOutOfBoundsException {
-        if (operation.equals("done")) {
-            markAsDone(taskNo);
-        }
-        if (operation.equals("delete")) {
-            deleteTask(taskNo);
-        }
-    }
-
     public void listTasks() {
-        if (taskCount > 0) {
+        if (taskCount > INTEGER_ZERO) {
             PrintManager.printTaskListMessage(taskList, taskCount);
         } else {
             PrintManager.printEmptyTaskListMessage();
@@ -176,128 +161,17 @@ public class TaskManager {
     }
 
     public void markAsDone(String taskNo) {
-        int taskIndex = Integer.parseInt(taskNo) - 1;
+        int taskIndex = Integer.parseInt(taskNo) - INTEGER_ONE;
         taskList.get(taskIndex).setDone();
         PrintManager.printBotStatusMessage(
                 String.format("Good Job, u have completed\ntask: %s", taskList.get(taskIndex).getTaskName()));
     }
 
     public void deleteTask(String taskNo) {
-        int taskIndex = Integer.parseInt(taskNo) - 1;
+        int taskIndex = Integer.parseInt(taskNo) - INTEGER_ONE;
         PrintManager.printBotStatusMessage(
                 String.format("Removed task:\n%s", taskList.get(taskIndex)));
         taskList.remove(taskIndex);
         taskCount--;
-    }
-
-    public String[] separateByPipeCharacter(String line) {
-        String[] detailsArr = line.split(PIPE_CHARACTER);
-        return detailsArr;
-    }
-
-    public void addTaskFromSavedFile(String[] detailsArr, TaskType taskType) {
-        Task newTask = null;
-        switch (taskType) {
-        case ADD:
-            newTask = new Task(detailsArr[1]);
-            break;
-        case TODO:
-            newTask = new Todo(detailsArr[1]);
-            break;
-        case DEADLINE:
-            newTask = new Deadline(detailsArr[1], detailsArr[2]);
-            break;
-        case EVENT:
-            newTask = new Event(detailsArr[1], detailsArr[2]);
-            break;
-        }
-        taskList.add(newTask);
-        initialiseTaskStatusFromFile(detailsArr[0]);
-        taskCount++;
-    }
-
-    public void initialiseTaskStatusFromFile(String fileDetailStatus) {
-        if (fileDetailStatus.equals(TASK_COMPLETED_STATUS_NO_1)) {
-            taskList.get(taskCount).setDone();
-        }
-    }
-
-    public void initialiseTaskFromSavedFile(String line) {
-        char firstCharacterOfLine = line.charAt(0);
-        String[] detailsArr;
-        switch (firstCharacterOfLine) {
-            case 'A':
-                detailsArr = separateByPipeCharacter(line.substring(2));
-                addTaskFromSavedFile(detailsArr, ADD);
-                break;
-            case 'D':
-                detailsArr = separateByPipeCharacter(line.substring(2));
-                addTaskFromSavedFile(detailsArr, DEADLINE);
-                break;
-            case 'E':
-                detailsArr = separateByPipeCharacter(line.substring(2));
-                addTaskFromSavedFile(detailsArr, EVENT);
-                break;
-            case 'T':
-                detailsArr = separateByPipeCharacter(line.substring(2));
-                addTaskFromSavedFile(detailsArr, TODO);
-                break;
-            default:
-                PrintManager.printNormalMessage(firstCharacterOfLine + " does not match any tasks initials");
-                break;
-        }
-    }
-
-    public void loadTasksFromSavedFile() throws IOException, FileNotFoundException {
-        FileReader fr = new FileReader(savedFileName);
-        BufferedReader br = new BufferedReader(fr);
-        String line;
-        while ((line = br.readLine()) != null) {
-            initialiseTaskFromSavedFile(line);
-        }
-        fr.close();
-        listTasks();
-    }
-
-    public void checkDirectoryExistOrCreate() {
-        if (!dataDirName.exists()) {
-            dataDirName.mkdir();
-            PrintManager.printNormalMessage("created data folder");
-        } else {
-            PrintManager.printNormalMessage("data folder exists");
-        }
-    }
-
-    public void checkSavedFileExistOrCreate() {
-        try {
-            if (!savedFileName.createNewFile()) {
-                PrintManager.printNormalMessage("duke.txt exists");
-            } else {
-                PrintManager.printNormalMessage("File created: " + savedFileName.getName());
-            }
-        } catch (IOException e) {
-            PrintManager.printBotExceptionMessage(" error creating duke.txt");
-        }
-    }
-
-    public void saveTasksToFile() {
-        checkDirectoryExistOrCreate();
-        checkSavedFileExistOrCreate();
-        try {
-            writeToSavedFile();
-        } catch (FileNotFoundException fe) {
-            PrintManager.printBotExceptionMessage(" no data files yet");
-        } catch (IOException e) {
-            PrintManager.printBotExceptionMessage(" error writing to file");
-        }
-    }
-
-    private void writeToSavedFile() throws IOException, FileNotFoundException {
-        FileWriter myWriter = new FileWriter(savedFileName);
-        for (int i = 0; i < taskCount; i++) {
-            myWriter.write(String.format("%s\n", taskList.get(i).saveToFileStringFormat()));
-        }
-        myWriter.close();
-        System.out.println("Successfully wrote to the file.");
     }
 }

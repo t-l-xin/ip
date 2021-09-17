@@ -1,4 +1,5 @@
 import manager.CmdManager;
+import manager.FileManager;
 import manager.PrintManager;
 import manager.TaskManager;
 
@@ -8,17 +9,25 @@ import java.util.Scanner;
 
 public class Duke {
 
+    public static final String HELP_STRING = "help";
+    public static final String LIST_STRING = "list";
+    public static final String HIST_STRING = "hist";
+    public static final String DONE = "done";
+    public static final String DELETE_STRING = "delete";
+    public static final String BYE_STRING = "bye";
+
     private static void startProgram() {
         String inputLine;
         Scanner in = new Scanner(System.in);
         TaskManager tm = new TaskManager();
         CmdManager cm = new CmdManager();
         PrintManager pm = new PrintManager();
+        FileManager fm = new FileManager();
         cm.showHelp();
 
         boolean isBye = false;
 
-        tryLoadSavedFile(tm);
+        tryLoadSavedFile(tm, fm);
 
         do {
             pm.promptUserForCommand();
@@ -27,38 +36,62 @@ public class Duke {
 
             cm.addCmd(inputLine);
 
-            isBye = cm.checkCmd(inputLine, "bye");
+            isBye = cm.checkCmd(inputLine, BYE_STRING);
 
             switch (cmdArray[0]) {
-            case "help":
+            case HELP_STRING:
                 cm.showHelp();
                 break;
-            case "list":
+            case LIST_STRING:
                 tm.listTasks();
                 break;
-            case "hist":
+            case HIST_STRING:
                 cm.showHistory();
                 break;
-            case "done":
-                tm.doneOrDeleteTask(cmdArray[1], "done");
+            case DONE:
+                try {
+                    tm.markAsDone(cmdArray[1]);
+                } catch (NullPointerException ne) {
+                    PrintManager.printBotExceptionMessage(
+                            "NullPointerException: please key in a valid index");
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    PrintManager.printBotExceptionMessage(
+                            " ArrayIndexOutOfBoundsException: please key in a valid index");
+                } catch (IndexOutOfBoundsException ie) {
+                    PrintManager.printBotExceptionMessage(
+                            "IndexOutOfBoundsException: index start from 1");
+                }
+                fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
                 break;
-            case "delete":
-                tm.doneOrDeleteTask(cmdArray[1], "delete");
+            case DELETE_STRING:
+                try {
+                    tm.deleteTask(cmdArray[1]);
+                } catch (NullPointerException ne) {
+                    PrintManager.printBotExceptionMessage(
+                            " NullPointerException: please key in a valid index");
+                } catch (ArrayIndexOutOfBoundsException ae) {
+                    PrintManager.printBotExceptionMessage(
+                            " ArrayIndexOutOfBoundsException: please key in a valid index");
+                } catch (IndexOutOfBoundsException ie) {
+                    PrintManager.printBotExceptionMessage(
+                            " IndexOutOfBoundsException: index start from 1");
+                }
+                fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
                 break;
-            case "bye":
+            case BYE_STRING:
                 continue;
             default:
-                tm.filterTasks(cmdArray);
+                tm.filterTasks(cmdArray, fm);
                 break;
             }
 
         } while (!isBye);
     }
 
-    private static void tryLoadSavedFile(TaskManager tm) {
+    private static void tryLoadSavedFile(TaskManager tm, FileManager fm) {
         try {
             PrintManager.printNormalMessage("loading saved files...");
-            tm.loadTasksFromSavedFile();
+            fm.loadTasksFromSavedFile(tm);
         } catch (FileNotFoundException e) {
             PrintManager.printBotStatusMessage("no pre-existing data files yet");
         } catch (IOException ie) {
