@@ -2,8 +2,8 @@ package manager;
 
 public class CmdManager {
     public final int MAX_COMMANDS_LIMIT = 100;
-    public final String CMD_FORMAT = "cmd [args] /[options] [additional args]";
-    public final String[] CMD_AVAILABLE = {
+    public final String COMMAND_FORMAT = "cmd [args] /[options] [additional args]";
+    public final String[] COMMANDS_AVAILABLE = {
             "help, list, hist - no additional arguments required",
             "done [task no]",
             "delete [task no]",
@@ -13,12 +13,12 @@ public class CmdManager {
             "event [task description] /at [time/date]"
     };
 
-    private String[] cmdList = new String[MAX_COMMANDS_LIMIT];
-    private int cmdCount = 0;
+    private String[] commandList = new String[MAX_COMMANDS_LIMIT];
+    private int commandCount = 0;
 
-    public void addCmd(String cmd) {
-        cmdList[cmdCount] = cmd;
-        cmdCount++;
+    public void addCommand(String cmd) {
+        commandList[commandCount] = cmd;
+        commandCount++;
     }
 
     public static void printAddStatus(String details) {
@@ -26,15 +26,15 @@ public class CmdManager {
     }
 
     public void showHistory() {
-        if (cmdCount > 0) {
-            PrintManager.printStringListMessage(cmdList, cmdCount);
+        if (commandCount > 0) {
+            PrintManager.printStringListMessage(commandList, commandCount);
         } else {
             PrintManager.printBotStatusMessage("No previous commands");
         }
     }
 
-    public boolean checkCmd(String inputCmd, String standardCmd) {
-        if (inputCmd.equals(standardCmd)) {
+    public boolean checkCommand(String inputCommand, String standardCommand) {
+        if (inputCommand.equals(standardCommand)) {
             return true;
         }
         return false;
@@ -42,7 +42,7 @@ public class CmdManager {
 
     public void showHelp() {
         PrintManager.printNormalMessage(
-                String.format("How to use this bot:\nType ur command in the following format\n%s", CMD_FORMAT));
-        PrintManager.printStringListMessage(CMD_AVAILABLE, CMD_AVAILABLE.length);
+                String.format("How to use this bot:\nType ur command in the following format\n%s", COMMAND_FORMAT));
+        PrintManager.printStringListMessage(COMMANDS_AVAILABLE, COMMANDS_AVAILABLE.length);
     }
 }
