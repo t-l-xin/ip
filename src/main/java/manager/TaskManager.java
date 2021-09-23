@@ -7,6 +7,15 @@ import task.Todo;
 import task.Deadline;
 import task.Event;
 
+import java.text.ParseException;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -123,12 +132,16 @@ public class TaskManager {
 
         checkEmptyDetails(indexOfDelimiter);
         String detail = taskDetail.substring(INTEGER_ZERO, indexOfDelimiter - INTEGER_ONE).trim();
-        String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
 
+        String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
         checkEmptyDateTime(datetime);
+        ParseManager.checkValidDateTimeFormat(datetime);
+
         String[] taskDetailsArray = {detail, datetime};
         return taskDetailsArray;
     }
+
+
 
     private void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
         if (indexOfDelimiter == INTEGER_ZERO) {

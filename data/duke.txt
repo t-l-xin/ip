@@ -1,6 +1,2 @@
-T|0|read book
-E|0|return book to lib|23 Sept
-D|0|finish read book|tmr
-T|0|throw rubbish
-T|0|make dinner
-E|0|supper|tonight
+E|0|meet|22/08/2021 0800
+D|0|lab|22/09/2021 1400
