@@ -6,16 +6,16 @@ package task;
 public class Todo extends Task {
 
     /**
-     * Initialises a Todo task Object
+     * Initialises a Todo task Object.
      *
-     * @param taskName the task name from parsed input
+     * @param taskName The task name from parsed input.
      */
     public Todo(String taskName) {
         super(taskName);
     }
 
     /**
-     * @return a formatted string different from toString() that can be saved to a file
+     * @return A formatted string that can be saved to a file.
      */
     @Override
     public String saveToFileStringFormat(){

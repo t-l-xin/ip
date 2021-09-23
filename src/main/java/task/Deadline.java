@@ -7,10 +7,10 @@ public class Deadline extends Task {
     protected String by;
 
     /**
-     * Initialises Deadline Task object using task name, and set the deadline
+     * Initialises Deadline Task object using task name, and set the deadline.
      *
-     * @param taskName task name of Deadline task
-     * @param date last date to complete Deadline task
+     * @param taskName task name of Deadline task.
+     * @param date last date to complete Deadline task.
      */
     public Deadline(String taskName, String date) {
         super(taskName);
@@ -22,7 +22,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * @return a formatted string different from toString() that can be saved to a file
+     * @return A formatted string that can be saved to a file.
      */
     @Override
     public String saveToFileStringFormat(){

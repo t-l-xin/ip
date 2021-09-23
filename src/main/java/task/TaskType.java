@@ -1,23 +1,23 @@
 package task;
 
 /**
- * Task types available in the program
+ * Task types available in the program.
  */
 public enum TaskType {
     /**
-     * Add type task
+     * Add type task.
      */
     ADD,
     /**
-     * Todo type task
+     * Todo type task.
      */
     TODO,
     /**
-     * Deadline type task
+     * Deadline type task.
      */
     DEADLINE,
     /**
-     * Event type task
+     * Event type task.
      */
     EVENT
 }

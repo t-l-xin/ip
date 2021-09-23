@@ -10,9 +10,9 @@ public class Task {
     protected boolean isDone;
 
     /**
-     * Initialises Task object using task name, and set status to not done by default
+     * Initialises Task object using task name, and set status to not done by default.
      *
-     * @param taskName task name of Task
+     * @param taskName The task name of Task.
      */
     public Task(String taskName) {
         this.taskName = taskName;
@@ -36,7 +36,7 @@ public class Task {
     }
 
     /**
-     * @return a formatted string different from toString() that can be saved to a file
+     * @return A formatted string that can be saved to a file.
      */
     public String saveToFileStringFormat(){
         return String.format("A|%s|%s", isDone ? "1" : "0", this.getTaskName());

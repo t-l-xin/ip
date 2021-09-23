@@ -1,16 +1,16 @@
 package task;
 
 /**
- * Represents a Event Task. Contains the details and behaviour of the event task.
+ * Represents Event Task. Contains the details and behaviour of the event task.
  */
 public class Event extends Task {
     protected String at;
 
     /**
-     * Initialises Event Task object using task name, and set the date of the event
+     * Initialises Event Task object using task name, and set the date of the event.
      *
-     * @param taskName task name of Event task
-     * @param date date of Event task
+     * @param taskName The task name of Event task.
+     * @param date The date of Event task.
      */
     public Event(String taskName, String date) {
         super(taskName);
@@ -22,7 +22,7 @@ public class Event extends Task {
     }
 
     /**
-     * @return a formatted string different from toString() that can be saved to a file
+     * @return A formatted string that can be saved to a file.
      */
     @Override
     public String saveToFileStringFormat(){
