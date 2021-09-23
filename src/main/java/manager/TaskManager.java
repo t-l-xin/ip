@@ -17,6 +17,9 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static task.TaskType.ADD;
 import static task.TaskType.TODO;
@@ -186,5 +189,12 @@ public class TaskManager {
                 String.format("Removed task:\n%s", taskList.get(taskIndex)));
         taskList.remove(taskIndex);
         taskCount--;
+    }
+
+    public void findTask(String stringToFind) {
+        ArrayList<Task> filteredList = (ArrayList<Task>) taskList.stream()
+                .filter((t) -> t.getTaskName().contains(stringToFind))
+                .collect(Collectors.toList());
+        PrintManager.printTaskListMessage(filteredList, filteredList.size());
     }
 }

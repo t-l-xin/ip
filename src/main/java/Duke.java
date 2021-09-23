@@ -15,6 +15,7 @@ public class Duke {
     public static final String DONE = "done";
     public static final String DELETE_STRING = "delete";
     public static final String BYE_STRING = "bye";
+    public static final String FIND_STRING = "find";
 
     private static void startProgram() {
         String inputLine;
@@ -47,6 +48,9 @@ public class Duke {
                 break;
             case HIST_STRING:
                 cm.showHistory();
+                break;
+            case FIND_STRING:
+                tm.findTask(cmdArray[1]);
                 break;
             case DONE:
                 try {
