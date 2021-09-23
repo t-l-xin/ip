@@ -7,6 +7,15 @@ import task.Todo;
 import task.Deadline;
 import task.Event;
 
+import java.text.ParseException;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 
 import static task.TaskType.ADD;
@@ -163,9 +172,11 @@ public class TaskManager {
 
         checkEmptyDetails(indexOfDelimiter);
         String detail = taskDetail.substring(INTEGER_ZERO, indexOfDelimiter - INTEGER_ONE).trim();
-        String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
 
+        String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
         checkEmptyDateTime(datetime);
+        ParseManager.checkValidDateTimeFormat(datetime);
+
         String[] taskDetailsArray = {detail, datetime};
         return taskDetailsArray;
     }
@@ -176,6 +187,7 @@ public class TaskManager {
      * @param indexOfDelimiter The index of the delimiter.
      * @throws DukeException If the index of the delimiter is 0, which means details field is empty.
      */
+
     private void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
         if (indexOfDelimiter == INTEGER_ZERO) {
             throw new DukeException("\nDuke: can't find details");

@@ -1,6 +1,2 @@
-T|0|read book
-D|1|CS2106|friday
-E|0|grp meeting|next sat
-T|1|make dessert
-D|0|cs2106 lab|22 sept
-E|0|wed sec|next wed
+E|0|meet|22/08/2021 0800
+D|0|lab|22/09/2021 1400
