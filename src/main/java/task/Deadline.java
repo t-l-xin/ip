@@ -11,8 +11,8 @@ public class Deadline extends Task {
     /**
      * Initialises Deadline Task object using task name, and set the deadline.
      *
-     * @param taskName task name of Deadline task.
-     * @param date last date to complete Deadline task.
+     * @param taskName The task name of Deadline task.
+     * @param date The last date to complete Deadline task.
      */
     public Deadline(String taskName, String date) {
         super(taskName);
