@@ -22,7 +22,7 @@ import java.io.FileWriter;
 
 public class FileManager {
     public static final String PIPE_CHARACTER = "\\|";
-    public static final String TASK_COMPLETED_STATUS_STRING = "1";
+    public static final String TASK_COMPLETED_STATUS_NO_1_STRING = "1";
 
     public static final char ADD_CHARACTER = 'A';
     public static final char DEADLINE_CHARACTER = 'D';
@@ -38,8 +38,7 @@ public class FileManager {
     public static final String DATA_FOLDER_STRING = "data";
     public static final String DUKE_TXT_FILE_STRING = "duke.txt";
     File dataDirName = new File(DATA_FOLDER_STRING);
-    File savedFileName = new File(currentUsersWorkingDir,
-            DATA_FOLDER_STRING + File.separator + DUKE_TXT_FILE_STRING);
+    File savedFileName = new File(currentUsersWorkingDir, DATA_FOLDER_STRING + File.separator + DUKE_TXT_FILE_STRING);
     private int taskCountFromFile;
     ArrayList<Task> taskListFromFile = new ArrayList<Task>();
 
@@ -87,11 +86,6 @@ public class FileManager {
         return detailsArr;
     }
 
-    /**
-     *
-     * @param detailsArr
-     * @param taskType
-     */
     public void addTaskFromSavedFile(String[] detailsArr, TaskType taskType) {
         Task newTask = null;
         switch (taskType) {
@@ -114,7 +108,7 @@ public class FileManager {
     }
 
     public void initialiseTaskStatusFromSavedFile(String fileDetailStatus) {
-        if (fileDetailStatus.equals(TASK_COMPLETED_STATUS_STRING)) {
+        if (fileDetailStatus.equals(TASK_COMPLETED_STATUS_NO_1_STRING)) {
             taskListFromFile.get(taskCountFromFile).setDone();
         }
     }
@@ -128,7 +122,6 @@ public class FileManager {
         }
     }
 
-    /*func needs further abstraction or renaming*/
     private void checkSavedFileExistOrCreate() {
         try {
             if (!savedFileName.createNewFile()) {
@@ -153,8 +146,7 @@ public class FileManager {
         }
     }
 
-    private void writeToSavedFile(ArrayList<Task> taskList, int taskCount)
-            throws IOException, FileNotFoundException {
+    private void writeToSavedFile(ArrayList<Task> taskList, int taskCount) throws IOException, FileNotFoundException {
         FileWriter myWriter = new FileWriter(savedFileName);
         for (int i = INTEGER_ZERO; i < taskCount; i++) {
             myWriter.write(String.format("%s\n", taskList.get(i).saveToFileStringFormat()));

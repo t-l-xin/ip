@@ -34,9 +34,9 @@ public class Duke {
             inputLine = in.nextLine().trim();
             String[] cmdArray = inputLine.split(" ", 2);
 
-            cm.addCommand(inputLine);
+            cm.addCmd(inputLine);
 
-            isBye = cm.checkCommand(inputLine, BYE_STRING);
+            isBye = cm.checkCmd(inputLine, BYE_STRING);
 
             switch (cmdArray[0]) {
             case HELP_STRING:
