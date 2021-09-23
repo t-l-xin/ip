@@ -32,17 +32,17 @@ public class TaskManager {
         taskList.addAll(taskListFromFile);
     }
 
+    public void getTaskCountFromFile(int taskCountFromFile) {
+        taskCount = taskCountFromFile;
+        PrintManager.printTaskListMessage(taskList, taskCount);
+    }
+
     public ArrayList<Task> getTaskList() {
         return taskList;
     }
 
     public int getTaskCount() {
         return taskCount;
-    }
-
-    public void getTaskCountFromFile(int taskCountFromFile) {
-        taskCount = taskCountFromFile;
-        PrintManager.printTaskListMessage(taskList, taskCount);
     }
 
     public void filterTasks(String[] cmdArray, FileManager fm) {
