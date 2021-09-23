@@ -7,18 +7,7 @@ import task.Todo;
 import task.Deadline;
 import task.Event;
 
-import java.text.ParseException;
-import java.time.DateTimeException;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoUnit;
-
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static task.TaskType.ADD;
@@ -272,6 +261,11 @@ public class TaskManager {
         taskCount--;
     }
 
+    /**
+     * Finds the user input string by filtering through the arraylist.
+     *
+     * @param stringToFind User input string to find.
+     */
     public void findTask(String stringToFind) {
         ArrayList<Task> filteredList = (ArrayList<Task>) taskList.stream()
                 .filter((t) -> t.getTaskName().contains(stringToFind))
