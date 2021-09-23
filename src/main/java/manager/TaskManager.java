@@ -7,6 +7,15 @@ import task.Todo;
 import task.Deadline;
 import task.Event;
 
+import java.text.ParseException;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
 
 import static task.TaskType.ADD;
@@ -104,11 +113,11 @@ public class TaskManager {
         case TODO:
             return new Todo(newTask);
         case DEADLINE:
-            String[] taskDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
-            return new Deadline(taskDetailsArray[INTEGER_ZERO], taskDetailsArray[INTEGER_ONE]);
+            String[] taskDeadlineDetailsArray = getTaskNameAndTime(newTask, BY_STRING);
+            return new Deadline(taskDeadlineDetailsArray[INTEGER_ZERO], taskDeadlineDetailsArray[INTEGER_ONE]);
         case EVENT:
-            String[] taskDetailsArray2 = getTaskNameAndTime(newTask, AT_STRING);
-            return new Event(taskDetailsArray2[INTEGER_ZERO], taskDetailsArray2[INTEGER_ONE]);
+            String[] taskEventDetailsArray = getTaskNameAndTime(newTask, AT_STRING);
+            return new Event(taskEventDetailsArray[INTEGER_ZERO], taskEventDetailsArray[INTEGER_ONE]);
         }
         return null;
     }
@@ -120,12 +129,16 @@ public class TaskManager {
 
         checkEmptyDetails(indexOfDelimiter);
         String detail = taskDetail.substring(INTEGER_ZERO, indexOfDelimiter - INTEGER_ONE).trim();
-        String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
 
+        String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
         checkEmptyDateTime(datetime);
+        ParseManager.checkValidDateTimeFormat(datetime);
+
         String[] taskDetailsArray = {detail, datetime};
         return taskDetailsArray;
     }
+
+
 
     private void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
         if (indexOfDelimiter == INTEGER_ZERO) {
@@ -145,10 +158,10 @@ public class TaskManager {
         }
     }
 
-    public void addTask(String newTask, TaskType type) throws DukeException {
-        Task typ = getTaskType(newTask, type);
+    public void addTask(String newTask, TaskType newType) throws DukeException {
+        Task type = getTaskType(newTask, newType);
         CmdManager.printAddStatus(newTask);
-        taskList.add(typ);
+        taskList.add(type);
         taskCount++;
     }
 

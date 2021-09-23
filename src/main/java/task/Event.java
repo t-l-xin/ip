@@ -1,5 +1,7 @@
 package task;
 
+import manager.ParseManager;
+
 public class Event extends Task {
     protected String at;
 
@@ -12,6 +14,10 @@ public class Event extends Task {
         return at;
     }
 
+    public String getPrintAt() {
+        return ParseManager.parseDateTimeStringForOutput(at);
+    }
+
     @Override
     public String saveToFileStringFormat(){
         return String.format("E|%s|%s|%s", isDone ? "1" : "0", this.getTaskName(), this.getAt());
@@ -19,6 +25,6 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return String.format("[E][%s] %s (at: %s)", super.getStatusIcon(), super.getTaskName(), this.getAt());
+        return String.format("[E][%s] %s (at: %s)", super.getStatusIcon(), super.getTaskName(), this.getPrintAt());
     }
 }
