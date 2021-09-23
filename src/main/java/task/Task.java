@@ -1,16 +1,24 @@
 package task;
 
+
+/**
+ * Represents a general Task. Contains the details and behaviour of the Task.
+ */
 public class Task {
+
     protected String taskName;
     protected boolean isDone;
 
-    // constructor
+    /**
+     * Initialises Task object using task name, and set status to not done by default
+     *
+     * @param taskName task name of Task
+     */
     public Task(String taskName) {
         this.taskName = taskName;
         this.isDone = false;
     }
 
-    // getter and setter
     public String getTaskName() {
         return taskName;
     }
@@ -27,6 +35,9 @@ public class Task {
         isDone = true;
     }
 
+    /**
+     * @return a formatted string different from toString() that can be saved to a file
+     */
     public String saveToFileStringFormat(){
         return String.format("A|%s|%s", isDone ? "1" : "0", this.getTaskName());
     }

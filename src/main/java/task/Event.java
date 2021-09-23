@@ -1,8 +1,17 @@
 package task;
 
+/**
+ * Represents a Event Task. Contains the details and behaviour of the event task.
+ */
 public class Event extends Task {
     protected String at;
 
+    /**
+     * Initialises Event Task object using task name, and set the date of the event
+     *
+     * @param taskName task name of Event task
+     * @param date date of Event task
+     */
     public Event(String taskName, String date) {
         super(taskName);
         this.at = date;
@@ -12,6 +21,9 @@ public class Event extends Task {
         return at;
     }
 
+    /**
+     * @return a formatted string different from toString() that can be saved to a file
+     */
     @Override
     public String saveToFileStringFormat(){
         return String.format("E|%s|%s|%s", isDone ? "1" : "0", this.getTaskName(), this.getAt());
