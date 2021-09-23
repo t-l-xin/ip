@@ -1,10 +1,19 @@
 package task;
 
+/**
+ * Represents a Deadline Task. Contains the details and behaviour of the deadline task.
+ */
 import manager.ParseManager;
 
 public class Deadline extends Task {
     protected String by;
 
+    /**
+     * Initialises Deadline Task object using task name, and set the deadline.
+     *
+     * @param taskName task name of Deadline task.
+     * @param date last date to complete Deadline task.
+     */
     public Deadline(String taskName, String date) {
         super(taskName);
         this.by = date;
@@ -14,6 +23,9 @@ public class Deadline extends Task {
         return by;
     }
 
+    /**
+     * @return A formatted string that can be saved to a file.
+     */
     public String getPrintBy() {
         return ParseManager.parseDateTimeStringForOutput(by);
     }

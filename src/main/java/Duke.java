@@ -1,4 +1,4 @@
-import manager.CmdManager;
+import manager.CommandManager;
 import manager.FileManager;
 import manager.PrintManager;
 import manager.TaskManager;
@@ -17,11 +17,15 @@ public class Duke {
     public static final String BYE_STRING = "bye";
     public static final String FIND_STRING = "find";
 
+    /**
+     * Starts the program until termination
+     * Reads user command and executes it, until user issues bye command
+     */
     private static void startProgram() {
         String inputLine;
         Scanner in = new Scanner(System.in);
         TaskManager tm = new TaskManager();
-        CmdManager cm = new CmdManager();
+        CommandManager cm = new CommandManager();
         PrintManager pm = new PrintManager();
         FileManager fm = new FileManager();
         cm.showHelp();
@@ -92,6 +96,13 @@ public class Duke {
         } while (!isBye);
     }
 
+
+    /**
+     * Try to load saved file from the previous session
+     *
+     * @param tm TaskManager object
+     * @param fm FileManager object
+     */
     private static void tryLoadSavedFile(TaskManager tm, FileManager fm) {
         try {
             PrintManager.printNormalMessage("loading saved files...");
@@ -103,6 +114,11 @@ public class Duke {
         }
     }
 
+    /**
+     * Runs program until termination
+     *
+     * @param args Unused.
+     */
     public static void main(String[] args) {
         PrintManager.printWelcomeUser();
         startProgram();
