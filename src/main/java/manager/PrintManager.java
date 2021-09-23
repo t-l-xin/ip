@@ -21,8 +21,8 @@ public class PrintManager {
             "|   @@@        |   #   #    #       #    # #    #\n" +
             "|    @         |   #    ####        #####   ####\n" +
             " --------------";
-    private final static String HELLO_GREETING = "Hi! I'm LingLing!\n" +
-            "Your personal nanny to make sure you do work.\n"
+    private final static String HELLO_GREETING = "Hi! I'm Duke!\n" +
+            "Your personal bot to make sure you do work.\n"
             + "Have you started ur tasks? Start by typing \"help\"";
 
     private final static String EXIT_GREETING = "Well done for today! Remember to have 8 hrs of sleep!";
