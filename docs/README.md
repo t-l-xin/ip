@@ -62,6 +62,7 @@ loading saved files...
 
 ____________________________________________________________
 ```
+
 6. You may then start typing your commands under the "Type ur command:" prompt.
 7. Refer to Features below for details of each command. 
 
@@ -83,6 +84,7 @@ Expected outcome:
 
 Shows a list of commands available and some additional arguments and format required to ensure command can be parsed by Duke.
 
+
 ```
 How to use this bot:
 Type ur command in the following format
@@ -102,6 +104,7 @@ ____________________________________________________________
 
 ```
 
+
 ### List all tasks : `list`
 
 User type `list` and Duke will list all the tasks in the list.
@@ -111,6 +114,7 @@ Example of usage:
 
 Expected outcome:
 Outcome shows a list of tasks.
+
 ```
 ____________________________________________________________
 
@@ -132,6 +136,7 @@ Expected outcome:
 
 Duke adds task to task list and print the added status of the task to the task list.
 
+
 ```
 ____________________________________________________________
 adding: read book
@@ -141,6 +146,7 @@ data folder exists
 duke.txt exists
 Successfully wrote to the file.
 ```
+
 
 ### Add a Todo task : `todo`
 
@@ -152,6 +158,7 @@ Expected outcome:
 
 Duke adds Todo task to the task list and print the added status of the Todo task.
 
+
 ```
 ____________________________________________________________
 adding: return book
@@ -161,6 +168,7 @@ data folder exists
 duke.txt exists
 Successfully wrote to the file.
 ```
+
 
 ### Add a Deadline task : `deadline`
 
@@ -172,6 +180,7 @@ Expected outcome:
 
 Duke adds Deadline task to the task list and print the added status of the Deadline task.
 
+
 ```
 ____________________________________________________________
 adding: CS2106 lab /by 22/09/2021 1400
@@ -182,6 +191,7 @@ duke.txt exists
 Successfully wrote to the file.
 ```
 
+
 ### Add an Event task : `event`
 
 User type `event group meeting /at 11/09/2021 0900` and Duke adds a Event task to the list.
@@ -191,6 +201,7 @@ Example of usage: `event [TASK_DESCRIPTION] /at [DATE_OF_EVENT]`
 Expected outcome:
 
 Duke adds Event task to the task list and print the added status of the Event task.
+
 
 ```
 ____________________________________________________________
@@ -213,6 +224,7 @@ Expected outcome:
 
 Duke marks the task specified by the task number as done, and outputs the name of the task that is done.
 
+
 ```
 ____________________________________________________________
 Good Job, u have completed
@@ -225,6 +237,7 @@ Successfully wrote to the file.
 
 ```
 
+
 ### Delete a task : `delete`
 
 User type `delete 1` and Duke deletes task 1.
@@ -234,6 +247,7 @@ Example of usage: `delete [TASK_NUMBER]`
 Expected outcome:
 
 Duke deletes task from its list and outputs the task name of the task deleted.
+
 
 ```
 ____________________________________________________________
@@ -257,6 +271,7 @@ Example of usage:
 Expected outcome:
 Shows a list of user commands previously input for the current session.
 
+
 ```
 ____________________________________________________________
 
@@ -267,6 +282,7 @@ ____________________________________________________________
 ____________________________________________________________
 ```
 
+
 ### Bye Duke : `bye`
 
 User type `bye` and Duke program is to exit.
@@ -276,11 +292,14 @@ Example of usage: `bye`
 Expected outcome:
 
 Duke receives signal to exit and terminates by printing an exit message.
+
+
 ```
 ____________________________________________________________
 Well done for today! Remember to have 8 hrs of sleep!
 ____________________________________________________________
 ```
+
 
 ### Saving the data
 
