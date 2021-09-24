@@ -45,14 +45,16 @@ cmd [args] /[options] [additional args]
 
 ____________________________________________________________
 
-1. help, list, hist - no additional arguments required
-2. done [task no]
-3. delete [task no]
-4. add [task description]
-5. todo [task description]
-6. deadline [task description] /by YYYY/MM/DD HHMM
-7. event [task description] /at YYYY/MM/DD HHMM
-8. bye
+1. help - Displays help information such as commands available
+2. list - Displays list of tasks
+3. add [task description] - Add a normal task
+4. todo [task description] - Add a Todo task
+5. deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task
+6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
+7. done [TASK_number] - Mark a task as done
+8. delete [TASK_number] - Delete a task from the task list
+9. hist - Displays list of previous user input commands
+10. bye - Exit Duke program
 
 ____________________________________________________________
 
