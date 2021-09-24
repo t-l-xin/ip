@@ -89,54 +89,21 @@ public class TaskManager {
      */
     public String[] getTaskNameAndTime(String taskDetail, String delimiter)
             throws DukeException, StringIndexOutOfBoundsException {
-        checkForDelimiter(taskDetail, delimiter);
+        ParseManager.checkForDelimiter(taskDetail, delimiter);
         int indexOfDelimiter = taskDetail.indexOf(delimiter);
 
-        checkEmptyDetails(indexOfDelimiter);
+        ParseManager.checkEmptyDetails(indexOfDelimiter);
         String detail = taskDetail.substring(INTEGER_ZERO, indexOfDelimiter - INTEGER_ONE).trim();
 
         String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
-        checkEmptyDateTime(datetime);
+        ParseManager.checkEmptyDateTime(datetime);
         ParseManager.checkValidDateTimeFormat(datetime);
 
         String[] taskDetailsArray = {detail, datetime};
         return taskDetailsArray;
     }
 
-    /**
-     * Checks for empty details by the index of the delimiter.
-     *
-     * @param indexOfDelimiter The index of the delimiter.
-     * @throws DukeException If the index of the delimiter is 0, which means details field is empty.
-     */
-    private void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
-        if (indexOfDelimiter == INTEGER_ZERO) {
-            throw new DukeException("\nDuke: can't find details");
-        }
-    }
 
-    /**
-     * Checks if the date and time field is empty.
-     *
-     * @param datetime The string that contains date and time of the task.
-     * @throws DukeException If the date time field is empty.
-     */
-    private void checkEmptyDateTime(String datetime) throws DukeException {
-        if (datetime.length() == INTEGER_ZERO) {
-            throw new DukeException("\nDuke: can't find datetime");
-        }
-    }
-
-    /**
-     * @param taskDetail The string that contains task details.
-     * @param delimiter  The delimiter for the task type.
-     * @throws DukeException If delimiter for the task type is not found.
-     */
-    private void checkForDelimiter(String taskDetail, String delimiter) throws DukeException {
-        if (!taskDetail.contains(delimiter)) {
-            throw new DukeException(String.format("\nDuke: can't find %s", delimiter));
-        }
-    }
 
     /**
      * Adds task to task arraylist and increments task count by 1.

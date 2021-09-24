@@ -67,7 +67,6 @@ public class FileManager {
         tm.getTaskListFromFile(taskListFromFile);
         tm.getTaskCountFromFile(taskCountFromFile);
         tm.listTasks();
-        //PrintManager.printBotExceptionMessage("hello");
     }
 
     /**

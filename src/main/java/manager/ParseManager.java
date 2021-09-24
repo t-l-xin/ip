@@ -15,6 +15,7 @@ public class ParseManager {
     private static final String DATE_TIME_FORMAT_FOR_PRINTING_STRING = "MMM dd yyyy HH:mm a";
     private static DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_STRING);
     private static DateTimeFormatter dateTimePrintFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_FOR_PRINTING_STRING);
+    private static final int INTEGER_ZERO = 0;
 
     /**
      * Checks if the date and time string follows the program input format.
@@ -42,5 +43,38 @@ public class ParseManager {
         return formattedDateTimeString;
     }
 
+    /**
+     * Checks for empty details by the index of the delimiter.
+     *
+     * @param indexOfDelimiter The index of the delimiter.
+     * @throws DukeException If the index of the delimiter is 0, which means details field is empty.
+     */
+    public static void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
+        if (indexOfDelimiter == INTEGER_ZERO) {
+            throw new DukeException("\nDuke: can't find details");
+        }
+    }
 
+    /**
+     * Checks if the date and time field is empty.
+     *
+     * @param datetime The string that contains date and time of the task.
+     * @throws DukeException If the date time field is empty.
+     */
+    public static void checkEmptyDateTime(String datetime) throws DukeException {
+        if (datetime.length() == INTEGER_ZERO) {
+            throw new DukeException("\nDuke: can't find datetime");
+        }
+    }
+
+    /**
+     * @param taskDetail The string that contains task details.
+     * @param delimiter  The delimiter for the task type.
+     * @throws DukeException If delimiter for the task type is not found.
+     */
+    public static void checkForDelimiter(String taskDetail, String delimiter) throws DukeException {
+        if (!taskDetail.contains(delimiter)) {
+            throw new DukeException(String.format("\nDuke: can't find %s", delimiter));
+        }
+    }
 }
