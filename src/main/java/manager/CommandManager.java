@@ -5,21 +5,21 @@ package manager;
  */
 public class CommandManager {
     private final int MAX_COMMANDS_LIMIT = 100;
-    private final String COMMAND_FORMAT = "cmd [args] /[options] [additional args]";
+    private final String COMMAND_FORMAT = "cmd [args] /[delimiter] [additional args]";
     private final String[] COMMANDS_AVAILABLE = {
-            "help - Displays help information such as commands available",
-            "list - Displays list of tasks",
-            "add [task description] - Add a normal task",
-            "todo [task description] - Add a Todo task",
-            "deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task",
-            "event [task description] /at DD/MM/YYYY HHMM - Add a Event task",
-            "done [TASK_number] - Mark a task as done",
-            "delete [TASK_number] - Delete a task from the task list",
-            "find [TASK_KEYWORD] - Find a task by a keyword",
-            "hist - Displays list of previous user input commands",
+            "help - Displays help information such as commands available\n",
+            "list - Displays list of tasks\n",
+            "add [TASK_DESCRIPTION] - Add a normal task\n",
+            "todo [TASK_DESCRIPTION] - Add a Todo task\n",
+            "deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task \nInput DateTime format: DD/MM/YYYY HHMM\n",
+            "event [TASK_DESCRIPTION] /at [DATE_OF_EVENT] - Add a Event task \nInput DateTime format: DD/MM/YYYY HHMM\n",
+            "done [TASK_NUMBER] - Mark a task as done\n",
+            "delete [TASK_NUMBER] - Delete a task from the task list\n",
+            "find [TASK_KEYWORD] - Find a task by a keyword\n",
+            "hist - Displays list of previous user input commands\n",
             "bye - Exit Duke program"
     };
-
+    
     private String[] commandList = new String[MAX_COMMANDS_LIMIT];
     private int commandCount = 0;
 
@@ -76,5 +76,11 @@ public class CommandManager {
         PrintManager.printStringListMessage(COMMANDS_AVAILABLE, COMMANDS_AVAILABLE.length);
     }
 
+    /**
+    public String[] processCommand(){
+        String[] commandDetailsArray;
 
+        return commandDetailsArray;
+    }
+     */
 }

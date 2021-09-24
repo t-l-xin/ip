@@ -48,15 +48,27 @@ cmd [args] /[options] [additional args]
 ____________________________________________________________
 
 1. help - Displays help information such as commands available
+
 2. list - Displays list of tasks
-3. add [task description] - Add a normal task
-4. todo [task description] - Add a Todo task
-5. deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task
-6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
-7. done [TASK_number] - Mark a task as done
-8. delete [TASK_number] - Delete a task from the task list
+
+3. add [TASK_DESCRIPTION] - Add a normal task
+
+4. todo [TASK_DESCRIPTION] - Add a Todo task
+
+5. deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task
+   Input DateTime format: DD/MM/YYYY HHMM
+
+6. event [TASK_DESCRIPTION] /at [DATE_OF_EVENT] - Add a Event task
+   Input DateTime format: DD/MM/YYYY HHMM
+
+7. done [TASK_NUMBER] - Mark a task as done
+
+8. delete [TASK_NUMBER] - Delete a task from the task list
+
 9. find [TASK_KEYWORD] - Find a task by a keyword
+
 10. hist - Displays list of previous user input commands
+
 11. bye - Exit Duke program
 
 ____________________________________________________________
@@ -96,15 +108,27 @@ cmd [args] /[options] [additional args]
 ____________________________________________________________
 
 1. help - Displays help information such as commands available
+
 2. list - Displays list of tasks
-3. add [task description] - Add a normal task
-4. todo [task description] - Add a Todo task
-5. deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task
-6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
-7. done [TASK_number] - Mark a task as done
-8. delete [TASK_number] - Delete a task from the task list
+
+3. add [TASK_DESCRIPTION] - Add a normal task
+
+4. todo [TASK_DESCRIPTION] - Add a Todo task
+
+5. deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task
+   Input DateTime format: DD/MM/YYYY HHMM
+
+6. event [TASK_DESCRIPTION] /at [DATE_OF_EVENT] - Add a Event task
+   Input DateTime format: DD/MM/YYYY HHMM
+
+7. done [TASK_NUMBER] - Mark a task as done
+
+8. delete [TASK_NUMBER] - Delete a task from the task list
+
 9. find [TASK_KEYWORD] - Find a task by a keyword
+
 10. hist - Displays list of previous user input commands
+
 11. bye - Exit Duke program
 
 ____________________________________________________________

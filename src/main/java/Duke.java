@@ -27,7 +27,6 @@ public class Duke {
         Scanner in = new Scanner(System.in);
         TaskManager tm = new TaskManager();
         CommandManager cm = new CommandManager();
-        PrintManager pm = new PrintManager();
         FileManager fm = new FileManager();
         cm.showHelp();
 
@@ -35,8 +34,8 @@ public class Duke {
 
         tryLoadSavedFile(tm, fm);
 
-        do {
-            pm.promptUserForCommand();
+        while (!isBye){
+            PrintManager.promptUserForCommand();
             inputLine = in.nextLine().trim();
             String[] cmdArray = inputLine.split(" ", 2);
 
@@ -102,7 +101,7 @@ public class Duke {
                 break;
             }
 
-        } while (!isBye);
+        }
     }
 
     /**
