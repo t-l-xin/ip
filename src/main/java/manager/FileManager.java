@@ -53,7 +53,7 @@ public class FileManager {
      * And prints the task list.
      *
      * @param tm The Task Manager object.
-     * @throws IOException If there is error reading the file.
+     * @throws IOException           If there is error reading the file.
      * @throws FileNotFoundException If the file does not exist.
      */
     public void loadTasksFromSavedFile(TaskManager tm) throws IOException, FileNotFoundException {
@@ -67,6 +67,7 @@ public class FileManager {
         tm.getTaskListFromFile(taskListFromFile);
         tm.getTaskCountFromFile(taskCountFromFile);
         tm.listTasks();
+        //PrintManager.printBotExceptionMessage("hello");
     }
 
     /**
@@ -75,7 +76,7 @@ public class FileManager {
      * Add the details of the task to the arraylist.
      *
      * @param line Each line read from file.
-     * @param tm The Task Manager object.
+     * @param tm   The Task Manager object.
      */
     private void initialiseTaskFromSavedFile(String line, TaskManager tm) {
         char firstCharacterOfLine = line.charAt(CHARACTER_AT_INDEX_ZERO);
@@ -120,7 +121,7 @@ public class FileManager {
      * Then, increment the task count by 1.
      *
      * @param taskDetailsArray a filtered array that contains details of any task.
-     * @param taskType the type of task.
+     * @param taskType         the type of task.
      */
     public void addTaskFromSavedFile(String[] taskDetailsArray, TaskType taskType) {
         Task newTask = null;
@@ -194,10 +195,10 @@ public class FileManager {
      * Check if both directory and file exists.
      * Try to write to file and catch exceptions.
      *
-     * @param taskList The task list.
+     * @param taskList  The task list.
      * @param taskCount The task count.
      */
-    public void saveTasksToFile(ArrayList<Task> taskList, int taskCount) throws DukeException{
+    public void saveTasksToFile(ArrayList<Task> taskList, int taskCount) throws DukeException {
         checkDirectoryExist();
         checkSavedFileExist();
         try {
@@ -213,9 +214,9 @@ public class FileManager {
      * Writes the task list to duke.txt.
      * Iterates through the task list, get the string format to be saved to file, and write to file.
      *
-     * @param taskList The task list.
+     * @param taskList  The task list.
      * @param taskCount The task count.
-     * @throws IOException If error writing to file.
+     * @throws IOException           If error writing to file.
      * @throws FileNotFoundException If duke.txt do not exists.
      */
     private void writeToSavedFile(ArrayList<Task> taskList, int taskCount)

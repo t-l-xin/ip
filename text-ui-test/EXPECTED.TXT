@@ -85,6 +85,9 @@ Input DateTime format: DD/MM/YYYY HHMM
 
 ____________________________________________________________
 
+created data folder
+File created: duke.txt
+Successfully wrote to the file.
 
 Type your command:
 
@@ -94,16 +97,33 @@ No tasks, start by adding a task!
 Total Tasks: 0
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
 
 ____________________________________________________________
-adding: CS2106 tut
+adding: 2113 sub
 ____________________________________________________________
 
-created data folder
-File created: duke.txt
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] 2113 sub
+
+Total Tasks: 1
+____________________________________________________________
+
+data folder exists
+duke.txt exists
 Successfully wrote to the file.
 
 Type your command:
@@ -169,12 +189,15 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
 2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
 
 Total Tasks: 2
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -227,13 +250,28 @@ Type your command:
 
 
 ____________________________________________________________
-
-1. [T][ ] CS2106 tut
-2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
-
-Total Tasks: 2
+adding: cs2113 group meet /at 18/09/2021 2100
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] 2113 sub
+2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
+3. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
+
+Total Tasks: 3
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -242,12 +280,15 @@ ____________________________________________________________
 invalid command, please try again
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
 
 ************************************************************
-Exception message:IndexOutOfBoundsException: index start from 1
+Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
 data folder exists
@@ -259,18 +300,22 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
 2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
+3. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
 
-Total Tasks: 2
+Total Tasks: 3
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
 
 ************************************************************
-Exception message:IndexOutOfBoundsException: index start from 1
+Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
 data folder exists
@@ -282,12 +327,16 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
 2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
+3. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
 
-Total Tasks: 2
+Total Tasks: 3
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -306,18 +355,22 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
 2. [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
+3. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
 
-Total Tasks: 2
+Total Tasks: 3
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
 
 ************************************************************
-Exception message: IndexOutOfBoundsException: index start from 1
+Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
 data folder exists
@@ -329,18 +382,22 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
 2. [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
+3. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
 
-Total Tasks: 2
+Total Tasks: 3
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
 
 ************************************************************
-Exception message: IndexOutOfBoundsException: index start from 1
+Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
 data folder exists
@@ -352,12 +409,16 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
 2. [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
+3. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
 
-Total Tasks: 2
+Total Tasks: 3
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -376,17 +437,21 @@ Type your command:
 
 ____________________________________________________________
 
-1. [T][ ] CS2106 tut
+1. [T][ ] 2113 sub
+2. [E][ ] cs2113 group meet (at: Sep 18 2021 21:00 PM)
 
-Total Tasks: 1
+Total Tasks: 2
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
 
 ************************************************************
-Exception message: todo task needs details
+Exception message:todo task needs details
 
 ************************************************************
 data folder exists
@@ -395,6 +460,9 @@ Successfully wrote to the file.
 
 Type your command:
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 
 ____________________________________________________________
 Well done for today! Remember to have 8 hrs of sleep!

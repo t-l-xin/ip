@@ -10,26 +10,16 @@ import task.Event;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import static task.TaskType.ADD;
-import static task.TaskType.TODO;
-import static task.TaskType.DEADLINE;
-import static task.TaskType.EVENT;
-
 /**
  * Represents TaskManager. Contains data and operations involving tasks during the execution of the program.
  */
 public class TaskManager {
     private static final String BY_STRING = "/by";
     private static final String AT_STRING = "/at";
-    private static final String ADD_STRING = "add";
-    private static final String TODO_STRING = "todo";
-    private static final String DEADLINE_STRING = "deadline";
-    private static final String EVENT_STRING = "event";
-    private static final String EMPTY_STRING = "";
     private static final int INTEGER_ZERO = 0;
     private static final int INTEGER_ONE = 1;
 
-    ArrayList<Task> taskList = new ArrayList<Task>();
+    private ArrayList<Task> taskList = new ArrayList<Task>();
     private int taskCount = INTEGER_ZERO;
 
     /**
@@ -65,84 +55,10 @@ public class TaskManager {
     }
 
     /**
-     * Filters the tasks by task type and executes the adding of tasks to task list.
-     * After task added to task list, the task list is saved to file, in case of program pre-mature exit.
-     *
-     * @param commandArray The user command array.
-     * @param fm The FileManager object.
-     */
-    public void filterTasks(String[] commandArray, FileManager fm) {
-        switch (commandArray[INTEGER_ZERO]) {
-        case ADD_STRING:
-            try {
-                addTask(commandArray[INTEGER_ONE], ADD);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage("task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            try{
-                fm.saveTasksToFile(taskList, taskCount);
-            }catch (DukeException de){
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            break;
-        case TODO_STRING:
-            try {
-                addTask(commandArray[INTEGER_ONE], TODO);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage(" todo task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            try{
-                fm.saveTasksToFile(taskList, taskCount);
-            }catch (DukeException de){
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            break;
-        case DEADLINE_STRING:
-            try {
-                addTask(commandArray[INTEGER_ONE], DEADLINE);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage("deadline task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            try{
-                fm.saveTasksToFile(taskList, taskCount);
-            }catch (DukeException de){
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            break;
-        case EVENT_STRING:
-            try {
-                addTask(commandArray[INTEGER_ONE], EVENT);
-            } catch (ArrayIndexOutOfBoundsException ae) {
-                PrintManager.printBotExceptionMessage("event task needs details");
-            } catch (DukeException de) {
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            try{
-                fm.saveTasksToFile(taskList, taskCount);
-            }catch (DukeException de){
-                PrintManager.printBotExceptionMessage(de.getMessage());
-            }
-            break;
-        case EMPTY_STRING:
-            PrintManager.printBotStatusMessage("no command detected, please try again");
-            break;
-        default:
-            PrintManager.printBotStatusMessage("invalid command, please try again");
-            break;
-        }
-    }
-
-    /**
      * Gets the type of Task object to be added.
      *
      * @param newTask The new task object to be added.
-     * @param type The type of task to be added.
+     * @param type    The type of task to be added.
      * @return A Task object to be added in the subsequent functions.
      * @throws DukeException If user input does not follow the program input format.
      */
@@ -166,9 +82,9 @@ public class TaskManager {
      * Gets the task name and time by parsing the task string, checks if it follows the input format.
      *
      * @param taskDetail The string that contains task details.
-     * @param delimiter The delimiter depending on the task type.
+     * @param delimiter  The delimiter depending on the task type.
      * @return A string array that have split the task name and task detail.
-     * @throws DukeException If there input does not follow program input format.
+     * @throws DukeException                   If there input does not follow program input format.
      * @throws StringIndexOutOfBoundsException If the task details string array is missing some information.
      */
     public String[] getTaskNameAndTime(String taskDetail, String delimiter)
@@ -213,7 +129,7 @@ public class TaskManager {
 
     /**
      * @param taskDetail The string that contains task details.
-     * @param delimiter The delimiter for the task type.
+     * @param delimiter  The delimiter for the task type.
      * @throws DukeException If delimiter for the task type is not found.
      */
     private void checkForDelimiter(String taskDetail, String delimiter) throws DukeException {
@@ -253,11 +169,16 @@ public class TaskManager {
      *
      * @param taskNo The task number to be marked as done.
      */
-    public void markAsDone(String taskNo) {
+    public void markAsDone(String taskNo) throws DukeException {
         int taskIndex = Integer.parseInt(taskNo) - INTEGER_ONE;
-        taskList.get(taskIndex).setDone();
-        PrintManager.printBotStatusMessage(
-                String.format("Good Job, u have completed\ntask: %s", taskList.get(taskIndex).getTaskName()));
+        try {
+            taskList.get(taskIndex).setDone();
+            PrintManager.printBotStatusMessage(
+                    String.format("Good Job, u have completed\ntask: %s", taskList.get(taskIndex).getTaskName()));
+        } catch (IndexOutOfBoundsException ie) {
+            throw new DukeException("IndexOutOfBounds: index start from 1 to " + taskCount);
+        }
+
     }
 
     /**
@@ -266,12 +187,16 @@ public class TaskManager {
      *
      * @param taskNo The task number to be found for deletion.
      */
-    public void deleteTask(String taskNo) {
+    public void deleteTask(String taskNo) throws DukeException {
         int taskIndex = Integer.parseInt(taskNo) - INTEGER_ONE;
-        PrintManager.printBotStatusMessage(
-                String.format("Removed task:\n%s", taskList.get(taskIndex)));
-        taskList.remove(taskIndex);
-        taskCount--;
+        try {
+            PrintManager.printBotStatusMessage(
+                    String.format("Removed task:\n%s", taskList.get(taskIndex)));
+            taskList.remove(taskIndex);
+            taskCount--;
+        } catch (IndexOutOfBoundsException ie) {
+            throw new DukeException("IndexOutOfBounds: index start from 1 to " + taskCount);
+        }
     }
 
     /**

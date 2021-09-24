@@ -23,9 +23,9 @@ public class ParseManager {
      * @throws DukeException If the string does not follow the program input format.
      */
     public static void checkValidDateTimeFormat(String dateTimeString) throws DukeException {
-        try{
+        try {
             LocalDateTime.parse(dateTimeString, dateTimeformatter);
-        }catch (DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             throw new DukeException("\nDate time wrong format, follow: " + DATE_TIME_FORMAT_STRING);
         }
     }
@@ -36,7 +36,7 @@ public class ParseManager {
      * @param dateTimeString The string that contains date and time.
      * @return A date and time string format for printing.
      */
-    public static String parseDateTimeStringForOutput(String dateTimeString){
+    public static String parseDateTimeStringForOutput(String dateTimeString) {
         LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, dateTimeformatter);
         String formattedDateTimeString = dateTimePrintFormatter.format(dateTime).toString();
         return formattedDateTimeString;
