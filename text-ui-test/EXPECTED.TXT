@@ -104,6 +104,7 @@ ____________________________________________________________
 
 /data directory created
 duke.txt created
+Successfully wrote to the file.
 
 Type your command:
 
@@ -160,6 +161,7 @@ ____________________________________________________________
 
 /data directory exists
 duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -217,6 +219,7 @@ ____________________________________________________________
 
 /data directory exists
 duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -291,6 +294,7 @@ ____________________________________________________________
 
 /data directory exists
 duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 
@@ -357,6 +361,7 @@ ____________________________________________________________
 
 /data directory exists
 duke.txt exists
+Successfully wrote to the file.
 
 Type your command:
 

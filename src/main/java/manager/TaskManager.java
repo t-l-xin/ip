@@ -173,7 +173,7 @@ public class TaskManager {
      */
     public void findTask(String stringToFind) {
         ArrayList<Task> filteredList = (ArrayList<Task>) taskList.stream()
-                .filter((t) -> t.getTaskName().contains(stringToFind))
+                .filter((t) -> t.getTaskName().toLowerCase().contains(stringToFind.toLowerCase()))
                 .collect(Collectors.toList());
         PrintManager.printTaskListMessage(filteredList, filteredList.size());
     }

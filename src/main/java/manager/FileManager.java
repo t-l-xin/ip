@@ -225,7 +225,7 @@ public class FileManager {
             myWriter.write(String.format("%s\n", taskList.get(i).saveToFileStringFormat()));
         }
         myWriter.close();
-        //PrintManager.printNormalMessage("Successfully wrote to the file.");
+        PrintManager.printNormalMessage("Successfully wrote to the file.");
     }
 
 }

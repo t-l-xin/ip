@@ -55,11 +55,11 @@ ____________________________________________________________
 
 4. todo [TASK_DESCRIPTION] - Add a Todo task
 
-5. deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task
-   Input DateTime format: DD/MM/YYYY HHMM
+5. deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task 
+Input DateTime format: DD/MM/YYYY HHMM
 
 6. event [TASK_DESCRIPTION] /at [DATE_OF_EVENT] - Add a Event task
-   Input DateTime format: DD/MM/YYYY HHMM
+Input DateTime format: DD/MM/YYYY HHMM
 
 7. done [TASK_NUMBER] - Mark a task as done
 
@@ -116,10 +116,10 @@ ____________________________________________________________
 4. todo [TASK_DESCRIPTION] - Add a Todo task
 
 5. deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task
-   Input DateTime format: DD/MM/YYYY HHMM
+Input DateTime format: DD/MM/YYYY HHMM
 
 6. event [TASK_DESCRIPTION] /at [DATE_OF_EVENT] - Add a Event task
-   Input DateTime format: DD/MM/YYYY HHMM
+Input DateTime format: DD/MM/YYYY HHMM
 
 7. done [TASK_NUMBER] - Mark a task as done
 
@@ -148,11 +148,15 @@ Outcome shows a list of tasks.
 
 ```
 ____________________________________________________________
+ 
+1. [T][ ] return book
+2. [D][ ] CS2113 iP (by: Oct 01 2021 23:59 PM)
+3. [D][ ] CS2106 lab (by: Sep 22 2021 14:00 PM)
+4. [D][ ] CS2106 tutorial sheet (by: Sep 13 2021 09:00 AM)
+5. [E][ ] CS3103 lab (at: Sep 15 2021 12:00 PM)
+6. [E][ ] CS2113 group meet (at: Sep 18 2021 21:00 PM)
 
-1. [E][ ] meet at sch (at: 22 08 2021 08:00 AM)
-2. [D][ ] CS2106 lab (by: 22 09 2021 14:00 PM)
-
-Total Tasks: 2
+Total Tasks: 6
 ____________________________________________________________
 ```
 
@@ -173,7 +177,7 @@ ____________________________________________________________
 adding: read book
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
 Successfully wrote to the file.
 ```
@@ -195,7 +199,7 @@ ____________________________________________________________
 adding: return book
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
 Successfully wrote to the file.
 ```
@@ -214,10 +218,10 @@ Duke adds Deadline task to the task list and print the added status of the Deadl
 
 ```
 ____________________________________________________________
-adding: CS2106 lab /by 22/09/2021 1400
+adding: CS2113 iP /by 01/10/2021 2359
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
 Successfully wrote to the file.
 ```
@@ -239,7 +243,7 @@ ____________________________________________________________
 adding: CS2113 group meeting /at 18/09/2021 2100
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
 Successfully wrote to the file.
 ```
@@ -259,10 +263,10 @@ Duke marks the task specified by the task number as done, and outputs the name o
 ```
 ____________________________________________________________
 Good Job, u have completed
-task: lab
+task: CS2113 iP
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
 Successfully wrote to the file.
 
@@ -283,17 +287,18 @@ Duke deletes task from its list and outputs the task name of the task deleted.
 ```
 ____________________________________________________________
 Removed task:
-[D][X] lab (by: 22 09 2021 14:00 PM)
+[E][ ] CS3103 lab (at: Sep 15 2021 12:00 PM)
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
 Successfully wrote to the file.
+
 ```
 
 ### Find a task by keyword : `find`
 
-User type `find` and Duke output a list of tasks that contains the user input keyword.
+User type `find cs2113` and Duke output a list of tasks that contains the user input keyword `cs2113`.
 
 Example of usage:
 `find [TASK_KEYWORD]`
@@ -302,6 +307,13 @@ Expected outcome:
 Duke filters the task list and displays a list of tasks that contains the user input keyword. 
 
 ```
+____________________________________________________________
+
+1. [D][X] CS2113 iP (by: Oct 01 2021 23:59 PM)
+2. [E][ ] CS2113 group meet (at: Sep 18 2021 21:00 PM)
+
+Total Tasks: 2
+____________________________________________________________
 
 ```
 
@@ -319,9 +331,19 @@ Shows a list of user commands previously input for the current session.
 ```
 ____________________________________________________________
 
-1. help
-2. list
-3. hist
+1. todo return book
+2. deadline CS2113 iP /by 01/10/2021 2359
+3. list
+4. deadline CS2106 lab /by 22/09/2021 1400
+5. deadline CS2106 tutorial sheet /by 13/09/2021 0900
+6. list
+7. event CS3103 lab /at 15/09/2021 1200
+8. event CS2113 group meet /at 18/09/2021 2100
+9. list
+10. done 3
+11. delete 6
+12. find CS2113
+13. hist
 
 ____________________________________________________________
 ```
