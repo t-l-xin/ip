@@ -1,17 +1,27 @@
 help
 list
 todo CS2106 tut
+deadline
 deadline CS2106
 deadline /by 04/09/2021 0900
-deadline CS2106 lab /by 05/09/20212 000
+deadline CS2106 lab /by 005/09/20212 00
 deadline CS2106 lab /by 04/09/2021 0900
 list
 event
 event return
+event /at 005/09/20212 00
 event return book /at Mon 10am
 list
 blah
+done -1
+list
+done 9
+list
 done 2
+list
+delete 0
+list
+delete 8
 list
 delete 2
 list

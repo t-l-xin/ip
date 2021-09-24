@@ -20,13 +20,13 @@ ____________________________________________________________
 
 1. help - Displays help information such as commands available
 2. list - Displays list of tasks
-3. hist - Displays list of previous user input commands
-4. done [TASK_number] - Mark a task as done
-5. delete [TASK_number] - Delete a task from the task list
-6. add [task description] - Add a normal task
-7. todo [task description] - Add a Todo task
-8. deadline [task description] /by YYYY/MM/DD HHMM - Add a Deadline task
-9. event [task description] /at YYYY/MM/DD HHMM - Add a Event task
+3. add [task description] - Add a normal task
+4. todo [task description] - Add a Todo task
+5. deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task
+6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
+7. done [TASK_number] - Mark a task as done
+8. delete [TASK_number] - Delete a task from the task list
+9. hist - Displays list of previous user input commands
 10. bye - Exit Duke program
 
 ____________________________________________________________
@@ -48,13 +48,13 @@ ____________________________________________________________
 
 1. help - Displays help information such as commands available
 2. list - Displays list of tasks
-3. hist - Displays list of previous user input commands
-4. done [TASK_number] - Mark a task as done
-5. delete [TASK_number] - Delete a task from the task list
-6. add [task description] - Add a normal task
-7. todo [task description] - Add a Todo task
-8. deadline [task description] /by YYYY/MM/DD HHMM - Add a Deadline task
-9. event [task description] /at YYYY/MM/DD HHMM - Add a Event task
+3. add [task description] - Add a normal task
+4. todo [task description] - Add a Todo task
+5. deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task
+6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
+7. done [TASK_number] - Mark a task as done
+8. delete [TASK_number] - Delete a task from the task list
+9. hist - Displays list of previous user input commands
 10. bye - Exit Duke program
 
 ____________________________________________________________
@@ -78,6 +78,17 @@ ____________________________________________________________
 
 created data folder
 File created: duke.txt
+Successfully wrote to the file.
+
+Type your command:
+
+
+************************************************************
+Exception message:deadline task needs details
+
+************************************************************
+data folder exists
+duke.txt exists
 Successfully wrote to the file.
 
 Type your command:
@@ -167,6 +178,18 @@ Type your command:
 
 ************************************************************
 Exception message:
+Duke: can't find details
+
+************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+************************************************************
+Exception message:
 Date time wrong format, follow: dd/MM/yyyy HHmm
 
 ************************************************************
@@ -197,11 +220,103 @@ ____________________________________________________________
 Type your command:
 
 
+************************************************************
+Exception message:IndexOutOfBoundsException: index start from 1
+
+************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] CS2106 tut
+2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
+
+Total Tasks: 2
+____________________________________________________________
+
+
+Type your command:
+
+
+************************************************************
+Exception message:IndexOutOfBoundsException: index start from 1
+
+************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] CS2106 tut
+2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
+
+Total Tasks: 2
+____________________________________________________________
+
+
+Type your command:
+
+
 ____________________________________________________________
 Good Job, u have completed
 task: CS2106 lab
 ____________________________________________________________
 
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] CS2106 tut
+2. [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
+
+Total Tasks: 2
+____________________________________________________________
+
+
+Type your command:
+
+
+************************************************************
+Exception message: IndexOutOfBoundsException: index start from 1
+
+************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
+____________________________________________________________
+
+1. [T][ ] CS2106 tut
+2. [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
+
+Total Tasks: 2
+____________________________________________________________
+
+
+Type your command:
+
+
+************************************************************
+Exception message: IndexOutOfBoundsException: index start from 1
+
+************************************************************
 data folder exists
 duke.txt exists
 Successfully wrote to the file.

@@ -1,5 +1,6 @@
 package manager;
 
+import exception.DukeException;
 import task.Deadline;
 import task.Event;
 import task.Task;
@@ -176,7 +177,7 @@ public class FileManager {
      * Else, print file created.
      * Try catch to capture any errors while creating new file.
      */
-    private void checkSavedFileExist() {
+    private void checkSavedFileExist() throws DukeException {
         try {
             if (!savedFileName.createNewFile()) {
                 PrintManager.printNormalMessage("duke.txt exists");
@@ -184,7 +185,7 @@ public class FileManager {
                 PrintManager.printNormalMessage("File created: " + savedFileName.getName());
             }
         } catch (IOException e) {
-            PrintManager.printBotExceptionMessage(" error creating duke.txt");
+            throw new DukeException(" error creating duke.txt");
         }
     }
 
@@ -196,7 +197,7 @@ public class FileManager {
      * @param taskList The task list.
      * @param taskCount The task count.
      */
-    public void saveTasksToFile(ArrayList<Task> taskList, int taskCount) {
+    public void saveTasksToFile(ArrayList<Task> taskList, int taskCount) throws DukeException{
         checkDirectoryExist();
         checkSavedFileExist();
         try {

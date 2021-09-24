@@ -81,7 +81,11 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            fm.saveTasksToFile(taskList, taskCount);
+            try{
+                fm.saveTasksToFile(taskList, taskCount);
+            }catch (DukeException de){
+                PrintManager.printBotExceptionMessage(de.getMessage());
+            }
             break;
         case TODO_STRING:
             try {
@@ -91,7 +95,11 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            fm.saveTasksToFile(taskList, taskCount);
+            try{
+                fm.saveTasksToFile(taskList, taskCount);
+            }catch (DukeException de){
+                PrintManager.printBotExceptionMessage(de.getMessage());
+            }
             break;
         case DEADLINE_STRING:
             try {
@@ -101,7 +109,11 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            fm.saveTasksToFile(taskList, taskCount);
+            try{
+                fm.saveTasksToFile(taskList, taskCount);
+            }catch (DukeException de){
+                PrintManager.printBotExceptionMessage(de.getMessage());
+            }
             break;
         case EVENT_STRING:
             try {
@@ -111,7 +123,11 @@ public class TaskManager {
             } catch (DukeException de) {
                 PrintManager.printBotExceptionMessage(de.getMessage());
             }
-            fm.saveTasksToFile(taskList, taskCount);
+            try{
+                fm.saveTasksToFile(taskList, taskCount);
+            }catch (DukeException de){
+                PrintManager.printBotExceptionMessage(de.getMessage());
+            }
             break;
         case EMPTY_STRING:
             PrintManager.printBotStatusMessage("no command detected, please try again");

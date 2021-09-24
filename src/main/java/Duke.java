@@ -1,3 +1,4 @@
+import exception.DukeException;
 import manager.CommandManager;
 import manager.FileManager;
 import manager.PrintManager;
@@ -69,7 +70,11 @@ public class Duke {
                     PrintManager.printBotExceptionMessage(
                             "IndexOutOfBoundsException: index start from 1");
                 }
-                fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
+                try{
+                    fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
+                }catch (DukeException de){
+                    PrintManager.printBotExceptionMessage(de.getMessage());
+                }
                 break;
             case DELETE_STRING:
                 try {
@@ -84,7 +89,11 @@ public class Duke {
                     PrintManager.printBotExceptionMessage(
                             " IndexOutOfBoundsException: index start from 1");
                 }
-                fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
+                try{
+                    fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
+                }catch (DukeException de){
+                    PrintManager.printBotExceptionMessage(de.getMessage());
+                }
                 break;
             case BYE_STRING:
                 continue;
