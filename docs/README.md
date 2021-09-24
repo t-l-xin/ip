@@ -33,8 +33,8 @@ ____________________________________________________________
 3. delete [task no]
 4. add [task description]
 5. todo [task description]
-6. deadline [task description] /by YYYY/MM/DD hh:mm
-7. event [task description] /at YYYY/MM/DD hh:mm
+6. deadline [task description] /by YYYY/MM/DD HHMM
+7. event [task description] /at YYYY/MM/DD HHMM
 
 ____________________________________________________________
 
@@ -45,11 +45,14 @@ ____________________________________________________________
 ## Features
 
 ### *Notes*
-
+* Words in UPPER_CASE are the parameters to be supplied by the user. </br> e.g. in `todo [TASK_DESCRIPTION]`, `TASK_DESCRIPTION` is a parameter which can be used as `todo CS2101 slides` 
+* Items in square brackets are needed. </br> e.g. `todo [TASK_DESCRIPTION]` requires the `[TASK_DESCRIPTION]` for the program to save the task to the task list. 
+* Any fields that requires dates such as `[DATE_TO_BE_COMPLETED]` or `[DATE_OF_EVENT]` should be filled in this format: `[DD/MM/YYYY HHMM]`
+* For adding Deadline and Event tasks, both require their respective delimiters `/by` and `/at` in order for Duke to add the tasks to the task list.
 
 ### List all tasks : `list`
 
-User type `list` and does not require additional arguments.
+User type `list` and Duke will list all the tasks in the list.
 
 Example of usage:
 `list`
@@ -99,7 +102,7 @@ Shows a list of user commands previously input for the current session.
 
 User type `done 2` and Duke will output that task 2 is done.
 
-Example of usage: `done [TASK NUMBER]`
+Example of usage: `done [TASK_NUMBER]`
 
 Expected outcome:
 
@@ -113,7 +116,7 @@ expected output
 
 User type `delete 1` and Duke deletes task 1. 
 
-Example of usage: `delete [TASK NUMBER]`
+Example of usage: `delete [TASK_NUMBER]`
 
 Expected outcome:
 
@@ -125,9 +128,9 @@ expected output
 
 ### Add a normal task : `add`
 
-Add a task to the list.   
+User type `add read book` and Duke adds the task to the list.   
 
-Example of usage: `add [TASK DESCRIPTION]`
+Example of usage: `add [TASK_DESCRIPTION]`
 
 Expected outcome:
 
@@ -139,13 +142,13 @@ expected output
 
 ### Add a Todo task : `todo`
 
+User type `todo return book`and Duke adds a Todo task to the list.
 
-
-Example of usage: `todo [TASK DESCRIPTION]`
+Example of usage: `todo [TASK_DESCRIPTION]`
 
 Expected outcome:
 
-Description of the outcome.
+Duke adds Todo task to the task list and print the added status of the Todo task.
 
 ```
 expected output
@@ -153,13 +156,13 @@ expected output
 
 ### Add a Deadline task : `deadline`
 
-Describe the action and its outcome.
+User type `deadline essay reading /by 10/10/2021 1500` and Duke adds a Deadline task to the list.
 
-Example of usage: `deadline [TASK DESCRIPTION] /by [DD/MM/YYYY HHMM]`
+Example of usage: `deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]`
 
 Expected outcome:
 
-Description of the outcome.
+Duke adds Deadline task to the task list and print the added status of the Deadline task.
 
 ```
 expected output
@@ -167,13 +170,13 @@ expected output
 
 ### Add an Event task : `event`
 
-Describe the action and its outcome.
+User type `event group meeting /at 11/09/2021 0900` and Duke adds a Event task to the list.
 
-Example of usage: `event [TASK DESCRIPTION] /at [DD/MM/YYYY HHMM]`
+Example of usage: `event [TASK_DESCRIPTION] /at [DATE_OF_EVENT]`
 
 Expected outcome:
 
-Description of the outcome.
+Duke adds Event task to the task list and print the added status of the Event task.
 
 ```
 expected output
@@ -188,8 +191,15 @@ All Duke data are saved in the hard disk automatically after any command that ch
 Duke data are saved as a TXT file [*home folder*]/data/duke.txt. Advanced users are welcome to update data directly by editing that data file.
 *home folder* refers to the folder where you initially placed ip.jar, mentioned at the Quick Setup section.
 
-## FAQ
-
 ## Command Summary
-
-
+Action | Format Examples
+------------ | -------------
+List | `list`
+Help | `help`
+History | `hist` 
+Done | `done [TASK_NUMBER]` <br /> e.g. `done 3`
+Delete | `delete [TASK_NUMBER]` <br /> e.g. `delete 1`
+Add |`add [TASK_DESCRIPTION]` <br /> e.g. `add read book` 
+Todo |`todo [TASK_DESCRIPTION]` <br /> e.g. `todo return book` 
+Deadline |`deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]` <br /> e.g. `deadline CS2106 lab /by 22/09/2021 1400` 
+Event |`event [TASK_DESCRIPTION] /by [DATE_OF_EVENT]` <br /> e.g. `event CS2113 group meeting /at 05/09/2021 1800` 
