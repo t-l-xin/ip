@@ -24,7 +24,7 @@ Duke is a **Command Line Interface** (CLI) bot made for students who are forgetf
 3. Copy the file to the folder you want to use as the *home folder* for your Duke program.
 4. Open a terminal from the *home folder* of your program.
 5. Start by typing `java -jar ip.jar`. The output of the program would be as shown below.
-```
+```md
  ______________
 |            @ | #####  ####        #####   ####
 |         @@   |   #   #    #       #    # #    #
@@ -83,7 +83,7 @@ Expected outcome:
 
 Shows a list of commands available and some additional arguments and format required to ensure command can be parsed by Duke.
 
-```
+```md
 How to use this bot:
 Type ur command in the following format
 cmd [args] /[options] [additional args]
@@ -292,6 +292,8 @@ Duke data are saved as a TXT file [*home folder*]/data/duke.txt. Advanced users 
 *home folder* refers to the folder where you initially placed ip.jar, mentioned at the Quick Setup section.
 
 ## Command Summary
+
+
 Action | Format Examples
 ------------ | -------------
 Help | `help`
