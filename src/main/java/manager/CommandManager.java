@@ -9,13 +9,13 @@ public class CommandManager {
     private final String[] COMMANDS_AVAILABLE = {
             "help - Displays help information such as commands available",
             "list - Displays list of tasks",
-            "hist - Displays list of previous user input commands",
-            "done [TASK_number] - Mark a task as done",
-            "delete [TASK_number] - Delete a task from the task list",
             "add [task description] - Add a normal task",
             "todo [task description] - Add a Todo task",
-            "deadline [task description] /by YYYY/MM/DD HHMM - Add a Deadline task",
-            "event [task description] /at YYYY/MM/DD HHMM - Add a Event task",
+            "deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task",
+            "event [task description] /at DD/MM/YYYY HHMM - Add a Event task",
+            "done [TASK_number] - Mark a task as done",
+            "delete [TASK_number] - Delete a task from the task list",
+            "hist - Displays list of previous user input commands",
             "bye - Exit Duke program"
     };
 

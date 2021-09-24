@@ -1,6 +1,23 @@
 # User Guide
 
 Duke is a **Command Line Interface** (CLI) bot made for students who are forgetful and want to keep up with their daily tasks. Fast typers will benefit the most out of this as Duke is able to get tasks faster than normal GUI apps.
+
+* [Quick Setup](#quick-setup)
+* [Features](#features)
+  * [Viewing Help](#viewing-help--help)
+  * [List all tasks](#list-all-tasks--list)
+  * [Add a task](#add-a-task--add)
+  * [Add a Todo task](#add-a-todo-task--todo)
+  * [Add a Deadline task](#add-a-deadline-task--deadline)
+  * [Add an Event task](#add-an-event-task--event)
+  * [Done a task](#done-a-task--done)
+  * [Delete a task](#delete-a-task--delete)
+  * [View user command history](#view-user-command-history--hist)
+  * [Bye Duke](#bye-duke--bye)
+  * [Saving the data](#saving-the-data)
+  * [Editing the data file](#editing-the-data-file)
+* [Command Summary](#command-summary)
+
 ## Quick Setup
 1. Ensure you have Java `11` or above installed in your Computer.
 2. Download the latest `ip.jar` from [here](https://github.com/t-l-xin/ip/releases).
@@ -51,25 +68,6 @@ ____________________________________________________________
 * Any fields that requires dates such as `[DATE_TO_BE_COMPLETED]` or `[DATE_OF_EVENT]` should be filled in this format: `[DD/MM/YYYY HHMM]`
 * For adding Deadline and Event tasks, both require their respective delimiters `/by` and `/at` in order for Duke to add the tasks to the task list.
 
-### List all tasks : `list`
-
-User type `list` and Duke will list all the tasks in the list.
-
-Example of usage:
-`list`
-
-Expected outcome:
-Outcome shows a list of tasks.
-```
-____________________________________________________________
-
-1. [E][ ] meet at sch (at: 22 08 2021 08:00 AM)
-2. [D][ ] CS2106 lab (by: 22 09 2021 14:00 PM)
-
-Total Tasks: 2
-____________________________________________________________
-```
-
 ### Viewing Help : `help`
 
 User type `help` and Duke will output a list of commands available.
@@ -99,71 +97,27 @@ ____________________________________________________________
 
 ```
 
+### List all tasks : `list`
 
-### Viewing history of user commands : `hist`
-
-User type `hist` and Duke output a list of commands the user previously input for the current session.
+User type `list` and Duke will list all the tasks in the list.
 
 Example of usage:
-`hist`
+`list`
 
 Expected outcome:
-Shows a list of user commands previously input for the current session.
-
+Outcome shows a list of tasks.
 ```
 ____________________________________________________________
 
-1. help
-2. list
-3. hist
+1. [E][ ] meet at sch (at: 22 08 2021 08:00 AM)
+2. [D][ ] CS2106 lab (by: 22 09 2021 14:00 PM)
 
+Total Tasks: 2
 ____________________________________________________________
 ```
 
-### Done a task : `done`
 
-User type `done 2` and Duke will output that task 2 is done.
-
-Example of usage: `done [TASK_NUMBER]`
-
-Expected outcome:
-
-Duke marks the task specified by the task number as done, and outputs the name of the task that is done.
-
-```
-____________________________________________________________
-Good Job, u have completed
-task: lab
-____________________________________________________________
-
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
-
-```
-
-### Delete a task : `delete`
-
-User type `delete 1` and Duke deletes task 1. 
-
-Example of usage: `delete [TASK_NUMBER]`
-
-Expected outcome:
-
-Duke deletes task from its list and outputs the task name of the task deleted.
-
-```
-____________________________________________________________
-Removed task:
-[D][X] lab (by: 22 09 2021 14:00 PM)
-____________________________________________________________
-
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
-```
-
-### Add a normal task : `add`
+### Add a task : `add`
 
 User type `add read book` and Duke adds the task to the list.   
 
@@ -242,6 +196,72 @@ data folder exists
 duke.txt exists
 Successfully wrote to the file.
 ```
+
+
+### Done a task : `done`
+
+User type `done 2` and Duke will output that task 2 is done.
+
+Example of usage: `done [TASK_NUMBER]`
+
+Expected outcome:
+
+Duke marks the task specified by the task number as done, and outputs the name of the task that is done.
+
+```
+____________________________________________________________
+Good Job, u have completed
+task: lab
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+```
+
+### Delete a task : `delete`
+
+User type `delete 1` and Duke deletes task 1.
+
+Example of usage: `delete [TASK_NUMBER]`
+
+Expected outcome:
+
+Duke deletes task from its list and outputs the task name of the task deleted.
+
+```
+____________________________________________________________
+Removed task:
+[D][X] lab (by: 22 09 2021 14:00 PM)
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+```
+
+
+### View user command history : `hist`
+
+User type `hist` and Duke output a list of commands the user previously input for the current session.
+
+Example of usage:
+`hist`
+
+Expected outcome:
+Shows a list of user commands previously input for the current session.
+
+```
+____________________________________________________________
+
+1. help
+2. list
+3. hist
+
+____________________________________________________________
+```
+
 ### Bye Duke : `bye`
 
 User type `bye` and Duke program is to exit.
@@ -269,13 +289,15 @@ Duke data are saved as a TXT file [*home folder*]/data/duke.txt. Advanced users 
 ## Command Summary
 Action | Format Examples
 ------------ | -------------
-List | `list`
 Help | `help`
-History | `hist` 
-Done | `done [TASK_NUMBER]` <br /> e.g. `done 3`
-Delete | `delete [TASK_NUMBER]` <br /> e.g. `delete 1`
+List | `list`
 Add |`add [TASK_DESCRIPTION]` <br /> e.g. `add read book` 
 Todo |`todo [TASK_DESCRIPTION]` <br /> e.g. `todo return book` 
 Deadline |`deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]` <br /> e.g. `deadline CS2106 lab /by 22/09/2021 1400` 
-Event |`event [TASK_DESCRIPTION] /by [DATE_OF_EVENT]` <br /> e.g. `event CS2113 group meeting /at 05/09/2021 1800` 
+Event |`event [TASK_DESCRIPTION] /by [DATE_OF_EVENT]` <br /> e.g. `event CS2113 group meeting /at 05/09/2021 1800`
+Done | `done [TASK_NUMBER]` <br /> e.g. `done 3`
+Delete | `delete [TASK_NUMBER]` <br /> e.g. `delete 1`
+History | `hist`
 Bye | `bye`
+
+[Back to the top](#user-guide)
