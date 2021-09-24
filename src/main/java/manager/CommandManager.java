@@ -44,6 +44,7 @@ public class CommandManager {
     private String[] commandList = new String[MAX_COMMANDS_LIMIT];
     private int commandCount = 0;
     private static boolean isBye = false;
+    private static boolean needFileSaveOperation;
 
     /**
      * Adds the command input by the user to a string array.
@@ -112,10 +113,10 @@ public class CommandManager {
      *
      * @param commandDetailsArray The array that contains the details of the command.
      * @param tm                  TaskManager object.
-     * @param fm                  FileManager object
      * @return A boolean to the program whether to terminate.
      */
-    public boolean processCommand(String[] commandDetailsArray, TaskManager tm, FileManager fm) {
+    public boolean processCommand(String[] commandDetailsArray, TaskManager tm) {
+        needFileSaveOperation = false;
         try {
             switch (commandDetailsArray[0]) {
             case HELP_STRING:
@@ -132,24 +133,30 @@ public class CommandManager {
                 break;
             case DONE_STRING:
                 tm.markAsDone(commandDetailsArray[1]);
+                needFileSaveOperation = true;
                 break;
             case DELETE_STRING:
                 tm.deleteTask(commandDetailsArray[1]);
+                needFileSaveOperation = true;
                 break;
             case BYE_STRING:
                 isBye = true;
                 break;
             case ADD_STRING:
                 tm.addTask(commandDetailsArray[1], ADD);
+                needFileSaveOperation = true;
                 break;
             case TODO_STRING:
                 tm.addTask(commandDetailsArray[1], TODO);
+                needFileSaveOperation = true;
                 break;
             case DEADLINE_STRING:
                 tm.addTask(commandDetailsArray[1], DEADLINE);
+                needFileSaveOperation = true;
                 break;
             case EVENT_STRING:
                 tm.addTask(commandDetailsArray[1], EVENT);
+                needFileSaveOperation = true;
                 break;
             case EMPTY_STRING:
                 PrintManager.printBotStatusMessage("no command detected, please try again");
@@ -164,6 +171,10 @@ public class CommandManager {
             PrintManager.printBotExceptionMessage(de.getMessage());
         }
         return isBye;
+    }
+
+    public static boolean checkNeedSaveOperation(){
+        return needFileSaveOperation;
     }
 
 }

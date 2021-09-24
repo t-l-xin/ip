@@ -85,9 +85,6 @@ Input DateTime format: DD/MM/YYYY HHMM
 
 ____________________________________________________________
 
-created data folder
-File created: duke.txt
-Successfully wrote to the file.
 
 Type your command:
 
@@ -97,9 +94,6 @@ No tasks, start by adding a task!
 Total Tasks: 0
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -108,9 +102,8 @@ ____________________________________________________________
 adding: 2113 sub
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
+/data directory created
+duke.txt created
 
 Type your command:
 
@@ -122,9 +115,6 @@ ____________________________________________________________
 Total Tasks: 1
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -133,9 +123,6 @@ Type your command:
 Exception message:deadline task needs details
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -145,9 +132,6 @@ Exception message:
 Duke: can't find /by
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -157,9 +141,6 @@ Exception message:
 Duke: can't find details
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -169,9 +150,6 @@ Exception message:
 Date time wrong format, follow: dd/MM/yyyy HHmm
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -180,9 +158,8 @@ ____________________________________________________________
 adding: CS2106 lab /by 04/09/2021 0900
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -195,9 +172,6 @@ ____________________________________________________________
 Total Tasks: 2
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -206,9 +180,6 @@ Type your command:
 Exception message:event task needs details
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -218,9 +189,6 @@ Exception message:
 Duke: can't find /at
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -230,9 +198,6 @@ Exception message:
 Duke: can't find details
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -242,9 +207,6 @@ Exception message:
 Date time wrong format, follow: dd/MM/yyyy HHmm
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -253,9 +215,8 @@ ____________________________________________________________
 adding: cs2113 group meet /at 18/09/2021 2100
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -269,9 +230,6 @@ ____________________________________________________________
 Total Tasks: 3
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -280,9 +238,6 @@ ____________________________________________________________
 invalid command, please try again
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -291,9 +246,6 @@ Type your command:
 Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -307,9 +259,6 @@ ____________________________________________________________
 Total Tasks: 3
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -318,9 +267,6 @@ Type your command:
 Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -334,9 +280,6 @@ ____________________________________________________________
 Total Tasks: 3
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -346,9 +289,8 @@ Good Job, u have completed
 task: CS2106 lab
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -362,9 +304,6 @@ ____________________________________________________________
 Total Tasks: 3
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -373,9 +312,6 @@ Type your command:
 Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -389,9 +325,6 @@ ____________________________________________________________
 Total Tasks: 3
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -400,9 +333,6 @@ Type your command:
 Exception message:IndexOutOfBounds: index start from 1 to 3
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -416,9 +346,6 @@ ____________________________________________________________
 Total Tasks: 3
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -428,9 +355,8 @@ Removed task:
 [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
 ____________________________________________________________
 
-data folder exists
+/data directory exists
 duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -443,9 +369,6 @@ ____________________________________________________________
 Total Tasks: 2
 ____________________________________________________________
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
@@ -454,15 +377,9 @@ Type your command:
 Exception message:todo task needs details
 
 ************************************************************
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 Type your command:
 
-data folder exists
-duke.txt exists
-Successfully wrote to the file.
 
 ____________________________________________________________
 Well done for today! Remember to have 8 hrs of sleep!

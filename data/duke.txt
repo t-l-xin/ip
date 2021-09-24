@@ -1,2 +1,2 @@
 T|0|read book
-D|0|make dinner|23/09/2021 1900
+E|0|meeting|16/10/2020 1500

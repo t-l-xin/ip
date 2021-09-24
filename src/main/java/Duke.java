@@ -28,8 +28,10 @@ public class Duke {
         while (!isBye) {
             try {
                 String[] commandDetailsArray = cm.readCommand(in);
-                isBye = cm.processCommand(commandDetailsArray, tm, fm);
-                fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
+                isBye = cm.processCommand(commandDetailsArray, tm);
+                if(cm.checkNeedSaveOperation()){
+                    fm.saveTasksToFile(tm.getTaskList(), tm.getTaskCount());
+                }
             } catch (DukeException e) {
                 PrintManager.printBotExceptionMessage(e.getMessage());
             }

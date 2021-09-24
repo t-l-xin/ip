@@ -164,9 +164,9 @@ public class FileManager {
     private void checkDirectoryExist() {
         if (!dataDirName.exists()) {
             dataDirName.mkdir();
-            PrintManager.printNormalMessage("created data folder");
-        } else {
-            PrintManager.printNormalMessage("data folder exists");
+            PrintManager.printNormalMessage("/data directory created");
+        }else {
+            PrintManager.printNormalMessage("/data directory exists");
         }
     }
 
@@ -181,8 +181,8 @@ public class FileManager {
         try {
             if (!savedFileName.createNewFile()) {
                 PrintManager.printNormalMessage("duke.txt exists");
-            } else {
-                PrintManager.printNormalMessage("File created: " + savedFileName.getName());
+            }else{
+                PrintManager.printNormalMessage("duke.txt created");
             }
         } catch (IOException e) {
             throw new DukeException(" error creating duke.txt");
@@ -225,7 +225,7 @@ public class FileManager {
             myWriter.write(String.format("%s\n", taskList.get(i).saveToFileStringFormat()));
         }
         myWriter.close();
-        System.out.println("Successfully wrote to the file.");
+        //PrintManager.printNormalMessage("Successfully wrote to the file.");
     }
 
 }
