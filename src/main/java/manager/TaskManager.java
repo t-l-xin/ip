@@ -48,7 +48,6 @@ public class TaskManager {
      */
     public void getTaskCountFromFile(int taskCountFromFile) {
         taskCount = taskCountFromFile;
-        PrintManager.printTaskListMessage(taskList, taskCount);
     }
 
     /**

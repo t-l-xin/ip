@@ -58,6 +58,9 @@ ____________________________________________________________
 
 ____________________________________________________________
 
+loading saved files...
+
+____________________________________________________________
 ```
 6. You may then start typing your commands under the "Type ur command:" prompt.
 7. Refer to Features below for details of each command. 

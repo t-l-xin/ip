@@ -23,15 +23,9 @@ public class ParseManager {
      * @throws DukeException If the string does not follow the program input format.
      */
     public static void checkValidDateTimeFormat(String dateTimeString) throws DukeException {
-        boolean isValidDateTimeFormat;
         try{
             LocalDateTime.parse(dateTimeString, dateTimeformatter);
-            isValidDateTimeFormat = true;
         }catch (DateTimeParseException e){
-            isValidDateTimeFormat = false;
-        }
-
-        if(!isValidDateTimeFormat){
             throw new DukeException("\nDate time wrong format, follow: " + DATE_TIME_FORMAT_STRING);
         }
     }
@@ -45,7 +39,8 @@ public class ParseManager {
     public static String parseDateTimeStringForOutput(String dateTimeString){
         LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, dateTimeformatter);
         String formattedDateTimeString = dateTimePrintFormatter.format(dateTime).toString();
-        //PrintManager.printNormalMessage("formatted date time: " + formattedDateTimeString);
         return formattedDateTimeString;
     }
+
+
 }

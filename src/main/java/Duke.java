@@ -96,7 +96,6 @@ public class Duke {
         } while (!isBye);
     }
 
-
     /**
      * Try to load saved file from the previous session
      *
