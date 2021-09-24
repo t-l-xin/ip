@@ -4,9 +4,9 @@ package manager;
  * Represents CommandManager. Manages data and operations involving commands during program execution.
  */
 public class CommandManager {
-    public final int MAX_COMMANDS_LIMIT = 100;
-    public final String COMMAND_FORMAT = "cmd [args] /[options] [additional args]";
-    public final String[] COMMANDS_AVAILABLE = {
+    private final int MAX_COMMANDS_LIMIT = 100;
+    private final String COMMAND_FORMAT = "cmd [args] /[options] [additional args]";
+    private final String[] COMMANDS_AVAILABLE = {
             "help - Displays help information such as commands available",
             "list - Displays list of tasks",
             "hist - Displays list of previous user input commands",

@@ -73,7 +73,6 @@ public class TaskManager {
      * @param fm The FileManager object.
      */
     public void filterTasks(String[] commandArray, FileManager fm) {
-        PrintManager pm = new PrintManager();
         switch (commandArray[INTEGER_ZERO]) {
         case ADD_STRING:
             try {
@@ -116,10 +115,10 @@ public class TaskManager {
             fm.saveTasksToFile(taskList, taskCount);
             break;
         case EMPTY_STRING:
-            pm.printBotStatusMessage("no command detected, please try again");
+            PrintManager.printBotStatusMessage("no command detected, please try again");
             break;
         default:
-            pm.printBotStatusMessage("invalid command, please try again");
+            PrintManager.printBotStatusMessage("invalid command, please try again");
             break;
         }
     }

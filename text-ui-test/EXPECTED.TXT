@@ -7,8 +7,8 @@
 |    @         |   #    ####        #####   ####
  --------------
 ____________________________________________________________
-Hi! I'm LingLing!
-Your personal nanny to make sure you do work.
+Hi! I'm Duke!
+Your personal bot to make sure you do work.
 Have you started ur tasks? Start by typing "help"
 ____________________________________________________________
 
@@ -18,13 +18,16 @@ cmd [args] /[options] [additional args]
 
 ____________________________________________________________
 
-1. help, list, hist - no additional arguments required
-2. done [task no]
-3. delete [task no]
-4. add [task description]
-5. todo [task description]
-6. deadline [task description] /by [time/data]
-7. event [task description] /at [time/date]
+1. help - Displays help information such as commands available
+2. list - Displays list of tasks
+3. hist - Displays list of previous user input commands
+4. done [TASK_number] - Mark a task as done
+5. delete [TASK_number] - Delete a task from the task list
+6. add [task description] - Add a normal task
+7. todo [task description] - Add a Todo task
+8. deadline [task description] /by YYYY/MM/DD HHMM - Add a Deadline task
+9. event [task description] /at YYYY/MM/DD HHMM - Add a Event task
+10. bye - Exit Duke program
 
 ____________________________________________________________
 
@@ -43,13 +46,16 @@ cmd [args] /[options] [additional args]
 
 ____________________________________________________________
 
-1. help, list, hist - no additional arguments required
-2. done [task no]
-3. delete [task no]
-4. add [task description]
-5. todo [task description]
-6. deadline [task description] /by [time/data]
-7. event [task description] /at [time/date]
+1. help - Displays help information such as commands available
+2. list - Displays list of tasks
+3. hist - Displays list of previous user input commands
+4. done [TASK_number] - Mark a task as done
+5. delete [TASK_number] - Delete a task from the task list
+6. add [task description] - Add a normal task
+7. todo [task description] - Add a Todo task
+8. deadline [task description] /by YYYY/MM/DD HHMM - Add a Deadline task
+9. event [task description] /at YYYY/MM/DD HHMM - Add a Event task
+10. bye - Exit Duke program
 
 ____________________________________________________________
 
@@ -101,8 +107,20 @@ Successfully wrote to the file.
 Type your command:
 
 
+************************************************************
+Exception message:
+Date time wrong format, follow: dd/MM/yyyy HHmm
+
+************************************************************
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
+Type your command:
+
+
 ____________________________________________________________
-adding: CS2106 lab /by 4Sep
+adding: CS2106 lab /by 04/09/2021 0900
 ____________________________________________________________
 
 data folder exists
@@ -115,7 +133,7 @@ Type your command:
 ____________________________________________________________
 
 1. [T][ ] CS2106 tut
-2. [D][ ] CS2106 lab (by: 4Sep)
+2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
 
 Total Tasks: 2
 ____________________________________________________________
@@ -147,10 +165,11 @@ Successfully wrote to the file.
 Type your command:
 
 
-____________________________________________________________
-adding: return book /at Mon 10am
-____________________________________________________________
+************************************************************
+Exception message:
+Date time wrong format, follow: dd/MM/yyyy HHmm
 
+************************************************************
 data folder exists
 duke.txt exists
 Successfully wrote to the file.
@@ -161,10 +180,9 @@ Type your command:
 ____________________________________________________________
 
 1. [T][ ] CS2106 tut
-2. [D][ ] CS2106 lab (by: 4Sep)
-3. [E][ ] return book (at: Mon 10am)
+2. [D][ ] CS2106 lab (by: Sep 04 2021 09:00 AM)
 
-Total Tasks: 3
+Total Tasks: 2
 ____________________________________________________________
 
 
@@ -194,10 +212,9 @@ Type your command:
 ____________________________________________________________
 
 1. [T][ ] CS2106 tut
-2. [D][X] CS2106 lab (by: 4Sep)
-3. [E][ ] return book (at: Mon 10am)
+2. [D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
 
-Total Tasks: 3
+Total Tasks: 2
 ____________________________________________________________
 
 
@@ -206,7 +223,7 @@ Type your command:
 
 ____________________________________________________________
 Removed task:
-[D][X] CS2106 lab (by: 4Sep)
+[D][X] CS2106 lab (by: Sep 04 2021 09:00 AM)
 ____________________________________________________________
 
 data folder exists
@@ -219,9 +236,8 @@ Type your command:
 ____________________________________________________________
 
 1. [T][ ] CS2106 tut
-2. [E][ ] return book (at: Mon 10am)
 
-Total Tasks: 2
+Total Tasks: 1
 ____________________________________________________________
 
 
