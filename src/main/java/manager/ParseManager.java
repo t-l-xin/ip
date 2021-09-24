@@ -11,10 +11,10 @@ import java.time.format.DateTimeParseException;
  */
 public class ParseManager {
 
-    public static final String DATE_TIME_FORMAT_STRING = "dd/MM/yyyy HHmm";
-    public static final String DATE_TIME_FORMAT_FOR_PRINTING_STRING = "MMM dd yyyy HH:mm a";
-    public static DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_STRING);
-    public static DateTimeFormatter dateTimePrintFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_FOR_PRINTING_STRING);
+    private static final String DATE_TIME_FORMAT_STRING = "dd/MM/yyyy HHmm";
+    private static final String DATE_TIME_FORMAT_FOR_PRINTING_STRING = "MMM dd yyyy HH:mm a";
+    private static DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_STRING);
+    private static DateTimeFormatter dateTimePrintFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_FOR_PRINTING_STRING);
 
     /**
      * Checks if the date and time string follows the program input format.

@@ -79,23 +79,23 @@ public class FileManager {
      */
     private void initialiseTaskFromSavedFile(String line, TaskManager tm) {
         char firstCharacterOfLine = line.charAt(CHARACTER_AT_INDEX_ZERO);
-        String[] detailsArr;
+        String[] taskDetailsArray;
         switch (firstCharacterOfLine) {
         case ADD_CHARACTER:
-            detailsArr = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
-            addTaskFromSavedFile(detailsArr, ADD);
+            taskDetailsArray = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
+            addTaskFromSavedFile(taskDetailsArray, ADD);
             break;
         case DEADLINE_CHARACTER:
-            detailsArr = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
-            addTaskFromSavedFile(detailsArr, DEADLINE);
+            taskDetailsArray = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
+            addTaskFromSavedFile(taskDetailsArray, DEADLINE);
             break;
         case EVENT_CHARACTER:
-            detailsArr = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
-            addTaskFromSavedFile(detailsArr, EVENT);
+            taskDetailsArray = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
+            addTaskFromSavedFile(taskDetailsArray, EVENT);
             break;
         case TODO_CHARACTER:
-            detailsArr = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
-            addTaskFromSavedFile(detailsArr, TODO);
+            taskDetailsArray = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
+            addTaskFromSavedFile(taskDetailsArray, TODO);
             break;
         default:
             PrintManager.printNormalMessage(firstCharacterOfLine + " does not match any tasks initials");
@@ -107,11 +107,11 @@ public class FileManager {
      * Separates the line read by pipe character.
      *
      * @param line Each line read from file.
-     * @return detailsArr An array containing the task details.
+     * @return taskDetailsArray An array containing the task details.
      */
     public String[] separateByPipeCharacter(String line) {
-        String[] detailsArr = line.split(PIPE_CHARACTER);
-        return detailsArr;
+        String[] taskDetailsArray = line.split(PIPE_CHARACTER);
+        return taskDetailsArray;
     }
 
     /**
@@ -119,34 +119,34 @@ public class FileManager {
      * Then adds the new task to the task arraylist and sets the done status of the task.
      * Then, increment the task count by 1.
      *
-     * @param detailsArr a filtered array that contains details of any task.
+     * @param taskDetailsArray a filtered array that contains details of any task.
      * @param taskType the type of task.
      */
-    public void addTaskFromSavedFile(String[] detailsArr, TaskType taskType) {
+    public void addTaskFromSavedFile(String[] taskDetailsArray, TaskType taskType) {
         Task newTask = null;
         switch (taskType) {
         case ADD:
-            newTask = new Task(detailsArr[INTEGER_ONE]);
+            newTask = new Task(taskDetailsArray[INTEGER_ONE]);
             break;
         case TODO:
-            newTask = new Todo(detailsArr[INTEGER_ONE]);
+            newTask = new Todo(taskDetailsArray[INTEGER_ONE]);
             break;
         case DEADLINE:
-            newTask = new Deadline(detailsArr[INTEGER_ONE], detailsArr[INTEGER_TWO]);
+            newTask = new Deadline(taskDetailsArray[INTEGER_ONE], taskDetailsArray[INTEGER_TWO]);
             break;
         case EVENT:
-            newTask = new Event(detailsArr[INTEGER_ONE], detailsArr[INTEGER_TWO]);
+            newTask = new Event(taskDetailsArray[INTEGER_ONE], taskDetailsArray[INTEGER_TWO]);
             break;
         }
         taskListFromFile.add(newTask);
-        initialiseTaskStatusFromSavedFile(detailsArr[INTEGER_ZERO]);
+        initialiseTaskStatusFromSavedFile(taskDetailsArray[INTEGER_ZERO]);
         taskCountFromFile++;
     }
 
     /**
      * Initialises task done status based on number.
      * If file status equals 1, task is done, update the task list.
-     * Else task is not done.
+     * Else, task is not done.
      *
      * @param fileDetailStatus The number indicating the dones status of the task
      */
@@ -158,8 +158,8 @@ public class FileManager {
 
     /**
      * Checks if the directory /data exists.
-     * If do not exist, create the directory.
-     * Else, print folder exists.
+     * If directory does not exist, create the directory.
+     * Else, print directory exists.
      */
     private void checkDirectoryExist() {
         if (!dataDirName.exists()) {
@@ -203,9 +203,9 @@ public class FileManager {
         try {
             writeToSavedFile(taskList, taskCount);
         } catch (FileNotFoundException fe) {
-            PrintManager.printBotExceptionMessage(" no data files yet");
+            throw new DukeException(" no data files yet");
         } catch (IOException e) {
-            PrintManager.printBotExceptionMessage(" error writing to file");
+            throw new DukeException(" error writing to file");
         }
     }
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Represents PrintManager. Handles any command line output for user to view.
  */
 public class PrintManager {
-    public final static String ZERO_CONSTANT_STRING = "0";
+    private final static String ZERO_CONSTANT_STRING = "0";
     private final static String SEPARATOR = "\n" + "_".repeat(60) + "\n";
     private final static String ERROR_SEPARATOR = "\n" + "*".repeat(60) + "\n";
 
@@ -123,8 +123,7 @@ public class PrintManager {
     }
 
     /**
-     * Unused function.
-     * Prints Debugging messages.
+     * Unused function. Prints Debugging messages.
      *
      * @param line The debug message line.
      */

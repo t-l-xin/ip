@@ -15,6 +15,7 @@ public class CommandManager {
             "event [task description] /at DD/MM/YYYY HHMM - Add a Event task",
             "done [TASK_number] - Mark a task as done",
             "delete [TASK_number] - Delete a task from the task list",
+            "find [TASK_KEYWORD] - Find a task by a keyword",
             "hist - Displays list of previous user input commands",
             "bye - Exit Duke program"
     };
@@ -74,4 +75,6 @@ public class CommandManager {
                 String.format("How to use this bot:\nType ur command in the following format\n%s", COMMAND_FORMAT));
         PrintManager.printStringListMessage(COMMANDS_AVAILABLE, COMMANDS_AVAILABLE.length);
     }
+
+
 }

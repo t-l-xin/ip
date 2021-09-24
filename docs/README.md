@@ -12,6 +12,7 @@ Duke is a **Command Line Interface** (CLI) bot made for students who are forgetf
   * [Add an Event task](#add-an-event-task--event)
   * [Done a task](#done-a-task--done)
   * [Delete a task](#delete-a-task--delete)
+  * [Find a task by keyword](#find-a-task-by-keyword--find)
   * [View user command history](#view-user-command-history--hist)
   * [Bye Duke](#bye-duke--bye)
   * [Saving the data](#saving-the-data)
@@ -54,8 +55,9 @@ ____________________________________________________________
 6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
 7. done [TASK_number] - Mark a task as done
 8. delete [TASK_number] - Delete a task from the task list
-9. hist - Displays list of previous user input commands
-10. bye - Exit Duke program
+9. find [TASK_KEYWORD] - Find a task by a keyword
+10. hist - Displays list of previous user input commands
+11. bye - Exit Duke program
 
 ____________________________________________________________
 
@@ -93,13 +95,17 @@ cmd [args] /[options] [additional args]
 
 ____________________________________________________________
 
-1. help, list, hist - no additional arguments required
-2. done [task no]
-3. delete [task no]
-4. add [task description]
-5. todo [task description]
-6. deadline [task description] /by YYYY/MM/DD hh:mm
-7. event [task description] /at YYYY/MM/DD hh:mm
+1. help - Displays help information such as commands available
+2. list - Displays list of tasks
+3. add [task description] - Add a normal task
+4. todo [task description] - Add a Todo task
+5. deadline [task description] /by DD/MM/YYYY HHMM - Add a Deadline task
+6. event [task description] /at DD/MM/YYYY HHMM - Add a Event task
+7. done [TASK_number] - Mark a task as done
+8. delete [TASK_number] - Delete a task from the task list
+9. find [TASK_KEYWORD] - Find a task by a keyword
+10. hist - Displays list of previous user input commands
+11. bye - Exit Duke program
 
 ____________________________________________________________
 
@@ -261,6 +267,19 @@ duke.txt exists
 Successfully wrote to the file.
 ```
 
+### Find a task by keyword : `find`
+
+User type `find` and Duke output a list of tasks that contains the user input keyword.
+
+Example of usage:
+`find [TASK_KEYWORD]`
+
+Expected outcome:
+Duke filters the task list and displays a list of tasks that contains the user input keyword. 
+
+```
+
+```
 
 ### View user command history : `hist`
 
@@ -324,6 +343,7 @@ Deadline |`deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]` <br /> e.g. `
 Event |`event [TASK_DESCRIPTION] /by [DATE_OF_EVENT]` <br /> e.g. `event CS2113 group meeting /at 05/09/2021 1800`
 Done | `done [TASK_NUMBER]` <br /> e.g. `done 3`
 Delete | `delete [TASK_NUMBER]` <br /> e.g. `delete 1`
+Find | `find [TASK_KEYWORD]` <br /> e.g. `find tutorial`
 History | `hist`
 Bye | `bye`
 

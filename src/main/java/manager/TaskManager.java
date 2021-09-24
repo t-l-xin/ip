@@ -19,15 +19,15 @@ import static task.TaskType.EVENT;
  * Represents TaskManager. Contains data and operations involving tasks during the execution of the program.
  */
 public class TaskManager {
-    public static final String BY_STRING = "/by";
-    public static final String AT_STRING = "/at";
-    public static final String ADD_STRING = "add";
-    public static final String TODO_STRING = "todo";
-    public static final String DEADLINE_STRING = "deadline";
-    public static final String EVENT_STRING = "event";
-    public static final String EMPTY_STRING = "";
-    public static final int INTEGER_ZERO = 0;
-    public static final int INTEGER_ONE = 1;
+    private static final String BY_STRING = "/by";
+    private static final String AT_STRING = "/at";
+    private static final String ADD_STRING = "add";
+    private static final String TODO_STRING = "todo";
+    private static final String DEADLINE_STRING = "deadline";
+    private static final String EVENT_STRING = "event";
+    private static final String EMPTY_STRING = "";
+    private static final int INTEGER_ZERO = 0;
+    private static final int INTEGER_ONE = 1;
 
     ArrayList<Task> taskList = new ArrayList<Task>();
     private int taskCount = INTEGER_ZERO;
@@ -193,7 +193,6 @@ public class TaskManager {
      * @param indexOfDelimiter The index of the delimiter.
      * @throws DukeException If the index of the delimiter is 0, which means details field is empty.
      */
-
     private void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
         if (indexOfDelimiter == INTEGER_ZERO) {
             throw new DukeException("\nDuke: can't find details");

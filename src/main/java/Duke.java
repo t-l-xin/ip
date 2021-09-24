@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class Duke {
 
-    public static final String HELP_STRING = "help";
-    public static final String LIST_STRING = "list";
-    public static final String HIST_STRING = "hist";
-    public static final String DONE = "done";
-    public static final String DELETE_STRING = "delete";
-    public static final String BYE_STRING = "bye";
-    public static final String FIND_STRING = "find";
+    private static final String HELP_STRING = "help";
+    private static final String LIST_STRING = "list";
+    private static final String HIST_STRING = "hist";
+    private static final String DONE = "done";
+    private static final String DELETE_STRING = "delete";
+    private static final String BYE_STRING = "bye";
+    private static final String FIND_STRING = "find";
 
     /**
      * Starts the program until termination
