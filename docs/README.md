@@ -35,6 +35,7 @@ ____________________________________________________________
 5. todo [task description]
 6. deadline [task description] /by YYYY/MM/DD HHMM
 7. event [task description] /at YYYY/MM/DD HHMM
+8. bye
 
 ____________________________________________________________
 
@@ -80,6 +81,21 @@ Expected outcome:
 Shows a list of commands available and some additional arguments and format required to ensure command can be parsed by Duke.
 
 ```
+How to use this bot:
+Type ur command in the following format
+cmd [args] /[options] [additional args]
+
+____________________________________________________________
+
+1. help, list, hist - no additional arguments required
+2. done [task no]
+3. delete [task no]
+4. add [task description]
+5. todo [task description]
+6. deadline [task description] /by YYYY/MM/DD hh:mm
+7. event [task description] /at YYYY/MM/DD hh:mm
+
+____________________________________________________________
 
 ```
 
@@ -95,7 +111,13 @@ Expected outcome:
 Shows a list of user commands previously input for the current session.
 
 ```
+____________________________________________________________
 
+1. help
+2. list
+3. hist
+
+____________________________________________________________
 ```
 
 ### Done a task : `done`
@@ -109,7 +131,15 @@ Expected outcome:
 Duke marks the task specified by the task number as done, and outputs the name of the task that is done.
 
 ```
-expected output
+____________________________________________________________
+Good Job, u have completed
+task: lab
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+
 ```
 
 ### Delete a task : `delete`
@@ -123,7 +153,14 @@ Expected outcome:
 Duke deletes task from its list and outputs the task name of the task deleted.
 
 ```
-expected output
+____________________________________________________________
+Removed task:
+[D][X] lab (by: 22 09 2021 14:00 PM)
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 ```
 
 ### Add a normal task : `add`
@@ -137,7 +174,13 @@ Expected outcome:
 Duke adds task to task list and print the added status of the task to the task list.
 
 ```
-expected output
+____________________________________________________________
+adding: read book
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 ```
 
 ### Add a Todo task : `todo`
@@ -151,7 +194,13 @@ Expected outcome:
 Duke adds Todo task to the task list and print the added status of the Todo task.
 
 ```
-expected output
+____________________________________________________________
+adding: return book
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 ```
 
 ### Add a Deadline task : `deadline`
@@ -165,7 +214,13 @@ Expected outcome:
 Duke adds Deadline task to the task list and print the added status of the Deadline task.
 
 ```
-expected output
+____________________________________________________________
+adding: CS2106 lab /by 22/09/2021 1400
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
 ```
 
 ### Add an Event task : `event`
@@ -179,7 +234,27 @@ Expected outcome:
 Duke adds Event task to the task list and print the added status of the Event task.
 
 ```
-expected output
+____________________________________________________________
+adding: CS2113 group meeting /at 18/09/2021 2100
+____________________________________________________________
+
+data folder exists
+duke.txt exists
+Successfully wrote to the file.
+```
+### Bye Duke : `bye`
+
+User type `bye` and Duke program is to exit.
+
+Example of usage: `bye`
+
+Expected outcome:
+
+Duke receives signal to exit and terminates by printing an exit message.
+```
+____________________________________________________________
+Well done for today! Remember to have 8 hrs of sleep!
+____________________________________________________________
 ```
 
 ### Saving the data
@@ -203,3 +278,4 @@ Add |`add [TASK_DESCRIPTION]` <br /> e.g. `add read book`
 Todo |`todo [TASK_DESCRIPTION]` <br /> e.g. `todo return book` 
 Deadline |`deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]` <br /> e.g. `deadline CS2106 lab /by 22/09/2021 1400` 
 Event |`event [TASK_DESCRIPTION] /by [DATE_OF_EVENT]` <br /> e.g. `event CS2113 group meeting /at 05/09/2021 1800` 
+Bye | `bye`

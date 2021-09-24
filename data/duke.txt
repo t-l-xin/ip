@@ -1,2 +1,5 @@
 E|0|meet|22/08/2021 0800
-D|0|lab|22/09/2021 1400
+A|0|read book
+T|0|return book
+D|0|CS2106 lab|22/09/2021 1400
+E|0|CS2113 group meeting|18/09/2021 2100

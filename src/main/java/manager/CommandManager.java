@@ -12,8 +12,9 @@ public class CommandManager {
             "delete [task no]",
             "add [task description]",
             "todo [task description]",
-            "deadline [task description] /by YYYY/MM/DD hh:mm",
-            "event [task description] /at YYYY/MM/DD hh:mm"
+            "deadline [task description] /by YYYY/MM/DD HHMM",
+            "event [task description] /at YYYY/MM/DD HHMM",
+            "bye"
     };
 
     private String[] commandList = new String[MAX_COMMANDS_LIMIT];
