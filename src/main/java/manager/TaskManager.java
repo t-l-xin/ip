@@ -103,8 +103,6 @@ public class TaskManager {
         return taskDetailsArray;
     }
 
-
-
     /**
      * Adds task to task arraylist and increments task count by 1.
      *

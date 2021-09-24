@@ -18,7 +18,7 @@ public class Todo extends Task {
      * @return A formatted string that can be saved to a file.
      */
     @Override
-    public String saveToFileStringFormat(){
+    public String saveToFileStringFormat() {
         return String.format("T|%s|%s", isDone ? "1" : "0", this.getTaskName());
     }
 

@@ -165,7 +165,7 @@ public class FileManager {
         if (!dataDirName.exists()) {
             dataDirName.mkdir();
             PrintManager.printNormalMessage("/data directory created");
-        }else {
+        } else {
             PrintManager.printNormalMessage("/data directory exists");
         }
     }
@@ -181,7 +181,7 @@ public class FileManager {
         try {
             if (!savedFileName.createNewFile()) {
                 PrintManager.printNormalMessage("duke.txt exists");
-            }else{
+            } else {
                 PrintManager.printNormalMessage("duke.txt created");
             }
         } catch (IOException e) {

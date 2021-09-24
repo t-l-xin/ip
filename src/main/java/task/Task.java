@@ -38,7 +38,7 @@ public class Task {
     /**
      * @return A formatted string that can be saved to a file.
      */
-    public String saveToFileStringFormat(){
+    public String saveToFileStringFormat() {
         return String.format("A|%s|%s", isDone ? "1" : "0", this.getTaskName());
     }
 

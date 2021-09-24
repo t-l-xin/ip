@@ -14,13 +14,13 @@ public class PrintManager {
 
     private final static String LOGO =
             " ______________\n" +
-            "|            @ | #####  ####        #####   ####\n" +
-            "|         @@   |   #   #    #       #    # #    #\n" +
-            "|       @@     |   #   #    # ##### #    # #    #\n" +
-            "|  @@  @@      |   #   #    #       #    # #    #\n" +
-            "|   @@@        |   #   #    #       #    # #    #\n" +
-            "|    @         |   #    ####        #####   ####\n" +
-            " --------------";
+                    "|            @ | #####  ####        #####   ####\n" +
+                    "|         @@   |   #   #    #       #    # #    #\n" +
+                    "|       @@     |   #   #    # ##### #    # #    #\n" +
+                    "|  @@  @@      |   #   #    #       #    # #    #\n" +
+                    "|   @@@        |   #   #    #       #    # #    #\n" +
+                    "|    @         |   #    ####        #####   ####\n" +
+                    " --------------";
     private final static String HELLO_GREETING = "Hi! I'm Duke!\n" +
             "Your personal bot to make sure you do work.\n"
             + "Have you started ur tasks? Start by typing \"help\"";
@@ -60,7 +60,7 @@ public class PrintManager {
     /**
      * Prints the entire task list and total count of tasks.
      *
-     * @param taskList The task list.
+     * @param taskList  The task list.
      * @param taskCount The task count.
      */
     public static void printTaskListMessage(ArrayList<Task> taskList, int taskCount) {
@@ -92,7 +92,7 @@ public class PrintManager {
     /**
      * Prints the strings in the string array.
      *
-     * @param stringList The array of string to be printed.
+     * @param stringList  The array of string to be printed.
      * @param stringCount The number of strings in the array.
      */
     public static void printStringListMessage(String[] stringList, int stringCount) {

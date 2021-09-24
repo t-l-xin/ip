@@ -3,6 +3,7 @@ package task;
 /**
  * Represents a Deadline Task. Contains the details and behaviour of the deadline task.
  */
+
 import manager.ParseManager;
 
 public class Deadline extends Task {
@@ -12,7 +13,7 @@ public class Deadline extends Task {
      * Initialises Deadline Task object using task name, and set the deadline.
      *
      * @param taskName The task name of Deadline task.
-     * @param date The last date to complete Deadline task.
+     * @param date     The last date to complete Deadline task.
      */
     public Deadline(String taskName, String date) {
         super(taskName);
@@ -31,7 +32,7 @@ public class Deadline extends Task {
     }
 
     @Override
-    public String saveToFileStringFormat(){
+    public String saveToFileStringFormat() {
         return String.format("D|%s|%s|%s", isDone ? "1" : "0", this.getTaskName(), this.getBy());
     }
 
