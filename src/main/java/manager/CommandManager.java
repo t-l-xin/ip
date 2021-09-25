@@ -13,6 +13,8 @@ import static task.TaskType.TODO;
  * Represents CommandManager. Manages data and operations involving commands during program execution.
  */
 public class CommandManager {
+    public static final String SPACE_CHARACTER = " ";
+    public static final int MAX_SPLIT_LIMIT = 2;
     private final int MAX_COMMANDS_LIMIT = 100;
     private final String COMMAND_FORMAT = "cmd [args] /[delimiter] [additional args]";
     private final String[] COMMANDS_AVAILABLE = {
@@ -44,7 +46,7 @@ public class CommandManager {
     private String[] commandList = new String[MAX_COMMANDS_LIMIT];
     private int commandCount = 0;
     private static boolean isBye = false;
-    private static boolean needFileSaveOperation;
+    private static boolean requireFileSaveOperation;
 
     /**
      * Adds the command input by the user to a string array.
@@ -77,7 +79,7 @@ public class CommandManager {
     }
 
     /**
-     * Check if the input command match the program command.
+     * Unused function. Check if the input command match the program command.
      *
      * @param inputCommand   The user input command.
      * @param programCommand The program command.
@@ -103,68 +105,22 @@ public class CommandManager {
         PrintManager.promptUserForCommand();
         String inputLine;
         inputLine = in.nextLine().trim();
-        String[] commandArray = inputLine.split(" ", 2);
+        String[] commandArray = inputLine.split(SPACE_CHARACTER, MAX_SPLIT_LIMIT);
         addCommand(inputLine);
         return commandArray;
     }
 
     /**
-     * Processes the command by the first word and calls the respective managers to execute the different commands.
+     * Processes the commands and capture any exceptions.
      *
      * @param commandDetailsArray The array that contains the details of the command.
      * @param tm                  TaskManager object.
      * @return A boolean to the program whether to terminate.
      */
     public boolean processCommand(String[] commandDetailsArray, TaskManager tm) {
-        needFileSaveOperation = false;
+        requireFileSaveOperation = false;
         try {
-            switch (commandDetailsArray[0]) {
-            case HELP_STRING:
-                showHelp();
-                break;
-            case LIST_STRING:
-                tm.listTasks();
-                break;
-            case HIST_STRING:
-                showHistory();
-                break;
-            case FIND_STRING:
-                tm.findTask(commandDetailsArray[1]);
-                break;
-            case DONE_STRING:
-                tm.markAsDone(commandDetailsArray[1]);
-                needFileSaveOperation = true;
-                break;
-            case DELETE_STRING:
-                tm.deleteTask(commandDetailsArray[1]);
-                needFileSaveOperation = true;
-                break;
-            case BYE_STRING:
-                isBye = true;
-                break;
-            case ADD_STRING:
-                tm.addTask(commandDetailsArray[1], ADD);
-                needFileSaveOperation = true;
-                break;
-            case TODO_STRING:
-                tm.addTask(commandDetailsArray[1], TODO);
-                needFileSaveOperation = true;
-                break;
-            case DEADLINE_STRING:
-                tm.addTask(commandDetailsArray[1], DEADLINE);
-                needFileSaveOperation = true;
-                break;
-            case EVENT_STRING:
-                tm.addTask(commandDetailsArray[1], EVENT);
-                needFileSaveOperation = true;
-                break;
-            case EMPTY_STRING:
-                PrintManager.printBotStatusMessage("no command detected, please try again");
-                break;
-            default:
-                PrintManager.printBotStatusMessage("invalid command, please try again");
-                break;
-            }
+            filterAndExecuteCommand(commandDetailsArray, tm);
         } catch (ArrayIndexOutOfBoundsException ae) {
             PrintManager.printBotExceptionMessage(commandDetailsArray[0] + " task needs details");
         } catch (DukeException de) {
@@ -173,8 +129,65 @@ public class CommandManager {
         return isBye;
     }
 
+    /**
+     * Filter the command by the first word in the command details array and executes the command.
+     *
+     * @param commandDetailsArray The array that contains the details of the command.
+     * @param tm TaskManager object.
+     * @throws DukeException If there are any input format violations.
+     */
+    private void filterAndExecuteCommand(String[] commandDetailsArray, TaskManager tm) throws DukeException {
+        switch (commandDetailsArray[0]) {
+        case HELP_STRING:
+            showHelp();
+            break;
+        case LIST_STRING:
+            tm.listTasks();
+            break;
+        case HIST_STRING:
+            showHistory();
+            break;
+        case FIND_STRING:
+            tm.findTask(commandDetailsArray[1]);
+            break;
+        case DONE_STRING:
+            tm.markAsDone(commandDetailsArray[1]);
+            requireFileSaveOperation = true;
+            break;
+        case DELETE_STRING:
+            tm.deleteTask(commandDetailsArray[1]);
+            requireFileSaveOperation = true;
+            break;
+        case BYE_STRING:
+            isBye = true;
+            break;
+        case ADD_STRING:
+            tm.addTask(commandDetailsArray[1], ADD);
+            requireFileSaveOperation = true;
+            break;
+        case TODO_STRING:
+            tm.addTask(commandDetailsArray[1], TODO);
+            requireFileSaveOperation = true;
+            break;
+        case DEADLINE_STRING:
+            tm.addTask(commandDetailsArray[1], DEADLINE);
+            requireFileSaveOperation = true;
+            break;
+        case EVENT_STRING:
+            tm.addTask(commandDetailsArray[1], EVENT);
+            requireFileSaveOperation = true;
+            break;
+        case EMPTY_STRING:
+            PrintManager.printBotStatusMessage("no command detected, please try again");
+            break;
+        default:
+            PrintManager.printBotStatusMessage("invalid command, please try again");
+            break;
+        }
+    }
+
     public static boolean checkNeedSaveOperation(){
-        return needFileSaveOperation;
+        return requireFileSaveOperation;
     }
 
 }

@@ -14,7 +14,8 @@ public class ParseManager {
     private static final String DATE_TIME_FORMAT_STRING = "dd/MM/yyyy HHmm";
     private static final String DATE_TIME_FORMAT_FOR_PRINTING_STRING = "MMM dd yyyy HH:mm a";
     private static DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_STRING);
-    private static DateTimeFormatter dateTimePrintFormatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_FOR_PRINTING_STRING);
+    private static DateTimeFormatter dateTimePrintFormatter =
+            DateTimeFormatter.ofPattern(DATE_TIME_FORMAT_FOR_PRINTING_STRING);
     private static final int INTEGER_ZERO = 0;
 
     /**

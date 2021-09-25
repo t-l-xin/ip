@@ -1,11 +1,10 @@
 package task;
 
+import manager.ParseManager;
+
 /**
  * Represents a Deadline Task. Contains the details and behaviour of the deadline task.
  */
-
-import manager.ParseManager;
-
 public class Deadline extends Task {
     protected String by;
 

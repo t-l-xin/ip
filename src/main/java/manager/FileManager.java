@@ -27,7 +27,6 @@ import java.io.FileWriter;
 public class FileManager {
     public static final String PIPE_CHARACTER = "\\|";
     public static final String TASK_COMPLETED_STATUS_STRING = "1";
-
     public static final char ADD_CHARACTER = 'A';
     public static final char DEADLINE_CHARACTER = 'D';
     public static final char EVENT_CHARACTER = 'E';
@@ -42,8 +41,8 @@ public class FileManager {
     public static final String DATA_FOLDER_STRING = "data";
     public static final String DUKE_TXT_FILE_STRING = "duke.txt";
     public static final File dataDirName = new File(DATA_FOLDER_STRING);
-    public static final File savedFileName = new File(currentUsersWorkingDir,
-            DATA_FOLDER_STRING + File.separator + DUKE_TXT_FILE_STRING);
+    public static final File savedFileName = new File
+            (currentUsersWorkingDir, DATA_FOLDER_STRING + File.separator + DUKE_TXT_FILE_STRING);
     private int taskCountFromFile;
     public static ArrayList<Task> taskListFromFile = new ArrayList<Task>();
 
@@ -78,9 +77,9 @@ public class FileManager {
      * @param tm   The Task Manager object.
      */
     private void initialiseTaskFromSavedFile(String line, TaskManager tm) {
-        char firstCharacterOfLine = line.charAt(CHARACTER_AT_INDEX_ZERO);
+        char firstCharacterOfCommandLine = line.charAt(CHARACTER_AT_INDEX_ZERO);
         String[] taskDetailsArray;
-        switch (firstCharacterOfLine) {
+        switch (firstCharacterOfCommandLine) {
         case ADD_CHARACTER:
             taskDetailsArray = separateByPipeCharacter(line.substring(CHARACTER_AT_INDEX_TWO));
             addTaskFromSavedFile(taskDetailsArray, ADD);
@@ -98,7 +97,7 @@ public class FileManager {
             addTaskFromSavedFile(taskDetailsArray, TODO);
             break;
         default:
-            PrintManager.printNormalMessage(firstCharacterOfLine + " does not match any tasks initials");
+            PrintManager.printNormalMessage(firstCharacterOfCommandLine + " does not match any tasks initials");
             break;
         }
     }
@@ -169,7 +168,6 @@ public class FileManager {
             PrintManager.printNormalMessage("/data directory exists");
         }
     }
-
 
     /**
      * Check if duke.txt exists by trying to create a new duke.txt file.

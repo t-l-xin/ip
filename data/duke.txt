@@ -3,4 +3,3 @@ T|0|return book
 D|1|CS2113 iP|01/10/2021 2359
 D|0|CS2106 lab|22/09/2021 1400
 D|0|CS2106 tutorial sheet|13/09/2021 0900
-E|0|CS2113 group meet|18/09/2021 2100

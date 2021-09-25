@@ -1,11 +1,10 @@
 package task;
 
+import manager.ParseManager;
+
 /**
  * Represents Event Task. Contains the details and behaviour of the event task.
  */
-
-import manager.ParseManager;
-
 public class Event extends Task {
     protected String at;
 

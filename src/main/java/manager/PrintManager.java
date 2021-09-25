@@ -14,15 +14,15 @@ public class PrintManager {
 
     private final static String LOGO =
             " ______________\n" +
-                    "|            @ | #####  ####        #####   ####\n" +
-                    "|         @@   |   #   #    #       #    # #    #\n" +
-                    "|       @@     |   #   #    # ##### #    # #    #\n" +
-                    "|  @@  @@      |   #   #    #       #    # #    #\n" +
-                    "|   @@@        |   #   #    #       #    # #    #\n" +
-                    "|    @         |   #    ####        #####   ####\n" +
-                    " --------------";
-    private final static String HELLO_GREETING = "Hi! I'm Duke!\n" +
-            "Your personal bot to make sure you do work.\n"
+            "|            @ | #####  ####        #####   ####\n" +
+            "|         @@   |   #   #    #       #    # #    #\n" +
+            "|       @@     |   #   #    # ##### #    # #    #\n" +
+            "|  @@  @@      |   #   #    #       #    # #    #\n" +
+            "|   @@@        |   #   #    #       #    # #    #\n" +
+            "|    @         |   #    ####        #####   ####\n" +
+            " --------------";
+    private final static String HELLO_GREETING = "Hi! I'm Duke!\n"
+            + "Your personal bot to make sure you do work.\n"
             + "Have you started ur tasks? Start by typing \"help\"";
 
     private final static String EXIT_GREETING = "Well done for today! Remember to have 8 hrs of sleep!";
@@ -85,8 +85,7 @@ public class PrintManager {
      * Prints empty task list message.
      */
     public static void printEmptyTaskListMessage() {
-        printBotStatusMessage(
-                String.format(NO_TASKS_MESSAGE + TOTAL_TASKS_STRING_FORMAT, ZERO_CONSTANT_STRING));
+        printBotStatusMessage(String.format(NO_TASKS_MESSAGE + TOTAL_TASKS_STRING_FORMAT, ZERO_CONSTANT_STRING));
     }
 
     /**

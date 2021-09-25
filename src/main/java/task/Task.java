@@ -1,6 +1,5 @@
 package task;
 
-
 /**
  * Represents a general Task. Contains the details and behaviour of the Task.
  */
