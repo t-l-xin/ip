@@ -186,6 +186,11 @@ public class CommandManager {
         }
     }
 
+    /**
+     * Lets the program know if necessary to save to file after executing each command.
+     *
+     * @return The boolean to initiate file saving option.
+     */
     public static boolean checkNeedSaveOperation(){
         return requireFileSaveOperation;
     }
