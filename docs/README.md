@@ -61,9 +61,11 @@ Type your command:
 ## Features
 
 ### *Notes*
-* Words in UPPER_CASE are the parameters to be supplied by the user. <br/> e.g. in `todo [TASK_DESCRIPTION]`, `TASK_DESCRIPTION` is a parameter which can be used as `todo CS2101 slides` 
+* Words in UPPER_CASE are the parameters to be supplied by the user. 
+  * e.g. in `todo [TASK_DESCRIPTION]`, `TASK_DESCRIPTION` is a parameter which can be used as `todo CS2101 slides` 
 
-* Items in square brackets are needed. <br/> e.g. `todo [TASK_DESCRIPTION]` requires the `[TASK_DESCRIPTION]` for the program to save the task to the task list. 
+* Items in square brackets are needed. 
+  * e.g. `todo [TASK_DESCRIPTION]` requires the `[TASK_DESCRIPTION]` for the program to save the task to the task list. 
 
 * Any fields that requires dates such as `[DATE_TO_BE_COMPLETED]` or `[DATE_OF_EVENT]` should be filled in this format: `[DD/MM/YYYY HHMM]`
 
