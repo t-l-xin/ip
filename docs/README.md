@@ -426,7 +426,7 @@ TASK_TYPE | TASK_STATUS | DATE_TO_BE_COMPLETED <br> or DATE_OF_EVENT
 ------------ | ------------- | -------------
 <ul><li>Todo: `T`</li><li>Deadline: `D`</li><li>Event: `E`</li></ul>| <ul><li>Done: `1`</li><li>Not Done: `0`</li></ul> | format must be in `DD/MM/YYYY HHMM` <br> e.g. "18 Sept 2021, 6pm", is written as `18/09/2021 1800`
 
-##FAQs
+## FAQs
 
 **Question:** Why cannot load saved file (duke.txt) properly? 
 
