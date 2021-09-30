@@ -17,6 +17,8 @@ Duke is a **Command Line Interface** (CLI) bot made for students who are forgetf
   * [Bye Duke](#bye-duke--bye)
   * [Saving the data](#saving-the-data)
   * [Editing the data file](#editing-the-data-file)
+  * [Tasks saved format in duke.txt](#tasks-saved-format-in-duketxt)
+* [FAQs](#faqs)
 * [Command Summary](#command-summary)
 
 ## Quick Setup
@@ -53,7 +55,7 @@ Type your command:
 
 ```
 
-6. You may then start typing your commands under the "Type ur command:" prompt.
+6. You may then start typing your commands under the "Type your command:" prompt.
 7. Refer to Features below for details of each command. 
 
 ## Features
@@ -68,7 +70,7 @@ Type your command:
 
 User type `help` and Duke will output a list of commands available.
 
-Example of usage: `help`
+Format: `help`
 
 Expected outcome:
 
@@ -120,8 +122,7 @@ ____________________________________________________________
 
 User type `list` and Duke will list all the tasks in the list.
 
-Example of usage:
-`list`
+Format: `list`
 
 Expected outcome:
 Outcome shows a list of tasks.
@@ -149,7 +150,7 @@ ____________________________________________________________
 
 User type `add read book` and Duke adds the task to the list.   
 
-Example of usage: `add [TASK_DESCRIPTION]`
+Format: `add [TASK_DESCRIPTION]`
 
 Expected outcome:
 
@@ -175,7 +176,7 @@ Successfully wrote to the file.
 
 User type `todo return book`and Duke adds a Todo task to the list.
 
-Example of usage: `todo [TASK_DESCRIPTION]`
+Format: `todo [TASK_DESCRIPTION]`
 
 Expected outcome:
 
@@ -201,7 +202,7 @@ Successfully wrote to the file.
 
 User type `deadline essay reading /by 10/10/2021 1500` and Duke adds a Deadline task to the list.
 
-Example of usage: `deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]`
+Format: `deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED]`
 
 Expected outcome:
 
@@ -227,7 +228,7 @@ Successfully wrote to the file.
 
 User type `event group meeting /at 11/09/2021 0900` and Duke adds a Event task to the list.
 
-Example of usage: `event [TASK_DESCRIPTION] /at [DATE_OF_EVENT]`
+Format: `event [TASK_DESCRIPTION] /at [DATE_OF_EVENT]`
 
 Expected outcome:
 
@@ -253,7 +254,7 @@ Successfully wrote to the file.
 
 User type `done 2` and Duke will output that task 2 is done.
 
-Example of usage: `done [TASK_NUMBER]`
+Format: `done [TASK_NUMBER]`
 
 Expected outcome:
 
@@ -281,7 +282,7 @@ Successfully wrote to the file.
 
 User type `delete 1` and Duke deletes task 1.
 
-Example of usage: `delete [TASK_NUMBER]`
+Format: `delete [TASK_NUMBER]`
 
 Expected outcome:
 
@@ -308,8 +309,7 @@ Successfully wrote to the file.
 
 User type `find cs2113` and Duke output a list of tasks that contains the user input keyword `cs2113`.
 
-Example of usage:
-`find [TASK_KEYWORD]`
+Format: `find [TASK_KEYWORD]`
 
 Expected outcome:
 Duke filters the task list and displays a list of tasks that contains the user input keyword. 
@@ -333,8 +333,7 @@ ____________________________________________________________
 
 User type `hist` and Duke output a list of commands the user previously input for the current session.
 
-Example of usage:
-`hist`
+Format: `hist`
 
 Expected outcome:
 Shows a list of user commands previously input for the current session.
@@ -369,7 +368,7 @@ ____________________________________________________________
 
 User type `bye` and Duke program is to exit.
 
-Example of usage: `bye`
+Format: `bye`
 
 Expected outcome:
 
@@ -389,12 +388,60 @@ ____________________________________________________________
 
 ### Saving the data
 
-All Duke data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+All Duke data are saved in the hard disk automatically after any command that requires changing the data. There is no need to save manually.
 
 ### Editing the data file
 
-Duke data are saved as a TXT file [*home folder*]/data/duke.txt. Advanced users are welcome to update data directly by editing that data file.
-*home folder* refers to the folder where you initially placed ip.jar, mentioned at the Quick Setup section.
+Duke data are saved as a TXT file **`[home folder]/data/duke.txt`**. Advanced users are welcome to update data directly by editing that data file.
+***home folder*** refers to the folder where you initially placed `ip.jar`, mentioned at the Quick Setup section.
+
+**Word of Caution:**
+
+After editing `duke.txt`, users are recommended to ensure that the task format follows the task saved format for files shown in the [next section](#tasks-saved-format-in-duketxt), else there may be errors while loading from `duke.txt`.
+
+### Tasks saved format in duke.txt
+
+This section specifies the format that applies to editing format in duke.txt only,
+this subsection is not applicable for user input command line format.
+
+*While editing duke.txt, ensure tasks format follows the below formats.* 
+*Failure to follow the format, results in line parsing exceptions when loading task data from duke.txt*
+
+- Todo Tasks are saved in the following format: 
+`<TASK_TYPE>|<TASK_STATUS>|<TASK_DESCRIPTION>`
+
+  - E.g. `T|0|return book` means Task: return book is not done
+
+- Deadline Tasks are saved in the following format: 
+`<TASK_TYPE>|<TASK_STATUS>|<TASK_DESCRIPTION>|<DATE_TO_BE_COMPLETED>`
+
+  - E.g. `D|1|CS2106 lab|22/09/2021 1400` means Task: CS2106 lab is done before deadline of 22 Sep 2021 2pm. 
+
+- Event Tasks are saved in the following format: 
+`<TASK_TYPE>|<TASK_STATUS>|<TASK_DESCRIPTION>|<DATE_OF_EVENT>`
+
+  - E.g. `E|0|CS3103 group meeting|30/10/2021 1900` means Task: CS3103 group meeting is not done and is held on 30 Sep 2021 7pm.
+
+TASK_TYPE | TASK_STATUS | DATE_TO_BE_COMPLETED <br> or DATE_OF_EVENT
+------------ | ------------- | -------------
+<ul><li>Todo: `T`</li><li>Deadline: `D`</li><li>Event: `E`</li></ul>| <ul><li>Done: `1`</li><li>Not Done: `0`</li></ul> | format must be in `DD/MM/YYYY HHMM` <br> e.g. "18 Sept 2021, 6pm", is written as `18/09/2021 1800`
+
+##FAQs
+
+**Question:** Why cannot load saved file (duke.txt) properly? 
+
+**Answer:** Things to check
+- Check that there are tasks data is stored in duke.txt. 
+- Check that you followed the format for tasks saved format in duke.txt, refer to [this section](#tasks-saved-format-in-duketxt)
+- Check that `duke.txt` is in a folder `/data` and the `/data` folder must be in the same directory as `ip.jar`
+
+**Question:** How can I transfer my files to another Computer?
+
+**Answer:** 
+1. Move both `/data` folder and `ip.jar` to your new working environment folder 
+2. Ensure that `/data` folder and `ip.jar` are in the same folder
+3. Ensure that duke.txt is in `/data` folder and that's all! 
+You can start Duke after you have completed these steps.
 
 ## Command Summary
 
