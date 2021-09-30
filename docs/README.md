@@ -4,17 +4,17 @@ Duke is a **Command Line Interface** (CLI) bot made for students who are forgetf
 
 * [Quick Setup](#quick-setup)
 * [Features](#features)
-  * [Viewing Help](#viewing-help--help)
-  * [List all tasks](#list-all-tasks--list)
-  * [Add a task](#add-a-task--add)
-  * [Add a Todo task](#add-a-todo-task--todo)
-  * [Add a Deadline task](#add-a-deadline-task--deadline)
-  * [Add an Event task](#add-an-event-task--event)
-  * [Done a task](#done-a-task--done)
-  * [Delete a task](#delete-a-task--delete)
-  * [Find a task by keyword](#find-a-task-by-keyword--find)
-  * [View user command history](#view-user-command-history--hist)
-  * [Bye Duke](#bye-duke--bye)
+  * [Viewing Help: `help`](#viewing-help--help)
+  * [List all tasks: `list`](#list-all-tasks--list)
+  * [Add a task : `add`](#add-a-task--add)
+  * [Add a Todo task: : `todo`](#add-a-todo-task--todo)
+  * [Add a Deadline task: `deadline`](#add-a-deadline-task--deadline)
+  * [Add an Event task: `event`](#add-an-event-task--event)
+  * [Done a task: `done`](#done-a-task--done)
+  * [Delete a task: `delete`](#delete-a-task--delete)
+  * [Find a task by keyword: `find`](#find-a-task-by-keyword--find)
+  * [View user command history: `hist`](#view-user-command-history--hist)
+  * [Bye Duke: `bye`](#bye-duke--bye)
   * [Saving the data](#saving-the-data)
   * [Editing the data file](#editing-the-data-file)
   * [Tasks saved format in duke.txt](#tasks-saved-format-in-duketxt)
@@ -61,9 +61,16 @@ Type your command:
 ## Features
 
 ### *Notes*
-* Words in UPPER_CASE are the parameters to be supplied by the user. </br> e.g. in `todo [TASK_DESCRIPTION]`, `TASK_DESCRIPTION` is a parameter which can be used as `todo CS2101 slides` 
-* Items in square brackets are needed. </br> e.g. `todo [TASK_DESCRIPTION]` requires the `[TASK_DESCRIPTION]` for the program to save the task to the task list. 
+* Words in UPPER_CASE are the parameters to be supplied by the user. 
+
+e.g. in `todo [TASK_DESCRIPTION]`, `TASK_DESCRIPTION` is a parameter which can be used as `todo CS2101 slides` 
+
+* Items in square brackets are needed. 
+
+e.g. `todo [TASK_DESCRIPTION]` requires the `[TASK_DESCRIPTION]` for the program to save the task to the task list. 
+
 * Any fields that requires dates such as `[DATE_TO_BE_COMPLETED]` or `[DATE_OF_EVENT]` should be filled in this format: `[DD/MM/YYYY HHMM]`
+
 * For adding Deadline and Event tasks, both require their respective delimiters `/by` and `/at` in order for Duke to add the tasks to the task list.
 
 ### Viewing Help : `help`
