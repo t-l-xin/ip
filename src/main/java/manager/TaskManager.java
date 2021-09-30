@@ -84,7 +84,7 @@ public class TaskManager {
      * @param taskDetail The string that contains task details.
      * @param delimiter  The delimiter depending on the task type.
      * @return A string array that have split the task name and task detail.
-     * @throws DukeException                   If there input does not follow program input format.
+     * @throws DukeException                   If the input does not follow program input format.
      * @throws StringIndexOutOfBoundsException If the task details string array is missing some information.
      */
     public String[] getTaskNameAndTime(String taskDetail, String delimiter)
@@ -92,7 +92,7 @@ public class TaskManager {
         ParseManager.checkForDelimiter(taskDetail, delimiter);
         int indexOfDelimiter = taskDetail.indexOf(delimiter);
 
-        ParseManager.checkEmptyDetails(indexOfDelimiter);
+        ParseManager.checkEmptyDescription(indexOfDelimiter);
         String detail = taskDetail.substring(INTEGER_ZERO, indexOfDelimiter - INTEGER_ONE).trim();
 
         String datetime = taskDetail.substring(indexOfDelimiter + delimiter.length()).trim();
@@ -108,7 +108,7 @@ public class TaskManager {
      *
      * @param newTask The new task object which can be of any type.
      * @param newType The new task type.
-     * @throws DukeException If there are any inputs that do not follow input format.
+     * @throws DukeException If the inputs that do not follow program input format.
      */
     public void addTask(String newTask, TaskType newType) throws DukeException {
         Task resultNewTask = getTaskType(newTask, newType);
@@ -131,6 +131,7 @@ public class TaskManager {
 
     /**
      * Finds the correct task index, marks task as done and prints the done status.
+     * Task number shown to user starts from 1.
      *
      * @param taskNo The task number to be marked as done.
      */
@@ -150,7 +151,7 @@ public class TaskManager {
      * Finds correct task index, deletes a task from the task list and prints deleted status.
      * Decrement task count by 1.
      *
-     * @param taskNo The task number to be found for deletion.
+     * @param taskNo The task number to find to delete task.
      */
     public void deleteTask(String taskNo) throws DukeException {
         int taskIndex = Integer.parseInt(taskNo) - INTEGER_ONE;
@@ -165,9 +166,9 @@ public class TaskManager {
     }
 
     /**
-     * Finds the user input string by filtering through the arraylist.
+     * Finds the user input keyword string by filtering through the arraylist.
      *
-     * @param stringToFind User input string to find.
+     * @param stringToFind User input keyword string to find.
      */
     public void findTask(String stringToFind) {
         ArrayList<Task> filteredList = (ArrayList<Task>) taskList.stream()

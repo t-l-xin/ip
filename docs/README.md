@@ -35,47 +35,22 @@ Duke is a **Command Line Interface** (CLI) bot made for students who are forgetf
 |   @@@        |   #   #    #       #    # #    #
 |    @         |   #    ####        #####   ####
  --------------
- 
+____________________________________________________________
 Hi! I'm Duke! 
 Your personal bot to make sure you do work.
 Have you started ur tasks? Start by typing "help"
-____________________________________________________________
- 
-How to use this bot:
-Type ur command in the following format
-cmd [args] /[options] [additional args]
-
-____________________________________________________________
-
-1. help - Displays help information such as commands available
-
-2. list - Displays list of tasks
-
-3. add [TASK_DESCRIPTION] - Add a normal task
-
-4. todo [TASK_DESCRIPTION] - Add a Todo task
-
-5. deadline [TASK_DESCRIPTION] /by [DATE_TO_BE_COMPLETED] - Add a Deadline task 
-Input DateTime format: DD/MM/YYYY HHMM
-
-6. event [TASK_DESCRIPTION] /at [DATE_OF_EVENT] - Add a Event task
-Input DateTime format: DD/MM/YYYY HHMM
-
-7. done [TASK_NUMBER] - Mark a task as done
-
-8. delete [TASK_NUMBER] - Delete a task from the task list
-
-9. find [TASK_KEYWORD] - Find a task by a keyword
-
-10. hist - Displays list of previous user input commands
-
-11. bye - Exit Duke program
-
 ____________________________________________________________
 
 loading saved files...
 
 ____________________________________________________________
+no pre-existing data files yet
+____________________________________________________________
+
+
+Type your command:
+
+
 ```
 
 6. You may then start typing your commands under the "Type ur command:" prompt.
@@ -101,9 +76,15 @@ Shows a list of commands available and some additional arguments and format requ
 
 
 ```md
+Type your command:
+
+help
+
+____________________________________________________________
+
 How to use this bot:
 Type ur command in the following format
-cmd [args] /[options] [additional args]
+cmd [args] /[delimiter] [additional args]
 
 ____________________________________________________________
 
@@ -132,7 +113,6 @@ Input DateTime format: DD/MM/YYYY HHMM
 11. bye - Exit Duke program
 
 ____________________________________________________________
-
 ```
 
 
@@ -147,6 +127,10 @@ Expected outcome:
 Outcome shows a list of tasks.
 
 ```
+Type your command:
+
+list
+
 ____________________________________________________________
  
 1. [T][ ] return book
@@ -173,12 +157,16 @@ Duke adds task to task list and print the added status of the task to the task l
 
 
 ```
+Type your command:
+
+add read book
+
 ____________________________________________________________
 adding: read book
 ____________________________________________________________
 
-/data directory exists
-duke.txt exists
+/data directory created
+duke.txt created
 Successfully wrote to the file.
 ```
 
@@ -195,6 +183,10 @@ Duke adds Todo task to the task list and print the added status of the Todo task
 
 
 ```
+Type your command:
+
+todo return book
+
 ____________________________________________________________
 adding: return book
 ____________________________________________________________
@@ -217,6 +209,10 @@ Duke adds Deadline task to the task list and print the added status of the Deadl
 
 
 ```
+Type your command:
+
+deadline CS2113 iP /by 01/10/2021 2359
+
 ____________________________________________________________
 adding: CS2113 iP /by 01/10/2021 2359
 ____________________________________________________________
@@ -239,6 +235,10 @@ Duke adds Event task to the task list and print the added status of the Event ta
 
 
 ```
+Type your command:
+
+event CS2113 group meeting /at 18/09/2021 2100
+
 ____________________________________________________________
 adding: CS2113 group meeting /at 18/09/2021 2100
 ____________________________________________________________
@@ -261,6 +261,10 @@ Duke marks the task specified by the task number as done, and outputs the name o
 
 
 ```
+Type your command:
+
+done 2
+
 ____________________________________________________________
 Good Job, u have completed
 task: CS2113 iP
@@ -285,6 +289,10 @@ Duke deletes task from its list and outputs the task name of the task deleted.
 
 
 ```
+Type your command:
+
+delete 5
+
 ____________________________________________________________
 Removed task:
 [E][ ] CS3103 lab (at: Sep 15 2021 12:00 PM)
@@ -307,6 +315,10 @@ Expected outcome:
 Duke filters the task list and displays a list of tasks that contains the user input keyword. 
 
 ```
+Type your command:
+
+find cs2113
+
 ____________________________________________________________
 
 1. [D][X] CS2113 iP (by: Oct 01 2021 23:59 PM)
@@ -329,6 +341,10 @@ Shows a list of user commands previously input for the current session.
 
 
 ```
+Type your command:
+
+hist
+
 ____________________________________________________________
 
 1. todo return book
@@ -361,6 +377,10 @@ Duke receives signal to exit and terminates by printing an exit message.
 
 
 ```
+Type your command:
+
+bye
+
 ____________________________________________________________
 Well done for today! Remember to have 8 hrs of sleep!
 ____________________________________________________________

@@ -15,9 +15,9 @@ import static task.TaskType.TODO;
 public class CommandManager {
     public static final String SPACE_CHARACTER = " ";
     public static final int MAX_SPLIT_LIMIT = 2;
-    private final int MAX_COMMANDS_LIMIT = 100;
-    private final String COMMAND_FORMAT = "cmd [args] /[delimiter] [additional args]";
-    private final String[] COMMANDS_AVAILABLE = {
+    private static final int MAX_COMMANDS_LIMIT = 100;
+    private static final String COMMAND_FORMAT = "cmd [args] /[delimiter] [additional args]";
+    private static final String[] COMMANDS_AVAILABLE = {
             "help - Displays help information such as commands available\n",
             "list - Displays list of tasks\n",
             "add [TASK_DESCRIPTION] - Add a normal task\n",
@@ -43,10 +43,10 @@ public class CommandManager {
     private static final String DEADLINE_STRING = "deadline";
     private static final String EVENT_STRING = "event";
     private static final String EMPTY_STRING = "";
-    private String[] commandList = new String[MAX_COMMANDS_LIMIT];
-    private int commandCount = 0;
     private static boolean isBye = false;
     private static boolean requireFileSaveOperation;
+    private String[] commandList = new String[MAX_COMMANDS_LIMIT];
+    private int commandCount = 0;
 
     /**
      * Adds the command input by the user to a string array.
@@ -79,7 +79,7 @@ public class CommandManager {
     }
 
     /**
-     * Unused function. Check if the input command match the program command.
+     * Unused function. Check if the user input command match any program commands.
      *
      * @param inputCommand   The user input command.
      * @param programCommand The program command.
@@ -96,11 +96,18 @@ public class CommandManager {
      * Prints a list of usable program commands information for the user.
      */
     public void showHelp() {
+        PrintManager.printSeparator();
         PrintManager.printNormalMessage(
                 String.format("How to use this bot:\nType ur command in the following format\n%s", COMMAND_FORMAT));
         PrintManager.printStringListMessage(COMMANDS_AVAILABLE, COMMANDS_AVAILABLE.length);
     }
 
+    /**
+     * Reads user input line and splits by first 2 whitespaces.
+     *
+     * @param in The user input line from the terminal.
+     * @return A String array containing user input line words split by first 2 whitespaces.
+     */
     public String[] readCommand(Scanner in) {
         PrintManager.promptUserForCommand();
         String inputLine;
@@ -137,7 +144,7 @@ public class CommandManager {
      * @throws DukeException If there are any input format violations.
      */
     private void filterAndExecuteCommand(String[] commandDetailsArray, TaskManager tm) throws DukeException {
-        switch (commandDetailsArray[0]) {
+        switch (commandDetailsArray[0].toLowerCase()) {
         case HELP_STRING:
             showHelp();
             break;
@@ -187,7 +194,7 @@ public class CommandManager {
     }
 
     /**
-     * Lets the program know if necessary to save to file after executing each command.
+     * Lets Duke know if necessary to save to file after executing each command.
      *
      * @return The boolean to initiate file saving option.
      */

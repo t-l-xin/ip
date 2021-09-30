@@ -1,10 +1,10 @@
 package manager;
 
-import exception.DukeException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import exception.DukeException;
 
 /**
  * Represents ParseManager. Manages parsing of any string in the program.
@@ -45,12 +45,12 @@ public class ParseManager {
     }
 
     /**
-     * Checks for empty details by the index of the delimiter.
+     * Checks for empty task description using the index of the delimiter.
      *
      * @param indexOfDelimiter The index of the delimiter.
      * @throws DukeException If the index of the delimiter is 0, which means details field is empty.
      */
-    public static void checkEmptyDetails(int indexOfDelimiter) throws DukeException {
+    public static void checkEmptyDescription(int indexOfDelimiter) throws DukeException {
         if (indexOfDelimiter == INTEGER_ZERO) {
             throw new DukeException("\nDuke: can't find details");
         }
@@ -69,6 +69,8 @@ public class ParseManager {
     }
 
     /**
+     * Checks for presence of string delimiter in the task detail string.
+     *
      * @param taskDetail The string that contains task details.
      * @param delimiter  The delimiter for the task type.
      * @throws DukeException If delimiter for the task type is not found.

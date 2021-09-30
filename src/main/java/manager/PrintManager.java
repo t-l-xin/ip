@@ -58,7 +58,7 @@ public class PrintManager {
     }
 
     /**
-     * Prints the entire task list and total count of tasks.
+     * Prints the entire task list and total tasks count.
      *
      * @param taskList  The task list.
      * @param taskCount The task count.
@@ -104,7 +104,7 @@ public class PrintManager {
     }
 
     /**
-     * Prints bot status message line, to show the status of the program any point during execution.
+     * Prints bot status message line, to show the status of the program at any point during execution.
      *
      * @param line The bot status message line.
      */
@@ -113,7 +113,7 @@ public class PrintManager {
     }
 
     /**
-     * Prints any normal program string message.
+     * Prints any normal program string message without separators.
      *
      * @param line The line for any program string message.
      */
@@ -122,7 +122,7 @@ public class PrintManager {
     }
 
     /**
-     * Unused function. Prints Debugging messages.
+     * Unused function. Prints Debugging message.
      *
      * @param line The debug message line.
      */

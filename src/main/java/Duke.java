@@ -13,8 +13,8 @@ public class Duke {
     private static boolean isBye = false;
 
     /**
-     * Starts the program until termination
-     * Reads user command and executes it, until user issues bye command
+     * Starts the program until termination.
+     * Reads user command and executes it, until user issues bye command.
      */
     private static void startProgram() {
         Scanner in = new Scanner(System.in);
@@ -22,7 +22,6 @@ public class Duke {
         TaskManager tm = new TaskManager();
         FileManager fm = new FileManager();
 
-        cm.showHelp();
         tryLoadSavedFile(tm, fm);
 
         while (!isBye) {
@@ -39,10 +38,10 @@ public class Duke {
     }
 
     /**
-     * Try to load saved file from the previous session
+     * Try to load saved file from the previous session.
      *
-     * @param tm TaskManager object
-     * @param fm FileManager object
+     * @param tm TaskManager object.
+     * @param fm FileManager object.
      */
     private static void tryLoadSavedFile(TaskManager tm, FileManager fm) {
         try {
@@ -52,11 +51,13 @@ public class Duke {
             PrintManager.printBotStatusMessage("no pre-existing data files yet");
         } catch (IOException ie) {
             PrintManager.printBotStatusMessage("error reading file");
+        } catch (DukeException de) {
+            PrintManager.printBotExceptionMessage(de.getMessage());
         }
     }
 
     /**
-     * Runs program until termination
+     * Runs program until termination.
      *
      * @param args Unused.
      */
