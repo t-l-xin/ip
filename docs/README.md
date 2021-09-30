@@ -427,7 +427,7 @@ this subsection is not applicable for user input command line format.
 
 TASK_TYPE | TASK_STATUS | DATE_TO_BE_COMPLETED <br> or DATE_OF_EVENT
 ------------ | ------------- | -------------
-<ul><li>Todo: `T`</li><li>Deadline: `D`</li><li>Event: `E`</li></ul>| <ul><li>Done: `1`</li><li>Not Done: `0`</li></ul> | format must be in `DD/MM/YYYY HHMM` <br> e.g. "18 Sept 2021, 6pm", is written as `18/09/2021 1800`
+Todo: `T` <br/> Deadline: `D` <br/> Event: `E` <br/> | Done: `1` <br/> Not Done: `0` <br/> | format must be in `DD/MM/YYYY HHMM` <br> e.g. "18 Sept 2021, 6pm", is written as `18/09/2021 1800`
 
 ## FAQs
 
