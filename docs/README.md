@@ -28,32 +28,32 @@ Duke is a **Command Line Interface** (CLI) bot made for students who are forgetf
 4. Open a terminal from the *home folder* of your program.
 5. Start by typing `java -jar ip.jar`. The output of the program would be as shown below.
 
-```md
- ______________
-|            @ | #####  ####        #####   ####
-|         @@   |   #   #    #       #    # #    #
-|       @@     |   #   #    # ##### #    # #    #
-|  @@  @@      |   #   #    #       #    # #    #
-|   @@@        |   #   #    #       #    # #    #
-|    @         |   #    ####        #####   ####
- --------------
-____________________________________________________________
-Hi! I'm Duke! 
-Your personal bot to make sure you do work.
-Have you started ur tasks? Start by typing "help"
-____________________________________________________________
-
-loading saved files...
-
-____________________________________________________________
-no pre-existing data files yet
-____________________________________________________________
-
-
-Type your command:
-
-
-```
+    ```md
+     ______________
+    |            @ | #####  ####        #####   ####
+    |         @@   |   #   #    #       #    # #    #
+    |       @@     |   #   #    # ##### #    # #    #
+    |  @@  @@      |   #   #    #       #    # #    #
+    |   @@@        |   #   #    #       #    # #    #
+    |    @         |   #    ####        #####   ####
+     --------------
+    ____________________________________________________________
+    Hi! I'm Duke! 
+    Your personal bot to make sure you do work.
+    Have you started ur tasks? Start by typing "help"
+    ____________________________________________________________
+    
+    loading saved files...
+    
+    ____________________________________________________________
+    no pre-existing data files yet
+    ____________________________________________________________
+    
+    
+    Type your command:
+    
+    
+    ```
 
 6. You may then start typing your commands under the "Type your command:" prompt.
 7. Refer to Features below for details of each command. 
