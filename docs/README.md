@@ -397,7 +397,7 @@ All Duke data are saved in the hard disk automatically after any command that re
 
 ### Editing the data file
 
-Duke data are saved as a TXT file **`[home folder]/data/duke.txt`**. Advanced users are welcome to update data directly by editing that data file.
+Duke data are saved as a TXT file in **`[home folder]/data/duke.txt`**. Advanced users are welcome to update data directly by editing that data file.
 ***home folder*** refers to the folder where you initially placed `ip.jar`, mentioned at the Quick Setup section.
 
 **Word of Caution:**
@@ -413,23 +413,23 @@ this subsection is not applicable for user input command line format.
 *Failure to follow the format, results in line parsing exceptions when loading task data from duke.txt*
 
 - Todo Tasks are saved in the following format: 
-`<TASK_TYPE>|<TASK_STATUS>|<TASK_DESCRIPTION>`
-
+`[TASK_TYPE]|[TASK_STATUS]|[TASK_DESCRIPTION]`
+  - Todo Tasks details must be separated by 2 `|`, all 3 fields in `[]` in the format must be present
   - E.g. `T|0|return book` means Task: return book is not done
 
 - Deadline Tasks are saved in the following format: 
-`<TASK_TYPE>|<TASK_STATUS>|<TASK_DESCRIPTION>|<DATE_TO_BE_COMPLETED>`
-
-  - E.g. `D|1|CS2106 lab|22/09/2021 1400` means Task: CS2106 lab is done before deadline of 22 Sep 2021 2pm. 
+`[TASK_TYPE]|[TASK_STATUS]|[TASK_DESCRIPTION]|[DATE_TO_BE_COMPLETED]`
+  - Deadline Tasks details must be separated by 3 `|`, all 4 fields in `[]` in the format must be present   
+  - E.g. `D|1|CS2106 lab|22/09/2021 1400` means Deadline Task: CS2106 lab is done before deadline of 22 Sep 2021 2pm. 
 
 - Event Tasks are saved in the following format: 
-`<TASK_TYPE>|<TASK_STATUS>|<TASK_DESCRIPTION>|<DATE_OF_EVENT>`
+`[TASK_TYPE]|[TASK_STATUS]|[TASK_DESCRIPTION]|[DATE_OF_EVENT]`
+  - Event Tasks details must be separated by 3 `|`, all 4 fields in `[]` in the format must be present
+  - E.g. `E|0|CS3103 group meeting|30/10/2021 1900` means Event Task: CS3103 group meeting is not done and is held on 30 Sep 2021 7pm.
 
-  - E.g. `E|0|CS3103 group meeting|30/10/2021 1900` means Task: CS3103 group meeting is not done and is held on 30 Sep 2021 7pm.
-
-TASK_TYPE | TASK_STATUS | DATE_TO_BE_COMPLETED <br> or DATE_OF_EVENT
------------- | ------------- | -------------
-Todo: `T` <br/> Deadline: `D` <br/> Event: `E` <br/> | Done: `1` <br/> Not Done: `0` <br/> | format must be in `DD/MM/YYYY HHMM` <br> e.g. "18 Sept 2021, 6pm", is written as `18/09/2021 1800`
+TASK_TYPE | TASK_STATUS | TASK_DESCRIPTION | DATE_TO_BE_COMPLETED <br> or DATE_OF_EVENT
+------------ | ------------- | ------------- | -------------
+Todo: `T` <br/> Deadline: `D` <br/> Event: `E` <br/> | Done: `1` <br/> Not Done: `0` <br/> | Describe the task <br/> e.g. CS3103 programming assignment | format must be in `DD/MM/YYYY HHMM` <br> e.g. "18 Sept 2021, 6pm", is written as `18/09/2021 1800`
 
 ## FAQs
 
