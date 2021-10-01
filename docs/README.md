@@ -414,17 +414,17 @@ this subsection is not applicable for user input command line format.
 
 - Todo Tasks are saved in the following format: 
 `[TASK_TYPE]|[TASK_STATUS]|[TASK_DESCRIPTION]`
-  - Todo Tasks details must be separated by 2 `|`, all 3 fields in `[]` in the format must be present
+  - Todo Tasks details must be separated by 2 `|`, & all 3 fields in `[]` in the format must be present
   - E.g. `T|0|return book` means Task: return book is not done
 
 - Deadline Tasks are saved in the following format: 
 `[TASK_TYPE]|[TASK_STATUS]|[TASK_DESCRIPTION]|[DATE_TO_BE_COMPLETED]`
-  - Deadline Tasks details must be separated by 3 `|`, all 4 fields in `[]` in the format must be present   
+  - Deadline Tasks details must be separated by 3 `|`, & all 4 fields in `[]` in the format must be present   
   - E.g. `D|1|CS2106 lab|22/09/2021 1400` means Deadline Task: CS2106 lab is done before deadline of 22 Sep 2021 2pm. 
 
 - Event Tasks are saved in the following format: 
 `[TASK_TYPE]|[TASK_STATUS]|[TASK_DESCRIPTION]|[DATE_OF_EVENT]`
-  - Event Tasks details must be separated by 3 `|`, all 4 fields in `[]` in the format must be present
+  - Event Tasks details must be separated by 3 `|`, & all 4 fields in `[]` in the format must be present
   - E.g. `E|0|CS3103 group meeting|30/10/2021 1900` means Event Task: CS3103 group meeting is not done and is held on 30 Sep 2021 7pm.
 
 TASK_TYPE | TASK_STATUS | TASK_DESCRIPTION | DATE_TO_BE_COMPLETED <br> or DATE_OF_EVENT
@@ -435,7 +435,7 @@ Todo: `T` <br/> Deadline: `D` <br/> Event: `E` <br/> | Done: `1` <br/> Not Done:
 
 **Question:** Why cannot load saved file (duke.txt) properly? 
 
-**Answer:** Things to check
+**Answer:** If it occurs after editing the file, Check the following:
 - Check that there are tasks data is stored in duke.txt. 
 - Check that you followed the format for tasks saved format in duke.txt, refer to [this section](#tasks-saved-format-in-duketxt)
 - Check that `duke.txt` is in a folder `/data` and the `/data` folder must be in the same directory as `ip.jar`
@@ -445,7 +445,7 @@ Todo: `T` <br/> Deadline: `D` <br/> Event: `E` <br/> | Done: `1` <br/> Not Done:
 **Answer:** 
 1. Move both `/data` folder and `ip.jar` to your new working environment folder 
 2. Ensure that `/data` folder and `ip.jar` are in the same folder
-3. Ensure that duke.txt is in `/data` folder and that's all! 
+3. Ensure that duke.txt is in `/data` folder and that's all! <br/>
 You can start Duke after you have completed these steps.
 
 ## Command Summary
